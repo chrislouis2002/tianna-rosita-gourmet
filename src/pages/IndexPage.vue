@@ -219,8 +219,9 @@ export default defineComponent({
      padding:3px;
    }
    #body{
+     background-size:100% auto;
      background-attachment: fixed;
-     background-position: center;
+     background-position: top;
    }
   }
   #menu{
