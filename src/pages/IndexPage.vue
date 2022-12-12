@@ -222,6 +222,14 @@ export default defineComponent({
      background-size:100% auto;
      background-attachment: fixed;
      background-position: top;
+
+     -webkit-background-size:100% auto;
+     -webkit-background-attachment: fixed;
+     -webkit-background-position: top;
+
+     -moz-background-size:100% auto;
+     -moz-background-attachment: fixed;
+     -moz-background-position: top;
    }
   }
   #menu{
