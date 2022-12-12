@@ -1,6 +1,6 @@
 <template>
   <div id="body">
-
+    <MenuNavigation :categories="cat_name_list"/>
     <div id="header-section" class="q-pa-sm">
       <div class="logobx"><img src="logo.png" id="logo"/></div>
       <div id="menu">MENU</div>
@@ -41,7 +41,7 @@
       />
     </div>
 
-    <div @click.stop="cart_list=true" v-if="cart.length" style="position:fixed;" class="cart-outer">
+    <div @click.stop="cart_list=true" v-if="cart.length" style="position:fixed;z-index:20;" class="cart-outer">
     <div class="cart-inner">
     <img src="13.png" style="width:100%;height:100%;object-fit:cover;border-radius:100%;"/>
     </div>
@@ -90,6 +90,7 @@
 <script>
 import { defineComponent } from 'vue'
 import MenuList from "components/MenuList.vue"
+import MenuNavigation from "components/MenuNavigation.vue"
 import LastFooter from "components/LastFooter.vue"
 import FirstFooter from "components/FirstFooter.vue"
 import { useMenu } from "stores/menus"
@@ -101,17 +102,22 @@ export default defineComponent({
   name: 'IndexPage',
   data:()=>({
     cart:[],
-    cart_list:false
+    cart_list:false,
+    cat_name_list:[]
   }),
   methods:{
     select(index,category){
       this.cart.push(this.store.menu[category].items[index])
     }
   },
+  mounted(){
+    this.store.menu.forEach((e)=>this.cat_name_list.push(e.name))
+  },
   components:{
     MenuList,
     LastFooter,
-    FirstFooter
+    FirstFooter,
+    MenuNavigation
   },
 })
 </script>

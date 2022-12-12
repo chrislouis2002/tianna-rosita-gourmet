@@ -97,7 +97,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Meatzy Pizza",
               size:"Large",
-              price:5700
+              price:5000
+          },
+          {
+            name:"Meatzy Pizza",
+            size:"Extra Large",
+            price:6000
           },
           {
               name:"Chicken Suya Pizza",
@@ -107,7 +112,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Chicken Suya Pizza",
               size:"Large",
-              price:6500
+              price:5300
+          },
+          {
+            name:"Chicken Suya Pizza",
+            size:"Large",
+            price:6300
           },
           {
               name:"Pepperoni Pizza",
@@ -117,7 +127,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Pepperoni Pizza",
               size:"Large",
-              price:7000
+              price:5500
+          },
+          {
+            name:"Pepperoni Pizza",
+            size:"Extra Large",
+            price:6500
           },
           {
               name:"Sea Food Pizza",
@@ -127,7 +142,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Sea Food Pizza",
               size:"Large",
-              price:7000
+              price:5500
+          },
+          {
+            name:"Sea Food Pizza",
+            size:"Extra Large",
+            price:7000
           },
           {
               name:"Dodo Pizza",
@@ -137,7 +157,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Dodo Pizza",
               size:"Large",
-              price:5000
+              price:4500
+          },
+          {
+                name:"Dodo Pizza",
+                size:"Extra Large",
+                price:5200
           },
           {
               name:"Vegetable Pizza",
@@ -147,7 +172,12 @@ export const useMenu = defineStore('menus', {
           {
               name:"Vegetable Pizza",
               size:"Large",
-              price:4800
+              price:4000
+          },
+          {
+            name:"Vegetable Pizza",
+            size:"Extra Large",
+            price:5000
           },
           {
               name:"Tropical Pizza",
@@ -180,7 +210,10 @@ export const useMenu = defineStore('menus', {
               price:6000
           }
       ]
-  }
+  },
+  /**
+   * 
+   */
     ]
   }),
 });
