@@ -22,7 +22,8 @@ export default defineComponent({
 
 <style scoped>
 .contfft{
-    background-image:url('6.png');
+   /* background-image:url('http://localhost:9000/6.png');*/
+    background-image:url('https://capable-blini-cb030f.netlify.app/6.png');
     background-repeat:no-repeat;
     display:flex;
     justify-content:center;

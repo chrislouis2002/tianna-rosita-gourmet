@@ -138,7 +138,7 @@ export default defineComponent({
 }
   #body{
     background:rgba(0,0,0,.8);
-    background-image:url('6.png');
+    background-image:url('https://capable-blini-cb030f.netlify.app/6.png');
     background-repeat:no-repeat;
     min-width:100%;
     min-height:100vh;
