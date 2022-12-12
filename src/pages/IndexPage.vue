@@ -119,12 +119,12 @@ export default defineComponent({
 <style lang="scss">
 @font-face { 
   font-family:"martian"; 
-	 src: url('Martian_Mono/MartianMono-VariableFont_wdth.ttf');      
+	 src: url('~/Martian_Mono/MartianMono-VariableFont_wdth.ttf');      
 } 
 
 @font-face { 
   font-family:"rubik"; 
-	 src: url('Rubik_Spray_Paint/RubikSprayPaint-Regular.ttf');      
+	 src: url('~/Rubik_Spray_Paint/RubikSprayPaint-Regular.ttf');      
 } 
 .cartm{
      background:rgba(0,0,0,.7);
@@ -138,7 +138,7 @@ export default defineComponent({
 }
   #body{
     background:rgba(0,0,0,.8);
-    background-image:url('https://capable-blini-cb030f.netlify.app/6.png');
+    background-image:url("~/6.png");
     background-repeat:no-repeat;
     min-width:100%;
     min-height:100vh;
