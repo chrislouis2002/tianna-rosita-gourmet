@@ -24,7 +24,7 @@
                 <div>{{item.name}}</div>
                 <div v-if="item.size">{{item.size}}</div>
                 <div class="btncc">
-                <q-btn @click="$emit('select',i,categoryIndex)" rounded><span>SELECT</span><q-icon name="add"/></q-btn>
+                <q-btn flat class="sb" @click="$emit('select',i,categoryIndex)" rounded><span>SELECT</span><q-icon name="add"/></q-btn>
                 </div>
                 </div>
 
@@ -180,5 +180,9 @@ export default defineComponent({
         display:flex;
         justify-content:flex-end;
         padding-right:1rem;
-    }
+}
+.sb{
+    background:hsla(0, 69%, 60%, 1);
+    color:hsla(0, 69%, 80%, 1)
+}
 </style>

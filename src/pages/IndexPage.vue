@@ -312,6 +312,5 @@ export default defineComponent({
   grid-template-columns:auto;
   grid-row-gap:1rem;
   justify-content:center;
-
 }
 </style>
