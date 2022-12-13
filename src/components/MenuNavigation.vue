@@ -2,11 +2,13 @@
     <div class="menunavcont">
         <q-btn @click="tgnav=!tgnav" class="navb" style="background:linear-gradient(45deg,rgba(229,115,115,1),rgba(255,215,64,1));" fab><q-icon name="menu"/></q-btn>
 
-        <div v-if="tgnav" style="display:flex;justify-content:center;flex-direction:column;">
+        <div class="navscr" v-if="tgnav">
+          <div style="display:flex;justify-content:center;flex-direction:column;">
           <div v-for="(cat,index) in categories" :key="index" class="navs" @click.stop="navigateToCategory(index)">
             <div class="ccc"><q-icon size="25px" name="expand_more"/></div>
             <div>{{cat}}</div>
           </div>
+         </div>
         </div>
     </div>
 </template>
@@ -38,7 +40,7 @@ export default defineComponent({
     top:30px;
     left:20px;
     min-width:100%;
-    z-index:5;
+    z-index:9;
 }
 .navb{
     font-family:"martian";
@@ -51,7 +53,6 @@ export default defineComponent({
     border-radius:25px;
     font-size:14px;
     font-family:"martian";
-    max-width:250px;
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -59,6 +60,17 @@ export default defineComponent({
     transition:width 2s;
     color:white;
     
+}
+@media screen and (min-width:640px){
+    .navs{
+        max-width:300px;
+    }
+}
+
+@media screen and (max-width:620px){
+    .navs{
+        max-width:90%;
+    }
 }
 .ccc{
     width:35px;
@@ -71,5 +83,9 @@ export default defineComponent({
     align-items:center;
     color:rgba(229,115,115,1);
     box-shadow:inset 1px 1px 5px rgba(0,0,0,.3),inset -1px -1px 5px rgba(0,0,0,.3);
+}
+.navscr{
+    max-height:600px;
+    overflow-y:scroll;
 }
 </style>
