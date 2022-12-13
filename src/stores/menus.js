@@ -119,11 +119,6 @@ export const useMenu = defineStore('menus', {
                 name:"Sautéed Stem Veggies",
                 size:"",
                 price:2500
-            },
-            {
-                name:"",
-                size:"",
-                price:0
             }
         ]
       },
@@ -629,7 +624,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Banana Milkshake",
                 size:"",
-                price:2000
+                price:2200
             },
             {
                 name:"Chocolate Milkshake",
@@ -733,7 +728,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Noodles/Eggs and Sausages",
                 size:"",
-                price:2000
+                price:2200
             },
             {
                 name:"Spaghetti bolognese",
