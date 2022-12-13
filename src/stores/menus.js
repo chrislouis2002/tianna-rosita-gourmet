@@ -224,6 +224,11 @@ export const useMenu = defineStore('menus', {
                 price:3500
             },
             {
+                name:"Waffle, Crispy Chicken & Cheese Sandwich",
+                size:"",
+                price:4500
+            },
+            {
                 name:"Bread & Egg Omelette with a cup of hot choco/coffee",
                 size:"",
                 price:1500
@@ -1172,17 +1177,17 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Waffles or Pancakes & Icecream or Greek yogurt with Toppings of choice",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
-                    name:"Chocolate Pancakes or Waffles",
+                    name:"Chocolate, Nutella, Banana or Red velvet Waffles or a pancakes (Served with Icecream or Greek yogurt and Toppings of choice)",
                     size:"",
-                    price:0
+                    price:4500
                 },
                 {
-                    name:"Extra Toppings",
+                    name:"Extra Toppings (Chocolate Sauce,Strawberry sauce, Maple syrup, Strawberry fruits, Blueberry, Banana, nuts, Chocolate chips, Toasted Coconut, Jam)",
                     size:"",
-                    price:500
+                    price:1000
                 },
             ]
         },
