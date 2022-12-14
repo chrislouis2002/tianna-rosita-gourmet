@@ -8,7 +8,7 @@ export const useMenu = defineStore('menus', {
      */
       {
         name:"Breakfast/Brunch Eats",
-        category_image:"waffle_breakfast.jpeg",
+        category_image:"english_breakfast.jpeg",
         items:[
             {
                 name:"English breakfast (Pancakes or toast slices/scrambled eggs/Grilled Sausages/Grilled Tomatoes and baked beans)",
@@ -1029,7 +1029,7 @@ export const useMenu = defineStore('menus', {
          */
         {
             name:"Salads",
-            category_image:"salad.png",
+            category_image:"salad.jpeg",
             items:[
                 {
                     name:"Fruit Salad",
@@ -1098,7 +1098,7 @@ export const useMenu = defineStore('menus', {
          */
           {
             name:"Specialty Sauces",
-            category_image:"sauces.jpg",
+            category_image:"sauces.jpeg",
             items:[
                 {
                     name:"Spicy Shredded Beef sauce",
