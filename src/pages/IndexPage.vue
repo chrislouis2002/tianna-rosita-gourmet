@@ -34,6 +34,7 @@
       v-for="(item,index) in store.menu" 
       :key="index"
       :foods="item.items"
+      :description="(item.description)?item.description:undefined"
       :category="item.name"
       :image="item.category_image"
       :categoryIndex="index"

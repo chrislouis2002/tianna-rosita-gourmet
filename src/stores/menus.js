@@ -203,6 +203,11 @@ export const useMenu = defineStore('menus', {
                 name:"Chicken Burrito",
                 size:"",
                 price:4500
+            },
+            {
+                name:"Extras (Sausages or Cheese)",
+                size:"",
+                price:"1000"
             }
         ]
     },
@@ -236,7 +241,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken & Chips with a can of soda",
                 size:"",
-                price:2700
+                price:3000
             },
             {
                 name:"Coffee or Hot Choco & cookies or muffin",
@@ -516,7 +521,12 @@ export const useMenu = defineStore('menus', {
                 price:3000
             },
             {
-                name:"Corn dogs 800 per stick Lucky Platter (Peppered chicken, Beef kebabs, Turkey wings, grilled fish, Snails, smoked sausages, corn, slaw and fries) ",
+                name:"Corn dogs per stick",
+                size:"",
+                price:800
+            },
+            {
+                name:"Lucky Platter (Peppered chicken, Beef kebabs, Turkey wings, grilled fish, Snails, smoked sausages, corn, slaw and fries) ",
                 size:"",
                 price:12500
             },
@@ -603,9 +613,6 @@ export const useMenu = defineStore('menus', {
                 name:"Black/Green/herbal or flavoured tea",
                 size:"Large",
                 price:1000
-            },
-            {
-
             }
         ]
     },
@@ -698,7 +705,7 @@ export const useMenu = defineStore('menus', {
      */
       {
         name:"Pasta Dishes",
-        category_image:"Pasta.jpg",
+        category_image:"pasta.jpeg",
         items:[
             {
                 name:"Chicken Rice noodles",
@@ -970,7 +977,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Chicken & Shrimp fried rice",
                     size:"",
-                    price:4500
+                    price:5000
                 },
                 {
                     name:"Paella Rice",
@@ -1098,6 +1105,7 @@ export const useMenu = defineStore('menus', {
          */
           {
             name:"Specialty Sauces",
+            description:"(Can be served with any rice, chinease noodles or pasta dish or sides)",
             category_image:"sauces.jpeg",
             items:[
                 {
@@ -1175,7 +1183,7 @@ export const useMenu = defineStore('menus', {
                     price:3500
                 },
                 {
-                    name:"Chocolate, Nutella, Banana or Red velvet Waffles or a pancakes (Served with Icecream or Greek yogurt and Toppings of choice)",
+                    name:"Chocolate, Nutella, Banana or Red velvet Waffles or pancakes (Served with Icecream or Greek yogurt and Toppings of choice)",
                     size:"",
                     price:4500
                 },
@@ -1383,7 +1391,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Avocado, Sour-sop, kiwi",
                     size:"",
-                    price:1500
+                    price:3000
                 },
                 {
                     name:"Lemon, Orange, Lime, Ginger & Garlic",

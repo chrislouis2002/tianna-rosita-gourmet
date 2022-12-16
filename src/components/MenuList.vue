@@ -11,6 +11,7 @@
 
     <div style="min-width:100%;">
      <div class="title-cat">{{category}}</div>
+     <div v-if="description" class="food-info q-mb-md">{{description}}</div>
      <div class="listxcont">
         <div class="listx" v-for="(item,i) in foods" :key="i" style="padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
             <div style="display:flex;justify-content:flex-start;">
@@ -48,7 +49,8 @@ export default defineComponent({
         foods:{datatype:Object, default:[]},
         category:{datatype:String , default:null},
         image:{datatype:String , default:null},
-        categoryIndex:{datatype:Number, default:undefined}
+        categoryIndex:{datatype:Number, default:undefined},
+        description:{datatype:String , default:undefined}
     }
 })
 </script>
