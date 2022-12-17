@@ -1105,7 +1105,7 @@ export const useMenu = defineStore('menus', {
          */
           {
             name:"Specialty Sauces",
-            description:"(Can be served with any rice, chinease noodles or pasta dish or sides)",
+            description:"(Can be served with any rice, chinese noodles or pasta dish or sides)",
             category_image:"sauces.jpeg",
             items:[
                 {
