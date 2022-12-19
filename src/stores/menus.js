@@ -1028,6 +1028,26 @@ export const useMenu = defineStore('menus', {
                     name:"Sides (Fried Plantain, Potatoes, Yam slices)",
                     size:"",
                     price:1000
+                },
+                {
+                    name:"Caribbean Rice",
+                    size:"",
+                    price:4000
+                },
+                {
+                    name:"Mexican Rice",
+                    size:"",
+                    price:4000
+                },
+                {
+                    name:"Thai-Beed Rice",
+                    size:"",
+                    price:4000
+                },
+                {
+                    name:"Rice and vegetable stew with Chicken or fish",
+                    size:"",
+                    price:3500
                 }
             ]
         },
@@ -1422,6 +1442,21 @@ export const useMenu = defineStore('menus', {
                     name:"Watermelon, Apple, Pineapple",
                     size:"",
                     price:1500
+                },
+                {
+                    name:"Banana & Strawberry",
+                    size:"",
+                    price:3000
+                },
+                {
+                    name:"Sour-sop & Avocado",
+                    size:"",
+                    price:3000
+                },
+                {
+                    name:"Avacado, Sour-sop, Kiwi",
+                    size:"",
+                    price:3500
                 }
             ]
         },
