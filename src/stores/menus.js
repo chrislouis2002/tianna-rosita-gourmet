@@ -626,22 +626,22 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Strawberry Milkshake",
                 size:"",
-                price:2000
+                price:2200
             },
             {
                 name:"Banana Milkshake",
                 size:"",
-                price:2200
+                price:2300
             },
             {
                 name:"Chocolate Milkshake",
                 size:"",
-                price:2000
+                price:2200
             },
             {
                 name:"Vanilla Milkshake",
                 size:"",
-                price:2000
+                price:2200
             },
             {
                 name:"Blueberry Milkshake",
@@ -650,6 +650,11 @@ export const useMenu = defineStore('menus', {
             },
             {
                 name:"Coffee & Caramel milkshake",
+                size:"",
+                price:2500
+            },
+            {
+                name:"Coconut milkshake",
                 size:"",
                 price:2500
             },
