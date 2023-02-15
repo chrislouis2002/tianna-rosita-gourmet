@@ -172,7 +172,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Beef Shawarma",
                 size:"",
-                price:1700
+                price:1800
             },
             {
                 name:"Tuna Sandwich",
@@ -182,7 +182,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken Shawarma",
                 size:"",
-                price:2300
+                price:2500
             },
             {
                 name:"Beef and Chicken Shawarma",
@@ -528,7 +528,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Lucky Platter (Peppered chicken, Beef kebabs, Turkey wings, grilled fish, Snails, smoked sausages, corn, slaw and fries) ",
                 size:"",
-                price:12500
+                price:15000
             },
             {
                 name:"Grilled Chicken & Mashed Potatoes",
@@ -740,7 +740,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Noodles/Eggs and Sausages",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Spaghetti bolognese",
@@ -750,17 +750,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Penne pasta & Chicken stir fry",
                 size:"",
-                price:4000
+                price:4500
             },
             {
                 name:"Penne pasta & Tuna stir fry",
                 size:"",
-                price:4500
+                price:5000
             },
             {
                 name:"Mac & Cheese",
                 size:"",
-                price:3500
+                price:4000
             },
             {
                 name:"Spaghetti & Shrimp stir-fry",
@@ -918,17 +918,17 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Catfish",
                     size:"",
-                    price:2000
+                    price:2500
                 },
                 {
                     name:"Turkey Medium",
                     size:"",
-                    price:1700
+                    price:2500
                 },
                 {
                     name:"Turkey Large",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Grilled or Fried Ice Fish",
@@ -1045,14 +1045,14 @@ export const useMenu = defineStore('menus', {
                     price:4000
                 },
                 {
-                    name:"Thai-Beed Rice",
+                    name:"Thai-Beef Rice",
                     size:"",
                     price:4000
                 },
                 {
                     name:"Rice and vegetable stew with Chicken or fish",
                     size:"",
-                    price:3500
+                    price:5000
                 }
             ]
         },
@@ -1382,11 +1382,6 @@ export const useMenu = defineStore('menus', {
                     name:"Green Veggies Smoothie",
                     size:"",
                     price:1500
-                },
-                {
-                    name:"Banana & Strawberry Smoothie ",
-                    size:"",
-                    price:2500
                 },
                 {
                     name:"Sour-sop & Avocado Smoothie",
