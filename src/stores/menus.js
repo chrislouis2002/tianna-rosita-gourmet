@@ -265,8 +265,13 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Greek yogurt Parfait",
                 size:"",
-                price:2200
+                price:2500
             },
+            {
+              name:"Greek yogurt Parfait Bowl",
+              size:"",
+              price:4000
+          },
             {
                 name:"Chia pudding",
                 size:"",
@@ -548,7 +553,7 @@ export const useMenu = defineStore('menus', {
         ]
     },
      /**
-     * Hot drinks 
+     * Hot drinks
      */
       {
         name:"Hot drinks ",
@@ -1196,7 +1201,7 @@ export const useMenu = defineStore('menus', {
             ]
         },
         /**
-         * Sweet & Savory Waffle Desserts 
+         * Sweet & Savory Waffle Desserts
          */
         {
             name:"Sweet & Savory Waffle Desserts ",
@@ -1313,7 +1318,7 @@ export const useMenu = defineStore('menus', {
             ]
         },
         /*
-        * Fruit drinks 
+        * Fruit drinks
         */
          {
            name:"Fruit drinks",
@@ -1346,7 +1351,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Mixed fruit Smoothie",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Tigernut drink",
@@ -1366,7 +1371,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Pineapple & watermelon",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"BanCream",
@@ -1376,62 +1381,62 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Avocado Green Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Green Veggies Smoothie",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Sour-sop & Avocado Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Sour-sop Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Ginger & Garlic",
                     size:"",
-                    price:1500
+                    price:3000
                 },
                 {
                     name:"Carrot & Cucumber",
                     size:"",
-                    price:1500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Pineapple & Carrot ",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Avocado, Sour-sop, kiwi",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Lemon, Orange, Lime, Ginger & Garlic",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Banana, dates, nuts",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Grapes, Apple, Plum, English Pear",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Strawberry, Blueberry, Grapes",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Beetroot, Pineapple, Apple, lemon & Ginger",
