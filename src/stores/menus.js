@@ -172,7 +172,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Beef Shawarma",
                 size:"",
-                price:1800
+                price:2500
             },
             {
                 name:"Tuna Sandwich",
@@ -182,7 +182,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken Shawarma",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Beef and Chicken Shawarma",
@@ -275,7 +275,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chia pudding",
                 size:"",
-                price:40
+                price:4000
             },
             {
                 name:"Nutty Chocolate mix Parfait",
@@ -354,17 +354,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Fish pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Goat meat pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Spring rolls",
@@ -631,22 +631,22 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Strawberry Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Banana Milkshake",
                 size:"",
-                price:2300
+                price:2700
             },
             {
                 name:"Chocolate Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Vanilla Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Blueberry Milkshake",
