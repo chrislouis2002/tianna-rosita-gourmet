@@ -275,7 +275,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chia pudding",
                 size:"",
-                price:4000
+                price:40
             },
             {
                 name:"Nutty Chocolate mix Parfait",
@@ -1441,22 +1441,22 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Beetroot, Pineapple, Apple, lemon & Ginger",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Apple, Pineapple",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Banana & Strawberry",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Sour-sop & Avocado",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Avacado, Sour-sop, Kiwi",
