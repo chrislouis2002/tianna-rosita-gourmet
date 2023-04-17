@@ -172,7 +172,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Beef Shawarma",
                 size:"",
-                price:1800
+                price:2500
             },
             {
                 name:"Tuna Sandwich",
@@ -182,7 +182,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken Shawarma",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Beef and Chicken Shawarma",
@@ -265,8 +265,13 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Greek yogurt Parfait",
                 size:"",
-                price:2200
+                price:2500
             },
+            {
+              name:"Greek yogurt Parfait Bowl",
+              size:"",
+              price:4000
+          },
             {
                 name:"Chia pudding",
                 size:"",
@@ -349,17 +354,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Fish pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Goat meat pepper soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Spring rolls",
@@ -631,22 +636,22 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Strawberry Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Banana Milkshake",
                 size:"",
-                price:2300
+                price:2700
             },
             {
                 name:"Chocolate Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Vanilla Milkshake",
                 size:"",
-                price:2200
+                price:2500
             },
             {
                 name:"Blueberry Milkshake",
@@ -1356,7 +1361,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Mixed fruit Smoothie",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Tigernut drink",
@@ -1376,7 +1381,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Pineapple & watermelon",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"BanCream",
@@ -1386,82 +1391,82 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Avocado Green Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Green Veggies Smoothie",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Sour-sop & Avocado Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Sour-sop Smoothie",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Ginger & Garlic",
                     size:"",
-                    price:1500
+                    price:3000
                 },
                 {
                     name:"Carrot & Cucumber",
                     size:"",
-                    price:1500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Pineapple & Carrot ",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Avocado, Sour-sop, kiwi",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Lemon, Orange, Lime, Ginger & Garlic",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Banana, dates, nuts",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Grapes, Apple, Plum, English Pear",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Strawberry, Blueberry, Grapes",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Beetroot, Pineapple, Apple, lemon & Ginger",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Watermelon, Apple, Pineapple",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Banana & Strawberry",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Sour-sop & Avocado",
                     size:"",
-                    price:3000
+                    price:3500
                 },
                 {
                     name:"Avacado, Sour-sop, Kiwi",
