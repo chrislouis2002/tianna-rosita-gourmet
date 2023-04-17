@@ -68,7 +68,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken & Shrimps with potatoes & veggies Biryani",
                 size:"",
-                price:6500
+                price:7500
             },
             {
                 name:"Moi moi & Oatmeal or Custard",
@@ -197,7 +197,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Beef Burrito",
                 size:"",
-                price:3000
+                price:3500
             },
             {
                 name:"Chicken Burrito",
@@ -364,12 +364,12 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Spring rolls",
                 size:"",
-                price:1500
+                price:2000
             },
             {
                 name:"Samosa",
                 size:"",
-                price:1500
+                price:2000
             },
             {
                 name:"Shrimp roll",
@@ -433,8 +433,13 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Barbecued Chicken and chips",
                 size:"",
-                price:3500
+                price:4000
             },
+            {
+              name:"Full Chicken Periperi",
+              size:"",
+              price:10000
+          },
             {
                 name:"Grilled Chicken, Potatoes & Sautéed Veggies",
                 size:"",
@@ -448,7 +453,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Fried crispy chicken & chips",
                 size:"",
-                price:2700
+                price:3000
             },
             {
                 name:"Fried Crispy Fish & Chips",
@@ -458,7 +463,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Jumbo Chicken & Chips",
                 size:"",
-                price:3500
+                price:4500
             },
             {
                 name:"Grilled or butter-fried Prawns",
@@ -548,7 +553,7 @@ export const useMenu = defineStore('menus', {
         ]
     },
      /**
-     * Hot drinks 
+     * Hot drinks
      */
       {
         name:"Hot drinks ",
@@ -967,7 +972,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Smoky Jollof rice with Basmati",
                     size:"",
-                    price:2800
+                    price:3000
                 },
                 {
                     name:"Vegetable Fried rice",
@@ -1196,7 +1201,7 @@ export const useMenu = defineStore('menus', {
             ]
         },
         /**
-         * Sweet & Savory Waffle Desserts 
+         * Sweet & Savory Waffle Desserts
          */
         {
             name:"Sweet & Savory Waffle Desserts ",
@@ -1229,7 +1234,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Sweet Red/Sweet White Wine (Glass)",
                     size:"",
-                    price:3000
+                    price:4000
                 },
                 {
                     name:"Moscato Rose",
@@ -1263,23 +1268,28 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Chapman",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Lemon-drop Martini",
                     size:"",
-                    price:2000
+                    price:3000
                 },
                 {
                     name:"Gin & Tonic",
                     size:"",
-                    price:2000
+                    price:3000
                 },
                 {
                     name:"Rum & Coke",
                     size:"",
-                    price:2000
+                    price:3000
                 },
+                {
+                  name:"Rum & Orange",
+                  size:"",
+                  price:3500
+              },
                 {
                     name:"Mojito",
                     size:"",
@@ -1313,7 +1323,7 @@ export const useMenu = defineStore('menus', {
             ]
         },
         /*
-        * Fruit drinks 
+        * Fruit drinks
         */
          {
            name:"Fruit drinks",
