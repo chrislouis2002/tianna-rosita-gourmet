@@ -236,7 +236,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Soul Burger (1 cheese burger, 1 piece of chicken, French fries and a bottle of soda)",
                 size:"",
-                price:3500
+                price:3700
             },
             {
                 name:"Chicken & Chips with a can of soda",
