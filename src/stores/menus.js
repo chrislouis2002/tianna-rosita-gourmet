@@ -187,7 +187,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Beef and Chicken Shawarma",
                 size:"",
-                price:3500
+                price:4500
             },
             {
                 name:"Fish Shawarma",
