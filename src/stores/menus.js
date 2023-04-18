@@ -448,7 +448,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Grilled Chicken, Potatoes & Sautéed Veggies",
                 size:"",
-                price:4000
+                price:5000
             },
             {
                 name:"Grilled Tilapia",
