@@ -68,7 +68,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Chicken & Shrimps with potatoes & veggies Biryani",
             size: "",
-            price: 6500,
+            price: 7500,
           },
           {
             name: "Moi moi & Oatmeal or Custard",
@@ -118,7 +118,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Sautéed Stem Veggies",
             size: "",
-            price: 2500,
+            price: 4500,
           },
         ],
       },
@@ -190,6 +190,11 @@ export const useMenu = defineStore("menus", {
             price: 4500,
           },
           {
+            name: "Beef, Chicken and Sausage Shawarma",
+            size: "",
+            price: 5500,
+          },
+          {
             name: "Fish Shawarma",
             size: "",
             price: 3000,
@@ -231,7 +236,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Bread & Egg Omelette with a cup of hot choco/coffee",
             size: "",
-            price: 1500,
+            price: 2000,
           },
           {
             name: "Soul Burger (1 cheese burger, 1 piece of chicken, French fries and a bottle of soda)",
@@ -246,7 +251,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Coffee or Hot Choco & cookies or muffin",
             size: "",
-            price: 1000,
+            price: 1500,
           },
           {
             name: "Coffee or Hot Choco with Croissants & spread (Jam, Nutella, Mayo, Butter or peanut butter)",
@@ -300,12 +305,12 @@ export const useMenu = defineStore("menus", {
           {
             name: "BanCream",
             size: "",
-            price: 2700,
+            price: 3500,
           },
           {
             name: "Icecream or Yogurt & Chocolate Brownies",
             size: "",
-            price: 3500,
+            price: 4500,
           },
           {
             name: "Vanilla Cake Parfait",
@@ -315,12 +320,12 @@ export const useMenu = defineStore("menus", {
           {
             name: "Icecream or Yogurt & Crumbled Cookies/Oreos",
             size: "",
-            price: 3000,
+            price: 3500,
           },
           {
             name: "Bailey's Crème Delight",
             size: "",
-            price: 3000,
+            price: 4000,
           },
           {
             name: "Jamboree Parfait",
@@ -335,12 +340,12 @@ export const useMenu = defineStore("menus", {
           {
             name: "Yogurt Parfait with Strawberry/Chocolate Sauce",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Banana split",
             size: "",
-            price: 3500,
+            price: 4500,
           },
         ],
       },
@@ -369,7 +374,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Spring rolls",
             size: "",
-            price: 1500,
+            price: 2000,
           },
           {
             name: "Samosa",
@@ -389,7 +394,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Chicken soup",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Hummus & softrolls",
@@ -419,7 +424,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Fish fingers",
             size: "",
-            price: 4800,
+            price: 5000,
           },
           {
             name: "Fries",
@@ -438,22 +443,27 @@ export const useMenu = defineStore("menus", {
           {
             name: "Barbecued Chicken and chips",
             size: "",
-            price: 3500,
+            price: 4500,
+          },
+          {
+            name: "Full Chicken Periperi",
+            size: "",
+            price: 10000,
           },
           {
             name: "Grilled Chicken, Potatoes & Sautéed Veggies",
             size: "",
-            price: 4000,
+            price: 5000,
           },
           {
             name: "Grilled Tilapia",
             size: "",
-            price: 5000,
+            price: 6500,
           },
           {
             name: "Fried crispy chicken & chips",
             size: "",
-            price: 2700,
+            price: 3000,
           },
           {
             name: "Fried Crispy Fish & Chips",
@@ -463,7 +473,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Jumbo Chicken & Chips",
             size: "",
-            price: 3500,
+            price: 4500,
           },
           {
             name: "Grilled or butter-fried Prawns",
@@ -473,17 +483,17 @@ export const useMenu = defineStore("menus", {
           {
             name: "Peppered snails",
             size: "",
-            price: 2500,
+            price: 4000,
           },
           {
             name: "Peppered Chicken platter",
             size: "",
-            price: 3500,
+            price: 4500,
           },
           {
             name: "Grilled pork",
             size: "",
-            price: 2500,
+            price: 4000,
           },
           {
             name: "Beef Kebab (with sides)",
@@ -656,7 +666,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Coffee & Caramel milkshake",
             size: "",
-            price: 2500,
+            price: 3500,
           },
           {
             name: "Coconut milkshake",
@@ -671,7 +681,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Oreos milkshake",
             size: "",
-            price: 3000,
+            price: 3500,
           },
           {
             name: "Cookies & Cream Shake",
@@ -681,7 +691,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Banana & Peanut butter Shake",
             size: "",
-            price: 3000,
+            price: 3500,
           },
           {
             name: "Chocolate & Peanut butter Shake ",
@@ -691,12 +701,12 @@ export const useMenu = defineStore("menus", {
           {
             name: "Bailey's & Chocolate Shake",
             size: "",
-            price: 3500,
+            price: 4500,
           },
           {
             name: "Brownie shake",
             size: "",
-            price: 3500,
+            price: 4000,
           },
           {
             name: "Chocolate cake Ganaché",
@@ -992,7 +1002,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Smoky Jollof rice with Basmati",
             size: "",
-            price: 2800,
+            price: 3000,
           },
           {
             name: "Vegetable Fried rice",
@@ -1055,6 +1065,11 @@ export const useMenu = defineStore("menus", {
             price: 4500,
           },
           {
+            name: "Potatoes and Chicken Biryani",
+            size: "",
+            price: 5000,
+          },
+          {
             name: "Sides (Fried Plantain, Potatoes, Yam slices)",
             size: "",
             price: 1000,
@@ -1091,7 +1106,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Fruit Salad",
             size: "",
-            price: 1500,
+            price: 2000,
           },
           {
             name: "Vegetable salad",
@@ -1126,17 +1141,17 @@ export const useMenu = defineStore("menus", {
           {
             name: "Seafood Salad",
             size: "",
-            price: 4500,
+            price: 7000,
           },
           {
             name: "Potato Salad",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Potato & Chicken Salad",
             size: "",
-            price: 4000,
+            price: 5000,
           },
           {
             name: "Chef Salad",
@@ -1289,7 +1304,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Chapman",
             size: "",
-            price: 1500,
+            price: 2000,
           },
           {
             name: "Lemon-drop Martini",
@@ -1299,17 +1314,22 @@ export const useMenu = defineStore("menus", {
           {
             name: "Gin & Tonic",
             size: "",
-            price: 2000,
+            price: 3000,
           },
           {
             name: "Rum & Coke",
             size: "",
-            price: 2000,
+            price: 3000,
+          },
+          {
+            name: "Rum &  Orange",
+            size: "",
+            price: 3500,
           },
           {
             name: "Mojito",
             size: "",
-            price: 2000,
+            price: 3000,
           },
           {
             name: "Shandy",
@@ -1372,7 +1392,12 @@ export const useMenu = defineStore("menus", {
           {
             name: "Mixed fruit Smoothie",
             size: "",
-            price: 1500,
+            price: 2000,
+          },
+          {
+            name: "Seasonal Smoothie",
+            size: "",
+            price: 2500,
           },
           {
             name: "Tigernut drink",
@@ -1402,22 +1427,22 @@ export const useMenu = defineStore("menus", {
           {
             name: "Avocado Green Smoothie",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Green Veggies Smoothie",
             size: "",
-            price: 1500,
+            price: 2000,
           },
           {
             name: "Sour-sop & Avocado Smoothie",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Sour-sop Smoothie",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Watermelon, Ginger & Garlic",
