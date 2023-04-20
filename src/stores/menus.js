@@ -71,6 +71,11 @@ export const useMenu = defineStore('menus', {
                 price:7500
             },
             {
+              name:"Potatoes and Chicken Biryani",
+              size:"",
+              price:5000
+          },
+            {
                 name:"Moi moi & Oatmeal or Custard",
                 size:"",
                 price:1500
@@ -118,7 +123,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Sautéed Stem Veggies",
                 size:"",
-                price:2500
+                price:4500
             }
         ]
       },
@@ -231,7 +236,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Bread & Egg Omelette with a cup of hot choco/coffee",
                 size:"",
-                price:1500
+                price:2000
             },
             {
                 name:"Soul Burger (1 cheese burger, 1 piece of chicken, French fries and a bottle of soda)",
@@ -246,7 +251,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Coffee or Hot Choco & cookies or muffin",
                 size:"",
-                price:1000
+                price:1500
             },
             {
                 name:"Coffee or Hot Choco with Croissants & spread (Jam, Nutella, Mayo, Butter or peanut butter)",
@@ -295,17 +300,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Icecream Storm Parfait",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"BanCream",
                 size:"",
-                price:2700
+                price:3500
             },
             {
                 name:"Icecream or Yogurt & Chocolate Brownies",
                 size:"",
-                price:3500
+                price:4500
             },
             {
                 name:"Vanilla Cake Parfait",
@@ -320,7 +325,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Bailey's Crème Delight",
                 size:"",
-                price:3000
+                price:4000
             },
             {
                 name:"Jamboree Parfait",
@@ -335,12 +340,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Yogurt Parfait with Strawberry/Chocolate Sauce",
                 size:"",
-                price:2500
+                price:3000
             },
+            {
+              name:"Yogurt Parfait with Crump cookies or oreos",
+              size:"",
+              price:3500
+          },
             {
                 name:"Banana split",
                 size:"",
-                price:3500
+                price:4500
             }
         ]
     },
@@ -389,7 +399,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chicken soup",
                 size:"",
-                price:2500
+                price:3000
             },
             {
                 name:"Hummus & softrolls",
@@ -419,7 +429,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Fish fingers",
                 size:"",
-                price:4800
+                price:5000
             },
             {
                 name:"Fries",
@@ -676,7 +686,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Oreos milkshake",
                 size:"",
-                price:3000
+                price:3500
             },
             {
                 name:"Cookies & Cream Shake",
@@ -691,17 +701,17 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Chocolate & Peanut butter Shake ",
                 size:"",
-                price:3000
+                price:3500
             },
             {
                 name:"Bailey's & Chocolate Shake",
                 size:"",
-                price:3500
+                price:4500
             },
             {
                 name:"Brownie shake",
                 size:"",
-                price:3500
+                price:4000
             },
             {
                 name:"Chocolate cake Ganaché",
@@ -805,7 +815,7 @@ export const useMenu = defineStore('menus', {
             {
                 name:"Seafood Tagliatelle",
                 size:"",
-                price:7000
+                price:7500
             },
             {
                 name:"Spaghetti Arrabiata",
@@ -1076,7 +1086,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Fruit Salad",
                     size:"",
-                    price:1500
+                    price:2000
                 },
                 {
                     name:"Vegetable salad",
@@ -1111,17 +1121,17 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Seafood Salad",
                     size:"",
-                    price:4500
+                    price:7000
                 },
                 {
                     name:"Potato Salad",
                     size:"",
-                    price:2500
+                    price:3000
                 },
                 {
                     name:"Potato & Chicken Salad",
                     size:"",
-                    price:4000
+                    price:5000
                 },
                 {
                     name:"Chef Salad",
@@ -1298,7 +1308,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Mojito",
                     size:"",
-                    price:2000
+                    price:3000
                 },
                 {
                     name:"Shandy",
@@ -1323,7 +1333,7 @@ export const useMenu = defineStore('menus', {
                 {
                     name:"Bailey's Delight",
                     size:"",
-                    price:3000
+                    price:4000
                 }
             ]
         },
