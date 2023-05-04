@@ -1012,7 +1012,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Spicy Shredded Beef rice",
             size: "",
-            price: 3500,
+            price: 4000,
           },
           {
             name: "Chicken & Shrimp fried rice",
@@ -1472,7 +1472,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Banana, dates, nuts",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Grapes, Apple, Plum, English Pear",
