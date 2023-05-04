@@ -473,7 +473,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Jumbo Chicken & Chips",
             size: "",
-            price: 4500,
+            price: 4000,
           },
           {
             name: "Grilled or butter-fried Prawns",
