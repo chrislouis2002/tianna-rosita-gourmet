@@ -1247,7 +1247,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Fish Fillet seafood sauce",
             size: "",
-            price: 6800,
+            price: 8000,
           },
           {
             name: "Chicken Masala Sauce",
