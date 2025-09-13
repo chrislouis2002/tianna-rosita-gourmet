@@ -4,267 +4,152 @@ export const useMenu = defineStore("menus", {
   state: () => ({
     menu: [
       /**
-       * Breakfast/Brunch Eats
+       * Starters
        */
       {
-        name: "Breakfast/Brunch Eats",
-        category_image: "english_breakfast.jpeg",
+        name: "Starters",
+        category_image: "starters.jpeg",
         items: [
           {
-            name: "English breakfast (Pancakes or toast slices/scrambled eggs/Grilled Sausages/Grilled Tomatoes and baked beans)",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Full English Breakfast with Bacon ",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "French toast Spread (Served with Eggs/ baked beans/Grilled Tomatoes and Grilled Sausages",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "French Toast platter with Bacon",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Waffle Breakfast (served with choice of eggs, Sausages, baked beans, grilled tomatoes & syrup)",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Waffle & Crispy chicken",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Sweet and Savory Waffles",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Nigerian-style toast breakfast",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Pancakes singles",
-            size: "",
-            price: 700,
-          },
-          {
-            name: "Plantains, Yam chips or Potatoes & Egg Sauce",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Plantains, Yam or Potatoes & Fish sauce",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Garlic Chicken and potato pot dish",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Chicken & Shrimps with potatoes & veggies Biryani",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Potatoes and Chicken Biryani",
-            size: "",
-            price: 7500,
-          },
-          {
-            name: "Moi moi & Oatmeal or Custard",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Akara & Oatmeal or Custard",
-            size: "",
-            price: 1200,
-          },
-          {
-            name: "Cereal/Oatmeal/Custard",
-            size: "",
-            price: 1000,
-          },
-          {
-            name: "Greek yogurt/chia seeds/sunflower seeds/nuts & fruits",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Plantain or Potato Frittata slice",
-            size: "",
-            price: 1000,
-          },
-          {
-            name: "Plantain/Potato Frittata Full round",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Yamarita & tomato sauce",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Potato Casserole ",
-            size: "",
-            price: 8500,
-          },
-          {
-            name: "Banana bread & Yogurt bowl",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Sautéed Stem Veggies",
-            size: "",
-            price: 3000,
-          },
-        ],
-      },
-      /**
-       * BURGERS AND SANDWICHES
-       */
-      {
-        name: "Burgers & Sandwiches",
-        category_image: "burgers.png",
-        items: [
-          {
-            name: "Beef and Cheese Burger",
+            name: "Spring Rolls",
             size: "",
             price: 4000,
           },
           {
-            name: "Chicken Burger",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Ham Burger",
+            name: "Samosas",
             size: "",
             price: 4000,
           },
           {
-            name: "Double King Beef Burger",
+            name: "Shrimp rolls",
             size: "",
-            price: 7500,
+            price: 9000,
           },
           {
-            name: "Triple King Beef Burger",
+            name: "Chicken Wings",
             size: "",
-            price: 10500,
+            price: 6000,
           },
           {
-            name: "Prawn Burger",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Chicken Sandwich",
+            name: "Buffalo Wings",
             size: "",
             price: 8000,
           },
           {
-            name: "Beef Sandwich",
+            name: "Butterfly Prawns",
             size: "",
-            price: 1300,
+            price: 10500,
           },
           {
-            name: "Beef Shawarma",
+            name: "Peppered Half Chicken ",
+            size: "",
+            price: 10000,
+          },
+          {
+            name: "Peppered Full Chicken ",
+            size: "",
+            price: 20000,
+          },
+          {
+            name: " Peppered Goat meat ",
+            size: "",
+            price: 7000,
+          },
+          {
+            name: "Peppered Turkey",
+            size: "",
+            price: 7000,
+          },
+          {
+            name: "Asian Chicken",
+            size: "",
+            price: 8000,
+          },
+          {
+            name: "Chicken Corn Soup",
             size: "",
             price: 4000,
           },
           {
-            name: "Tuna Sandwich",
+            name: "Catfish Pepper Soup",
             size: "",
-            price: 2000,
+            price: 6000,
           },
+          {
+            name: "Full Catfish Pepper Soup",
+            size: "",
+            price: 20000,
+          },
+          {
+            name: "Chicken Escalope",
+            size: "",
+            price: 8000,
+          },
+          {
+            name: "Chicken Popcorn",
+            size: "",
+            price: 7000,
+          },
+          {
+            name: "Chicken Kebab",
+            size: "",
+            price: 8000,
+          },
+          {
+            name: "Beef Kebab",
+            size: "",
+            price: 6000,
+          },
+
+        ],
+      },
+      /**
+       * BURGERS/SANDWICHES/WRAPS
+       */
+      {
+        name: "Burgers/Sandwiches/Wraps",
+        category_image: "burgers.png",
+        items: [
+
+         
+          {
+            name: "Double King Burger",
+            size: "",
+            price: 9500,
+          },
+         
+          {
+            name: "Chicken & Beef Shawarma",
+            size: "",
+            price: 7000,
+          },
+         
+          {
+            name: "Beef Shawarma",
+            size: "",
+            price: 4500,
+          },
+         
           {
             name: "Chicken Shawarma",
             size: "",
             price: 5000,
           },
+         
           {
-            name: "Beef and Chicken Shawarma",
+            name: "Club Sandwich Special",
             size: "",
-            price: 3500,
+            price: 5000,
           },
           {
-            name: "Fish Shawarma",
+            name: "Chicken/Beef Sandwich",
             size: "",
-            price: 3000,
+            price: 7000,
           },
-          {
-            name: "Beef Burrito",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Chicken Burrito",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Extras (Sausages or Cheese)",
-            size: "",
-            price: "1000",
-          },
+         
         ],
       },
-      /**
-       * Combo Deals
-       */
-      {
-        name: "Combo Deals",
-        category_image: "combo.png",
-        items: [
-          {
-            name: "Smart Sandwich (club sandwich, French fries, 1 piece chicken & soda)",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Waffle, Crispy Chicken & Cheese Sandwich",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Bread & Egg Omelette with a cup of hot choco/coffee",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Soul Burger (1 cheese burger, 1 piece of chicken, French fries and a bottle of soda)",
-            size: "",
-            price: 8000,
-          },
-          {
-            name: "Chicken & Chips with a can of soda",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Coffee or Hot Choco & cookies or muffin",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Coffee or Hot Choco with Croissants & spread (Jam, Nutella, Mayo, Butter or peanut butter)",
-            size: "",
-            price: 2000,
-          },
-        ],
-      },
+
       /**
        * Desserts
        */
@@ -273,572 +158,149 @@ export const useMenu = defineStore("menus", {
         category_image: "dessert.jpg",
         items: [
           {
-            name: "Greek yogurt Parfait",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Greek yogurt Parfait bowl",
-            size: "",
-            price: 6000,
-          },
-          {
-            name: "Chia pudding",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Nutty Chocolate mix Parfait",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Strawberry Parfait",
-            size: "",
+            name: "Ice Cream",
+            size: "Small Cup",
             price: 3000,
           },
           {
-            name: "Blueberry Parfait",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Icecream Storm Parfait",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "BanCream",
-            size: "",
-            price: 2700,
-          },
-          {
-            name: "Icecream or Yogurt & Chocolate Brownies",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Vanilla Cake Parfait",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Icecream or Yogurt & Crumbled Cookies/Oreos",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Bailey's Crème Delight",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Jamboree Parfait",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "PB & J Parfait",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Yogurt Parfait with Strawberry/Chocolate Sauce",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Banana split",
-            size: "",
-            price: 3500,
-          },
-        ],
-      },
-      /**
-       * Entrées
-       */
-      {
-        name: "Entrées",
-        category_image: "entrees.jpg",
-        items: [
-          {
-            name: "Chicken pepper soup",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Fish pepper soup",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Goat meat pepper soup",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Spring rolls",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Samosa",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Shrimp roll",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Corn soup",
-            size: "",
-            price: 2000,
-          },
-          {
-            name: "Chicken soup",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Hummus & softrolls",
-            size: "",
+            name: "Ice Cream",
+            size: "Medium Cup",
             price: 4500,
           },
           {
-            name: "Prawn skewers",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Shrimp cocktail Avacado",
+            name: "Parfait (cup)",
             size: "",
             price: 5000,
           },
           {
-            name: "Hachis Parmentier",
+            name: "Parfait (Bowl)",
             size: "",
-            price: 6500,
+            price: 8500,
           },
           {
-            name: "Garlic Butter Shrimps",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Fish fingers",
-            size: "",
-            price: 4800,
-          },
-          {
-            name: "Fries",
-            size: "",
-            price: 1000,
-          },
-        ],
-      },
-      /**
-       * Grills & Fries
-       */
-      {
-        name: "Grills & Fries",
-        category_image: "fries.png",
-        items: [
-          {
-            name: "Barbecued Chicken and chips",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Grilled Chicken, Potatoes & Sautéed Veggies",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Grilled Tilapia",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Fried crispy chicken & chips",
-            size: "",
-            price: 2700,
-          },
-          {
-            name: "Fried Crispy Fish & Chips",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Fried Turkey & Chips",
-            size: "",
-            price: 7000,
-          },
-          {
-            name: "Fried Chicken & Chips",
-            size: "",
-            price: 6000,
-          },
-          {
-            name: "Jumbo Chicken & Chips",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Grilled or butter-fried Prawns",
-            size: "",
-            price: 7000,
-          },
-          {
-            name: "Peppered snails",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Peppered Chicken platter",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Grilled pork",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Beef Kebab (with sides)",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Chicken Kebabs (with sides)",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Beef Escalope (with sides)",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Chicken Escalope (with sides)",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Fish Escalope (with sides)",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Grilled Croaker & Potatoes with Veggies",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Grilled steak",
-            size: "",
-            price: 9500,
-          },
-          {
-            name: "Smoked sausage(6 fingers)",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Corn dogs per stick",
-            size: "",
-            price: 800,
-          },
-          {
-            name: "Lucky Platter (Peppered chicken, Beef kebabs, Turkey wings, grilled fish, Snails, smoked sausages, corn, slaw and fries) ",
-            size: "",
-            price: 15000,
-          },
-          {
-            name: "Grilled Chicken & Mashed Potatoes",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Grilled Fish & Mashed Potatoes",
+            name: "Pancake & Icecream",
             size: "",
             price: 8000,
           },
           {
-            name: "Extra sides",
+            name: "Waffle & Icecream",
             size: "",
-            price: 1000,
-          },
-        ],
-      },
-      /**
-       * Hot drinks
-       */
-      {
-        name: "Hot drinks ",
-        category_image: "hotdrinks.png",
-        items: [
-          {
-            name: "Coffee",
-            size: "Mini",
-            price: 500,
-          },
-          {
-            name: "Coffee",
-            size: "Large",
-            price: 1000,
-          },
-          {
-            name: "Hot Chocolate",
-            size: "Mini",
-            price: 500,
-          },
-          {
-            name: "Hot Chocolate",
-            size: "Large",
-            price: 1000,
-          },
-          {
-            name: "Mocha",
-            size: "Mini",
-            price: 700,
-          },
-          {
-            name: "Mocha",
-            size: "Large",
-            price: 1400,
-          },
-          {
-            name: "Latte",
-            size: "Mini",
-            price: 700,
-          },
-          {
-            name: "Latte",
-            size: "Large",
-            price: 1400,
-          },
-          {
-            name: "Cappuccino",
-            size: "Mini",
-            price: 700,
-          },
-          {
-            name: "Cappuccino",
-            size: "Large",
-            price: 2500,
-          },
-          {
-            name: "Black/Green/herbal or flavoured tea",
-            size: "Mini",
-            price: 500,
-          },
-          {
-            name: "Black/Green/herbal or flavoured tea",
-            size: "Large",
-            price: 1000,
-          },
-        ],
-      },
-      /**
-       * Milkshakes/Freakshakes
-       */
-      {
-        name: "Milkshakes/Freakshakes",
-        category_image: "milkshake.png",
-        items: [
-          {
-            name: "Strawberry Milkshake",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Banana Milkshake",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Chocolate Milkshake",
-            size: "",
-            price: 4500,
+            price: 8000,
           },
           {
             name: "Vanilla Milkshake",
             size: "",
-            price: 4000,
+            price: 6000,
           },
           {
-            name: "Blueberry Milkshake",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Coffee & Caramel milkshake",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Coconut milkshake",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Bailey's shake",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Oreos milkshake",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Cookies & Cream Shake",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Banana & Peanut butter Shake",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Chocolate & Peanut butter Shake ",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Bailey's & Chocolate Shake",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Brownie shake",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Chocolate cake Ganaché",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Extra Toppings",
-            size: "",
-            price: 700,
-          },
-        ],
-      },
-      /**
-       * Pasta Dishes
-       */
-      {
-        name: "Pasta Dishes",
-        category_image: "pasta.jpeg",
-        items: [
-          {
-            name: "Chicken Rice noodles",
+            name: "Strawberry Milkshake",
             size: "",
             price: 6000,
           },
           {
-            name: "Shrimp rice noodles",
+            name: "Chocolate Milkshake",
             size: "",
-            price: 7500,
+            price: 6000,
           },
           {
-            name: "Noodles & Eggs",
+            name: "Oreos Milkshake",
             size: "",
-            price: 3500,
+            price: 8500,
+          },
+          
+        ],
+      },
+      /**
+       * Finger Foods & Sides
+       */
+      {
+        name: "Finger Foods & Sides",
+        category_image: "fingerfoods&sides.jpeg",
+        items: [
+          {
+            name: "Peppered Chicken & Chips",
+            size: "",
+            price: 8500,
           },
           {
-            name: "Noodles/Shredded Chicken and Eggs",
+            name: "BBQ Chicken & Chips",
             size: "",
-            price: 4500,
+            price: 10000,
           },
           {
-            name: "Noodles and Eggs with Grilled chicken",
+            name: "Fried Cripsy Chicken & Chips",
+            size: "",
+            price: 9000,
+          },
+          {
+            name: "Peppered Turkey & Chips",
+            size: "",
+            price: 10000,
+          },
+          {
+            name: "Crispy Fish & Chips",
+            size: "",
+            price: 9000,
+          },
+          {
+            name: "Peppered Fish & Chips",
+            size: "",
+            price: 8500,
+          },
+          {
+            name: "Seafood Boil",
+            size: "",
+            price: 35000,
+          },
+          {
+            name: "Seafood Skewer",
+            size: "",
+            price: 12500,
+          },
+          {
+            name: "Grilled Tilapia",
+            size: "",
+            price: 18000,
+          },
+          {
+            name: "Meaty Platter",
+            size: "",
+            price: 35000,
+          },
+          {
+            name: "Seafood Platter",
+            size: "",
+            price: 50000,
+          },
+          {
+            name: "Tianna's Special Platter",
+            size: "",
+            price: 75000,
+          },
+          {
+            name: "Potato, Plantain or Yam Fries",
             size: "",
             price: 4000,
           },
           {
-            name: "Noodles/Eggs and Sausages",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Spaghetti bolognese",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Spaghetti jollof",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Penne pasta & Chicken stir fry",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Penne pasta & Tuna stir fry",
+            name: "Yamarita",
             size: "",
             price: 5000,
           },
           {
-            name: "Mac & Cheese",
+            name: "Sausages",
             size: "",
-            price: 5500,
+            price: 2000,
           },
           {
-            name: "Spaghetti & Shrimp stir-fry",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Spaghetti & Chicken Stir-fry",
+            name: "Plantain Frittata",
             size: "",
             price: 6500,
-          },
-          {
-            name: "Chicken Alfredo Pasta (Penne)",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Rice noodles & Seafood stir-fry",
-            size: "",
-            price: 8000,
-          },
-          {
-            name: "Singapore noodles",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Lasagna",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Seafood Tagliatelle",
-            size: "",
-            price: 8000,
-          },
-          {
-            name: "Seafood Pasta Stir-fry",
-            size: "",
-            price: 7000,
-          },
-          {
-            name: "Spaghetti Arrabiata",
-            size: "",
-            price: 7500,
           },
         ],
       },
+    
+      
       /**
        * PIZZAS
        */
@@ -847,158 +309,91 @@ export const useMenu = defineStore("menus", {
         category_image: "pizza.png",
         items: [
           {
-            name: "Meatzy Pizza",
-            size: "Large",
-            price: 10000,
-          },
-          {
-            name: "Pizza Delight",
+            name: "Beef Suya Pizza",
             size: "",
-            price: 2500,
+            price: 15500,
           },
+
           {
-            name: "Meatzy Pizza",
-            size: "Extra Large",
-            price: 11000,
-          },
-          {
-            name: "Chicken Suya Pizza",
-            size: "Large",
-            price: 11000,
+            name: "Overload Pizza",
+            size: "",
+            price: 24000,
           },
           {
             name: "Chicken Suya Pizza",
-            size: "Extra Large",
-            price: 11500,
+            size: "",
+            price: 16000,
           },
+
           {
             name: "BBQ Chicken Pizza",
-            size: "Large",
-            price: 11000,
+            size: "",
+            price: 16500,
           },
+
           {
-            name: "BBQ Chicken Pizza",
-            size: "Extra Large",
-            price: 11500,
+            name: "Tropical Pizza",
+            size: "",
+            price: 16000,
           },
+
           {
-            name: "Pepperoni Pizza",
-            size: "Large",
-            price: 5500,
+            name: "Half n Half",
+            size: "",
+            price: 16500,
           },
+
           {
-            name: "Pepperoni Pizza",
-            size: "Extra Large",
-            price: 6500,
-          },
-          {
-            name: "Sea Food Pizza",
-            size: "Large",
-            price: 8000,
-          },
-          {
-            name: "Sea Food Pizza",
-            size: "Extra Large",
-            price: 12000,
-          },
-          {
-            name: "Dodo Pizza",
-            size: "Large",
-            price: 5000,
-          },
-          {
-            name: "Dodo Pizza",
-            size: "Extra Large",
-            price: 6300,
-          },
-          {
-            name: "Vegetable Pizza",
-            size: "Large",
+            name: "Extra Cheese",
+            size: "",
             price: 4000,
           },
+
           {
-            name: "Vegetable Pizza",
-            size: "Extra Large",
-            price: 5000,
+            name: "Extra Protein Toppings",
+            size: "",
+            price: 4000,
           },
-          {
-            name: "Tropical Pizza",
-            size: "Large",
-            price: 4500,
-          },
-          {
-            name: "Tropical Pizza",
-            size: "Extra Large",
-            price: 5200,
-          },
-          {
-            name: "Mushroom Pizza",
-            size: "Large",
-            price: 4500,
-          },
-          {
-            name: "Mushroom Pizza",
-            size: "Extra Large",
-            price: 5500,
-          },
-          {
-            name: "Half n Half",
-            size: "Large",
-            price: 10500,
-          },
-          {
-            name: "Half n Half",
-            size: "Extra Large",
-            price: 11500,
-          },
+
         ],
       },
       /**
-       * Protein Extras per piece
+       * Proteins
        */
       {
-        name: "Protein Extras per piece",
+        name: "Proteins",
         category_image: "whole-grilled-chicken-fp.jpg",
         items: [
           {
-            name: "Grilled Chicken",
+            name: "Beef",
             size: "",
             price: 2000,
           },
           {
-            name: "Catfish",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Turkey Medium",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Turkey Large",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Turkey Jumbo",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Turkey Wings Jumbo",
+            name: "Chicken",
             size: "",
             price: 5000,
           },
           {
-            name: "Grilled or Fried Ice Fish",
+            name: "Turkey",
             size: "",
-            price: 1000,
+            price: 6500,
+          },
+          
+          {
+            name: "Catfish",
+            size: "",
+            price: 5000,
           },
           {
-            name: "Beef",
+            name: "Goatmeat",
             size: "",
-            price: 700,
+            price: 4500,
+          },
+          {
+            name: "Ice Fish",
+            size: "",
+            price: 2500,
           },
           {
             name: "Boiled Egg",
@@ -1008,111 +403,132 @@ export const useMenu = defineStore("menus", {
         ],
       },
       /**
-       * Rice Dishes
+       * Main Dishes
        */
       {
-        name: "Rice Dishes",
+        name: "Main Dishes",
         category_image: "rice.jpg",
         items: [
           {
             name: "Chinese Special Fried Rice",
             size: "",
+            price: 8000,
+          },
+          {
+            name: "Fried Rice",
+            size: "",
+            price: 4000,
+          },
+          {
+            name: "Asun Rice",
+            size: "",
+            price: 6000,
+          },
+          {
+            name: "Plain basmati rice",
+            size: "",
+            price: 4000,
+          },
+          {
+            name: "Smoky Jollof Basmati Rice",
+            size: "",
             price: 6500,
           },
           {
-            name: "Plain white basmati rice",
+            name: "Smoky Jollof Rice",
             size: "",
-            price: 3000,
+            price: 4000,
           },
-          {
-            name: "Smoky Jollof rice with Basmati",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Vegetable Fried rice",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Spicy Shredded Beef rice",
-            size: "",
-            price: 6500,
-          },
+
           {
             name: "Chicken & Shrimp fried rice",
             size: "",
-            price: 7500,
+            price: 11000,
           },
           {
-            name: "Paella Rice",
+            name: "Seafood Paella",
             size: "",
-            price: 4500,
+            price: 12000,
           },
           {
             name: "Jambalaya Rice",
             size: "",
+            price: 6000,
+          },
+          {
+            name: "Spagheti Jollof",
+            size: "",
             price: 4000,
           },
           {
-            name: "Smoky Local rice mix",
+            name: "Seafood & Pasta Stir-Fry",
             size: "",
-            price: 3000,
+            price: 12000,
           },
           {
-            name: "Rice & Green Vegetable sauce",
+            name: "Alfredo Pasta",
             size: "",
-            price: 3000,
+            price: 10500,
           },
           {
-            name: "Rice and stewed Veggies sauce",
+            name: "Mashed Potatoes & Beef Gravy",
             size: "",
-            price: 3000,
+            price: 8500,
           },
           {
-            name: "Brown rice",
+            name: "Spaghetti & Chicken Stir fry",
             size: "",
-            price: 2500,
+            price: 8000,
           },
           {
-            name: "Tropical Coconut rice",
+            name: "Spaghetti & Meatballs",
             size: "",
-            price: 4500,
+            price: 9000,
+          },
+          {
+            name: "Spaghetti Bolognese",
+            size: "",
+            price: 8000,
+          },
+          {
+            name: "Coconut rice",
+            size: "",
+            price: 5000,
           },
           {
             name: "Tropical Fried rice",
             size: "",
-            price: 4000,
+            price: 8000,
           },
           {
-            name: "Chicken Biryani",
+            name: "Seafood Sauce",
             size: "",
-            price: 4500,
+            price: 10500,
           },
           {
-            name: "Sides (Fried Plantain, Potatoes, Yam slices)",
+            name: "Chicken Curry Sauce",
             size: "",
-            price: 1000,
+            price: 10500,
           },
           {
             name: "Caribbean Rice",
             size: "",
-            price: 4000,
+            price: 8000,
           },
           {
-            name: "Mexican Rice",
+            name: "Mexican Fried Rice",
+            size: "",
+            price: 8000,
+          },
+          {
+            name: "Spicy Beef Sauce",
             size: "",
             price: 6500,
           },
           {
-            name: "Thai-Beef Rice",
+            name: "Chicken Veggie Sauce",
             size: "",
-            price: 6500,
-          },
-          {
-            name: "Rice and vegetable stew with Chicken or fish",
-            size: "",
-            price: 5000,
+            price: 8000,
           },
         ],
       },
@@ -1123,414 +539,188 @@ export const useMenu = defineStore("menus", {
         name: "Salads",
         category_image: "salad.jpeg",
         items: [
-          {
-            name: "Fruit Salad",
-            size: "",
-            price: 1500,
-          },
+          
           {
             name: "Vegetable salad",
             size: "",
-            price: 2000,
-          },
-          {
-            name: "Ceaser Salad",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Greek Salad",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Chicken Salad",
-            size: "",
-            price: 5000,
-          },
-          {
-            name: "Steak Salad",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Tuna Salad",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Seafood Salad",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Potato Salad",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Potato & Chicken Salad",
-            size: "",
-            price: 4000,
+            price: 6000,
           },
           {
             name: "Chef Salad",
             size: "",
-            price: 4500,
+            price: 9000,
           },
+         
           {
-            name: "Egg Salad",
-            size: "",
-            price: 2500,
-          },
-        ],
-      },
-      /**
-       * Specialty Sauces
-       */
-      {
-        name: "Specialty Sauces",
-        description:
-          "(Can be served with any rice, chinese noodles or pasta dish or sides)",
-        category_image: "sauces.jpeg",
-        items: [
-          {
-            name: "Spicy Shredded Beef sauce",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Spicy Chicken chunk sauce",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Seafood Chilli-Sauce",
-            size: "",
-            price: 6800,
-          },
-          {
-            name: "Chilli-Bean Sauce",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Jamaican Jerky Sauce",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Sweet & Sour sauce with Seafood",
-            size: "",
-            price: 5500,
-          },
-          {
-            name: "Sweet & Sour Sauce with Chicken",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Chicken Curry sauce",
-            size: "",
-            price: 3800,
-          },
-          {
-            name: "Calamari & fish sauce",
-            size: "",
-            price: 6500,
-          },
-          {
-            name: "Prawns in Provençale sauce",
+            name: "Chicken Salad",
             size: "",
             price: 8000,
           },
+          
+
           {
-            name: "Fish Fillet seafood sauce",
+            name: "Potato & Egg Salad",
             size: "",
-            price: 8000,
+            price: 7500,
           },
+
           {
-            name: "Chicken Masala Sauce",
+            name: "coleslaw",
             size: "",
-            price: 4800,
-          },
-        ],
-      },
-      /**
-       * Sweet & Savory Waffle Desserts
-       */
-      {
-        name: "Sweet & Savory Waffle Desserts ",
-        category_image: "waffle_breakfast.jpeg",
-        items: [
-          {
-            name: "Waffles or Pancakes & Icecream or Greek yogurt with Toppings of choice",
-            size: "",
-            price: 3500,
-          },
-          {
-            name: "Chocolate, Nutella, Banana or Red velvet Waffles or pancakes (Served with Icecream or Greek yogurt and Toppings of choice)",
-            size: "",
-            price: 4500,
-          },
-          {
-            name: "Extra Toppings (Chocolate Sauce,Strawberry sauce, Maple syrup, Strawberry fruits, Blueberry, Banana, nuts, Chocolate chips, Toasted Coconut, Jam)",
-            size: "",
-            price: 1000,
+            price: 1500,
           },
         ],
       },
+      
       /**
-       * Wines
+       * Drinks
        */
       {
-        name: "Wines ",
-        category_image: "wine.png",
-        items: [
-          {
-            name: "Sweet Red/Sweet White Wine (Glass)",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Moscato Rose",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Red Merlot (Glass)",
-            size: "",
-            price: 4000,
-          },
-          {
-            name: "Flavored wine",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Sweet Red/White wine (Bottle)",
-            size: "",
-            price: 14000,
-          },
-        ],
-      },
-      /**
-       * Cocktails
-       */
-      {
-        name: "Cocktails ",
+        name: "Drinks ",
         category_image: "wine.png",
         items: [
           {
             name: "Chapman",
             size: "",
-            price: 5000,
-          },
-          {
-            name: "Lemon-drop Martini",
-            size: "",
-            price: 2000,
-          },
-          {
-            name: "Gin & Tonic",
-            size: "",
-            price: 2000,
-          },
-          {
-            name: "Rum & Coke",
-            size: "",
-            price: 2000,
+            price: 5500,
           },
           {
             name: "Mojito",
             size: "",
-            price: 5000,
+            price: 5500,
           },
           {
-            name: "Shandy",
+            name: "Tequila Sunrise",
+            size: "",
+            price: 7000,
+          },
+          {
+            name: "Orange & Rum",
+            size: "",
+            price: 5500,
+          },
+          {
+            name: "Tequila Shots",
+            size: "",
+            price: 4000,
+          },
+         
+          {
+            name: "Vodka Shots",
             size: "",
             price: 3000,
           },
           {
-            name: "Tequila & lime shot",
+            name: "Red Wine",
             size: "",
-            price: 1500,
+            price: 15000,
           },
           {
-            name: "Vodka shot",
+            name: "Rose Wine",
             size: "",
-            price: 3500,
+            price: 15000,
           },
           {
-            name: "Whisky/Rum shot ",
+            name: "Champagne",
             size: "",
-            price: 1500,
+            price: 21000,
           },
           {
-            name: "Bailey's Delight",
+            name: "Jameson Green",
             size: "",
-            price: 3000,
-          },
-        ],
-      },
-      /*
-       * Fruit drinks
-       */
-      {
-        name: "Fruit drinks",
-        category_image: "fruitdrinks.png",
-        items: [
-          {
-            name: "Pineappple juice",
-            size: "",
-            price: 3000,
+            price: 35000,
           },
           {
-            name: "Watermelon juice",
+            name: "Jameson Black",
             size: "",
-            price: 3000,
+            price: 45000,
           },
           {
-            name: "100% Natural Fresh juice",
+            name: "Lawson",
             size: "",
-            price: 2000,
+            price: 20000,
           },
           {
-            name: "Mixed Fruit Slush",
+            name: "Vodka",
+            size: "",
+            price: 18000,
+          },
+          {
+            name: "Fruit Wine",
+            size: "",
+            price: 12000,
+          },
+          {
+            name: "Heineken",
             size: "",
             price: 2500,
           },
           {
-            name: "Zobo(50cl)",
+            name: "Heineken Regular",
             size: "",
             price: 1500,
           },
-        ],
-      },
-      /*
-       * Smoothies
-       */
-      {
-        name: "Smoothies",
-        category_image: "smoothie.png",
-        items: [
           {
-            name: "Mixed fruit Smoothie",
+            name: "Water",
+            size: "",
+            price: 500,
+          },
+          {
+            name: "Fresh Juice",
             size: "",
             price: 4000,
           },
           {
-            name: "Tigernut drink",
+            name: "Smoothie",
             size: "",
-            price: 1500,
-          },
-          {
-            name: "Tigernut drink with banana",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Tigernut drink & Chocolate",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Pineapple & watermelon",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "BanCream",
-            size: "",
-            price: 2700,
-          },
-          {
-            name: "Avocado Green Smoothie",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Green  Smoothie",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Sour-sop & Avocado Smoothie",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Sour-sop Smoothie",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Watermelon, Ginger & Garlic",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Carrot & Cucumber",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Watermelon, Pineapple & Carrot ",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Avocado, Sour-sop, kiwi",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Lemon, Orange, Lime, Ginger & Garlic",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Banana, dates, nuts",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Grapes, Apple, Plum, English Pear",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Strawberry, Blueberry, Grapes",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Beetroot, Pineapple, Apple, lemon & Ginger",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Watermelon, Apple, Pineapple",
-            size: "",
-            price: 1500,
-          },
-          {
-            name: "Banana & Strawberry",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Sour-sop & Avocado",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Avacado, Sour-sop, Kiwi",
-            size: "",
-            price: 3500,
+            price: 5000,
           },
         ],
       },
-    ],
-  }),
+      
+        ],
+      
+    cart: [],
+   }),
+
+  getters: {
+    // total price of items in cart
+    cartTotal: (state) =>
+      state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0),
+  },
+
+  actions: {
+    // add item to cart
+    addToCart(item) {
+      // check if same item (same name + size) already exists
+      const existing = this.cart.find(
+        (c) => c.name === item.name && c.size === item.size
+      );
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        this.cart.push({ ...item, quantity: 1 });
+      }
+    },
+
+    // remove item by index
+    removeFromCart(index) {
+      this.cart.splice(index, 1);
+    },
+
+    // decrease quantity
+    decreaseQuantity(index) {
+      if (this.cart[index].quantity > 1) {
+        this.cart[index].quantity -= 1;
+      } else {
+        this.removeFromCart(index);
+      }
+    },
+
+    // clear entire cart
+    clearCart() {
+      this.cart = []
+    },
+
+  },
 });

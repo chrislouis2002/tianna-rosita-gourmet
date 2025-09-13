@@ -113,7 +113,7 @@ export default defineComponent({
         height:180px;
     }
     .bgg{
-       
+
     }
     .title-cat{
         text-align:center;
@@ -142,7 +142,8 @@ export default defineComponent({
     border-radius:100%;
 }
 .bgg{
-    background:rgba(255,255,255,.08);
+    background:rgba(10, 10, 10, 1);
+    /* background:rgba(23, 23, 23, 0.08); */
     margin-top:1rem;
     border-radius:25px;
 }

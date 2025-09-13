@@ -30,8 +30,8 @@
     </div>
 
     <div class="q-ma-sm">
-    <MenuList 
-      v-for="(item,index) in store.menu" 
+    <MenuList
+      v-for="(item,index) in store.menu"
       :key="index"
       :foods="item.items"
       :description="(item.description)?item.description:undefined"
@@ -42,11 +42,11 @@
       />
     </div>
 
-    <div @click.stop="cart_list=true" v-if="cart.length" style="position:fixed;z-index:20;" class="cart-outer">
+    <div @click.stop="cart_list=true" v-if="store.cart.length" style="position:fixed;z-index:20;" class="cart-outer">
     <div class="cart-inner">
     <img src="13.png" style="width:100%;height:100%;object-fit:cover;border-radius:100%;"/>
     </div>
-    <span class="cart-count">{{cart.length}}</span>
+    <span class="cart-count">{{store.cart.length}}</span>
     </div>
 
     <!--FIRST FOOTER-->
@@ -65,7 +65,7 @@
       :bar-style="barStyle"
       style="height: 400px; max-width: 450px;"
       >
-      <div class="listx" v-for="(item,i) in cart" :key="i" style="position:relative;padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
+      <div class="listx" v-for="(item,i) in store.cart" :key="i" style="position:relative;padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
             <div style="display:flex;justify-content:flex-start;">
              <div class="outer-countindex">
              <div class="inner-countindex">{{i+1}}</div>
@@ -77,11 +77,37 @@
                 <div>{{item.name}}</div>
                 <div v-if="item.size" style="font-family:'rubik'">{{item.size}}</div>
                 </div>
-                <q-btn style="position:absolute;right:.5rem;top:1.5rem;" @click.stop="cart.splice(i,1)" flat class=" bg-transparent text-red" fab-mini><q-icon name="close"/></q-btn>
-                <div>Price {{new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(item.price)}}</div>
+                <q-btn style="position:absolute;right:.5rem;top:1.5rem;" @click.stop="store.removeFromCart(i)" flat class=" bg-transparent text-red" fab-mini><q-icon name="close"/></q-btn>
+                <!-- <div>Price {{new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(item.price)}}</div> -->
+                 <div>
+  Price {{ new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.price) }}
+</div>
+
+<!-- Quantity controls -->
+<div style="display:flex; align-items:center; gap:10px; margin-top:5px;">
+  <!-- Minus button -->
+  <q-btn dense flat icon="remove" @click="store.decreaseQuantity(i)" />
+
+  <!-- Show current quantity -->
+  <span>{{ item.quantity }}</span>
+
+  <!-- Plus button -->
+  <q-btn dense flat icon="add" @click="store.addToCart(item)" />
+</div>
+
             </div>
         </div>
     </q-scroll-area>
+       <!-- ✅ Checkout Button -->
+    <div style="text-align:center; margin-top:1rem; padding:10px;">
+      <q-btn
+        color="red"
+        label="Checkout"
+        class="q-px-lg q-py-sm"
+
+       to="/checkout"
+      />
+    </div>
     </q-card>
     </q-dialog>
 
@@ -108,7 +134,7 @@ export default defineComponent({
   }),
   methods:{
     select(index,category){
-      this.cart.push(this.store.menu[category].items[index])
+this.store.addToCart(this.store.menu[category].items[index])
     }
   },
   mounted(){
@@ -124,15 +150,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@font-face { 
-  font-family:"martian"; 
-	 src: url('../Martian_Mono/MartianMono-VariableFont_wdth.ttf');      
-} 
+@font-face {
+  font-family:"martian";
+	 src: url('../Martian_Mono/MartianMono-VariableFont_wdth.ttf');
+}
 
-@font-face { 
-  font-family:"rubik"; 
-	 src: url('../Rubik_Spray_Paint/RubikSprayPaint-Regular.ttf');      
-} 
+@font-face {
+  font-family:"rubik";
+	 src: url('../Rubik_Spray_Paint/RubikSprayPaint-Regular.ttf');
+}
 .cartm{
      background:rgba(0,0,0,.7);
      border-radius:25px;
@@ -160,7 +186,7 @@ export default defineComponent({
 
   @media screen and (min-width:640px){
     .logo-box-ch{
-      
+
     }
     #body{
       background-size:100vw 100vh;

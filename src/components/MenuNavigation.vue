@@ -59,7 +59,7 @@ export default defineComponent({
     margin:4px 0px;
     transition:width 2s;
     color:white;
-    
+
 }
 @media screen and (min-width:640px){
     .navs{
