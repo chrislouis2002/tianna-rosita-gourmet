@@ -1,153 +1,176 @@
+
 <template>
   <div id="body">
     <MenuNavigation :categories="cat_name_list"/>
     <div id="header-section" class="q-pa-sm">
       <div class="logobx"><img src="logo.png" id="logo"/></div>
       <div id="menu">MENU</div>
-      <!--<div id="logo-box">
-        <div class="logo-box-ch">
-          <div class="circle">
-          <div class="circle-child"></div>
-          </div>
-          <img src="logo.png" id="logo"/>
-          <img src="cafe.png" id="cafe"/>
-        </div>
-      </div>
-
-      <div class="blend"></div>
-
-      <div id="info-box">
-      <div class="t">Tiannas Treats</div>
-      <div class="t" id="menu">MENU</div>
-      </div>-->
-
     </div>
 
-    <div style="display:flex;flex-flow:row nowrap;justify-content:center;">
-      <div class="intro-pics"><img class="intimg" src="intro_pics/3.jpg"/></div>
-      <div class="intro-pics"><img class="intimg" src="intro_pics/4.jpg"/></div>
-      <div class="intro-pics"><img class="intimg" src="intro_pics/16.jpg"/></div>
-    </div>
+    <!-- ✅ Global Search Bar -->
+    <!-- ✅ Global Search Bar -->
+<div class="q-pa-md flex flex-center">
+  <q-input
+    v-model="searchQuery"
+    placeholder="Search for a food item..."
+    filled
+    dense
+    rounded
+    standout="bg-red text-white"
+    input-class="text-white"
+    class="search-bar"
+  >
+    <template v-slot:append>
+      <q-icon name="search" color="white" />
+    </template>
+  </q-input>
+</div>
 
+
+    <!-- ✅ Menu items filtered by search -->
     <div class="q-ma-sm">
-    <MenuList
-      v-for="(item,index) in store.menu"
-      :key="index"
-      :foods="item.items"
-      :description="(item.description)?item.description:undefined"
-      :category="item.name"
-      :image="item.category_image"
-      :categoryIndex="index"
-      @select="select"
+      <MenuList
+        v-for="(item,index) in filteredMenu"
+        :key="index"
+        :foods="item.items"
+        :description="(item.description)?item.description:undefined"
+        :category="item.name"
+        :image="item.category_image"
+        :categoryIndex="index"
+        @select="select"
       />
     </div>
 
+    <!-- ✅ Floating Cart Button -->
     <div @click.stop="cart_list=true" v-if="store.cart.length" style="position:fixed;z-index:20;" class="cart-outer">
-    <div class="cart-inner">
-    <img src="13.png" style="width:100%;height:100%;object-fit:cover;border-radius:100%;"/>
-    </div>
-    <span class="cart-count">{{store.cart.length}}</span>
+      <div class="cart-inner">
+        <img src="13.png" style="width:100%;height:100%;object-fit:cover;border-radius:100%;"/>
+      </div>
+      <span class="cart-count">{{store.cart.length}}</span>
     </div>
 
-    <!--FIRST FOOTER-->
+    <!-- ✅ First Footer -->
     <FirstFooter/>
-    <!--FIRST FOOTER-->
 
-    <!--LAST-FOOTER-->
+    <!-- ✅ Last Footer -->
     <LastFooter/>
-    <!--LAST FOOTER-->
 
+    <!-- ✅ Cart Modal -->
     <q-dialog v-model="cart_list" persistent>
-    <q-card class="cartm">
-      <div style="margin-bottom:2.5rem;padding:5px 5px;"><q-btn @click.stop="cart_list=false" flat class="float-right bg-red-2 text-red" fab-mini><q-icon name="close"/></q-btn></div>
-      <q-scroll-area
-      :thumb-style="thumbStyle"
-      :bar-style="barStyle"
-      style="height: 400px; max-width: 450px;"
-      >
-      <div class="listx" v-for="(item,i) in store.cart" :key="i" style="position:relative;padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
+      <q-card class="cartm">
+        <div style="margin-bottom:2.5rem;padding:5px 5px;">
+          <q-btn @click.stop="cart_list=false" flat class="float-right bg-red-2 text-red" fab-mini>
+            <q-icon name="close"/>
+          </q-btn>
+        </div>
+
+        <q-scroll-area
+          :thumb-style="thumbStyle"
+          :bar-style="barStyle"
+          style="height: 400px; max-width: 450px;"
+        >
+          <div class="listx" v-for="(item,i) in store.cart" :key="i"
+            style="position:relative;padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
+
             <div style="display:flex;justify-content:flex-start;">
-             <div class="outer-countindex">
-             <div class="inner-countindex">{{i+1}}</div>
+              <div class="outer-countindex">
+                <div class="inner-countindex">{{i+1}}</div>
+              </div>
             </div>
 
-            </div>
             <div class="food-infoindex text-white">
-                <div>
+              <div>
                 <div>{{item.name}}</div>
                 <div v-if="item.size" style="font-family:'rubik'">{{item.size}}</div>
-                </div>
-                <q-btn style="position:absolute;right:.5rem;top:1.5rem;" @click.stop="store.removeFromCart(i)" flat class=" bg-transparent text-red" fab-mini><q-icon name="close"/></q-btn>
-                <!-- <div>Price {{new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(item.price)}}</div> -->
-                 <div>
-  Price {{ new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.price) }}
-</div>
+              </div>
 
-<!-- Quantity controls -->
-<div style="display:flex; align-items:center; gap:10px; margin-top:5px;">
-  <!-- Minus button -->
-  <q-btn dense flat icon="remove" @click="store.decreaseQuantity(i)" />
+              <q-btn style="position:absolute;right:.5rem;top:1.5rem;"
+                @click.stop="store.removeFromCart(i)"
+                flat class="bg-transparent text-red" fab-mini>
+                <q-icon name="close"/>
+              </q-btn>
 
-  <!-- Show current quantity -->
-  <span>{{ item.quantity }}</span>
+              <div>
+                Price {{ new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(item.price) }}
+              </div>
 
-  <!-- Plus button -->
-  <q-btn dense flat icon="add" @click="store.addToCart(item)" />
-</div>
-
+              <!-- Quantity controls -->
+              <div style="display:flex; align-items:center; gap:10px; margin-top:5px;">
+                <q-btn dense flat icon="remove" @click="store.decreaseQuantity(i)" />
+                <span>{{ item.quantity }}</span>
+                <q-btn dense flat icon="add" @click="store.addToCart(item)" />
+              </div>
             </div>
+          </div>
+        </q-scroll-area>
+
+        <!-- ✅ Checkout Button -->
+        <div style="text-align:center; margin-top:1rem; padding:10px;">
+          <q-btn
+            color="red"
+            label="Checkout"
+            class="q-px-lg q-py-sm"
+            to="/checkout"
+          />
         </div>
-    </q-scroll-area>
-       <!-- ✅ Checkout Button -->
-    <div style="text-align:center; margin-top:1rem; padding:10px;">
-      <q-btn
-        color="red"
-        label="Checkout"
-        class="q-px-lg q-py-sm"
-
-       to="/checkout"
-      />
-    </div>
-    </q-card>
+      </q-card>
     </q-dialog>
-
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import MenuList from "components/MenuList.vue"
 import MenuNavigation from "components/MenuNavigation.vue"
 import LastFooter from "components/LastFooter.vue"
 import FirstFooter from "components/FirstFooter.vue"
 import { useMenu } from "stores/menus"
+
 export default defineComponent({
-  setup(){
-    const store = useMenu()
-    return { store }
-  },
   name: 'IndexPage',
-  data:()=>({
-    cart:[],
-    cart_list:false,
-    cat_name_list:[]
-  }),
-  methods:{
-    select(index,category){
-this.store.addToCart(this.store.menu[category].items[index])
-    }
-  },
-  mounted(){
-    this.store.menu.forEach((e)=>this.cat_name_list.push(e.name))
-  },
-  components:{
+  components: {
     MenuList,
     LastFooter,
     FirstFooter,
     MenuNavigation
   },
+  setup () {
+    const store = useMenu()
+    const searchQuery = ref("")
+
+    // ✅ Search across all categories + items
+    const filteredMenu = computed(() => {
+      if (!searchQuery.value) return store.menu
+
+      const query = searchQuery.value.toLowerCase()
+      return store.menu
+        .map(category => {
+          const filteredItems = category.items.filter(item =>
+            item.name.toLowerCase().includes(query)
+          )
+          return { ...category, items: filteredItems }
+        })
+        .filter(category => category.items.length > 0)
+    })
+
+    return { store, searchQuery, filteredMenu }
+  },
+  data: () => ({
+    cart: [],
+    cart_list: false,
+    cat_name_list: []
+  }),
+  methods: {
+    select (index, category) {
+      this.store.addToCart(this.store.menu[category].items[index])
+    }
+  },
+  mounted () {
+    this.store.menu.forEach((e) => this.cat_name_list.push(e.name))
+  }
 })
 </script>
+
 
 <style lang="scss">
 @font-face {
@@ -346,4 +369,19 @@ this.store.addToCart(this.store.menu[category].items[index])
   grid-row-gap:1rem;
   justify-content:center;
 }
+
+.search-bar {
+  max-width: 500px;     /* keeps it from stretching too wide */
+  width: 100%;          /* takes available space */
+  border-radius: 25px;  /* rounded pill look */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* soft shadow */
+  background: rgba(229, 115, 115, 0.9);   /* subtle red background */
+}
+
+.search-bar input::placeholder {
+  color: rgba(255,255,255,0.7); /* softer white placeholder */
+  font-style: italic;
+}
+
+
 </style>

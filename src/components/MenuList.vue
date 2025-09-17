@@ -1,59 +1,99 @@
 <template>
-<div class="bgg">
+  <div class="bgg">
 
     <div class="q-pa-sm imgcc" style="display:flex;justify-content:center;">
-        <div class="img-tray-outer">
-            <div class="img-tray-inner">
-             <img class="category-image" :src="'category_images/'+image"/>
-            </div>
+      <div class="img-tray-outer">
+        <div class="img-tray-inner">
+          <img class="category-image" :src="'category_images/'+image"/>
         </div>
+      </div>
     </div>
 
     <div style="min-width:100%;">
-     <div class="title-cat">{{category}}</div>
-     <div v-if="description" class="food-info q-mb-md">{{description}}</div>
-     <div class="listxcont">
-        <div class="listx" v-for="(item,i) in foods" :key="i" style="padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;">
-            <div style="display:flex;justify-content:flex-start;">
-             <div class="outer-count">
-             <div class="inner-count">{{i+1}}</div>
+      <div class="title-cat">{{category}}</div>
+      <div v-if="description" class="food-info q-mb-md">{{description}}</div>
+
+      <!-- 🔎 Search bar -->
+      <!-- <q-input
+        filled
+        v-model="search"
+        label="Search this category..."
+        class="q-mb-md"
+        debounce="300"
+        clearable
+      /> -->
+
+      <div class="listxcont">
+        <div
+          class="listx"
+          v-for="(item,i) in filteredFoods"
+          :key="i"
+          style="padding:10px;min-width:100%;display:grid;grid-template-rows:auto;grid-template-columns:30% 75%;justify-content:space-between;"
+        >
+          <div style="display:flex;justify-content:flex-start;">
+            <div class="outer-count">
+              <div class="inner-count">{{i+1}}</div>
+            </div>
+          </div>
+
+          <div class="food-info">
+            <div>
+              <div>{{item.name}}</div>
+              <div v-if="item.size">{{item.size}}</div>
+              <div class="btncc">
+                <q-btn
+                  flat
+                  class="sb"
+                  @click="$emit('select',i,categoryIndex)"
+                  rounded
+                >
+                  <span>SELECT</span>
+                  <q-icon name="add"/>
+                </q-btn>
+              </div>
             </div>
 
+            <div>
+              Price {{new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(item.price)}}
             </div>
-            <div class="food-info">
-                <div>
-                <div>{{item.name}}</div>
-                <div v-if="item.size">{{item.size}}</div>
-                <div class="btncc">
-                <q-btn flat class="sb" @click="$emit('select',i,categoryIndex)" rounded><span>SELECT</span><q-icon name="add"/></q-btn>
-                </div>
-                </div>
-
-                <div>Price {{new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN'}).format(item.price)}}</div>
-            </div>
+          </div>
         </div>
-     </div>
+      </div>
     </div>
 
-</div>
+  </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name:"MenuList",
-    data:()=>({
-    }),
-    props:{
-        foods:{datatype:Object, default:[]},
-        category:{datatype:String , default:null},
-        image:{datatype:String , default:null},
-        categoryIndex:{datatype:Number, default:undefined},
-        description:{datatype:String , default:undefined}
+  name:"MenuList",
+  props:{
+    foods:{type:Array, default:()=>[]},
+    category:{type:String , default:null},
+    image:{type:String , default:null},
+    categoryIndex:{type:Number, default:undefined},
+    description:{type:String , default:undefined}
+  },
+  data:()=>({
+    search: ""   // 👈 for search box
+  }),
+  computed:{
+    filteredFoods(){
+      if (!this.search) return this.foods
+      return this.foods.filter(item =>
+        item.name.toLowerCase().includes(this.search.toLowerCase())
+      )
     }
+  }
 })
 </script>
+
+<style scoped>
+/* (keep your existing styles unchanged) */
+</style>
+
 
 <style scoped>
 .img-tray-outer{
@@ -189,3 +229,13 @@ export default defineComponent({
     color:hsla(0, 69%, 80%, 1)
 }
 </style>
+
+
+
+
+
+
+
+
+
+

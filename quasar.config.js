@@ -52,10 +52,13 @@ module.exports = configure(function (/* ctx */) {
 
     framework: {
       config: {},
-      plugins: []
-    },
 
-    animations: [],
+  plugins: []
+},
+
+
+
+    animations: 'all',
 
     ssr: {
       pwa: false,
