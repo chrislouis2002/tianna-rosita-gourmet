@@ -111,31 +111,31 @@ export const useMenu = defineStore("menus", {
         category_image: "burgers.png",
         items: [
 
-         
+
           {
             name: "Double King Burger",
             size: "",
             price: 9500,
           },
-         
+
           {
             name: "Chicken & Beef Shawarma",
             size: "",
             price: 7000,
           },
-         
+
           {
             name: "Beef Shawarma",
             size: "",
             price: 4500,
           },
-         
+
           {
             name: "Chicken Shawarma",
             size: "",
             price: 5000,
           },
-         
+
           {
             name: "Club Sandwich Special",
             size: "",
@@ -146,7 +146,7 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 7000,
           },
-         
+
         ],
       },
 
@@ -164,6 +164,11 @@ export const useMenu = defineStore("menus", {
           },
           {
             name: "Ice Cream",
+            size: "Medium Cup",
+            price: 4000,
+          },
+          {
+            name: "Ice Cream with toppings",
             size: "Medium Cup",
             price: 4500,
           },
@@ -190,24 +195,24 @@ export const useMenu = defineStore("menus", {
           {
             name: "Vanilla Milkshake",
             size: "",
-            price: 6000,
+            price: 7000,
           },
           {
             name: "Strawberry Milkshake",
             size: "",
-            price: 6000,
+            price: 7000,
           },
           {
             name: "Chocolate Milkshake",
             size: "",
-            price: 6000,
+            price: 7000,
           },
           {
             name: "Oreos Milkshake",
             size: "",
             price: 8500,
           },
-          
+
         ],
       },
       /**
@@ -299,8 +304,8 @@ export const useMenu = defineStore("menus", {
           },
         ],
       },
-    
-      
+
+
       /**
        * PIZZAS
        */
@@ -379,7 +384,7 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 6500,
           },
-          
+
           {
             name: "Catfish",
             size: "",
@@ -388,7 +393,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Goatmeat",
             size: "",
-            price: 4500,
+            price: 5000,
           },
           {
             name: "Ice Fish",
@@ -398,7 +403,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Boiled Egg",
             size: "",
-            price: 400,
+            price: 1000,
           },
         ],
       },
@@ -420,9 +425,24 @@ export const useMenu = defineStore("menus", {
             price: 4000,
           },
           {
+            name: "Tianna Special Rice",
+            size: "",
+            price: 9000,
+          },
+          {
             name: "Asun Rice",
             size: "",
-            price: 6000,
+            price: 8000,
+          },
+          {
+            name: "Rice and catfish sauce",
+            size: "",
+            price: 12000,
+          },
+          {
+            name: "Penne Chicken Arrabbiata",
+            size: "",
+            price: 9000,
           },
           {
             name: "Plain basmati rice",
@@ -453,7 +473,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Jambalaya Rice",
             size: "",
-            price: 6000,
+            price: 8000,
           },
           {
             name: "Spagheti Jollof",
@@ -478,6 +498,11 @@ export const useMenu = defineStore("menus", {
           {
             name: "Spaghetti & Chicken Stir fry",
             size: "",
+            price: 9000,
+          },
+          {
+            name: "Singapore noodles",
+            size: "",
             price: 8000,
           },
           {
@@ -488,7 +513,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Spaghetti Bolognese",
             size: "",
-            price: 8000,
+            price: 9000,
           },
           {
             name: "Coconut rice",
@@ -523,12 +548,27 @@ export const useMenu = defineStore("menus", {
           {
             name: "Spicy Beef Sauce",
             size: "",
-            price: 6500,
+            price: 8000,
+          },
+          {
+            name: "Lasagne",
+            size: "",
+            price: 16000,
           },
           {
             name: "Chicken Veggie Sauce",
             size: "",
             price: 8000,
+          },
+          {
+            name: "Breakfast plate (pancakes/waffles/ French toast)",
+            size: "",
+            price: 9000,
+          },
+          {
+            name: "Potato and chicken stir fry ",
+            size: "",
+            price: 9000,
           },
         ],
       },
@@ -539,7 +579,7 @@ export const useMenu = defineStore("menus", {
         name: "Salads",
         category_image: "salad.jpeg",
         items: [
-          
+
           {
             name: "Vegetable salad",
             size: "",
@@ -550,13 +590,13 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 9000,
           },
-         
+
           {
             name: "Chicken Salad",
             size: "",
             price: 8000,
           },
-          
+
 
           {
             name: "Potato & Egg Salad",
@@ -571,7 +611,7 @@ export const useMenu = defineStore("menus", {
           },
         ],
       },
-      
+
       /**
        * Drinks
        */
@@ -604,7 +644,7 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 4000,
           },
-         
+
           {
             name: "Vodka Shots",
             size: "",
@@ -638,7 +678,7 @@ export const useMenu = defineStore("menus", {
           {
             name: "Lawson",
             size: "",
-            price: 20000,
+            price: 18000,
           },
           {
             name: "Vodka",
@@ -651,17 +691,17 @@ export const useMenu = defineStore("menus", {
             price: 12000,
           },
           {
-            name: "Heineken",
+            name: "Heineken Draught",
             size: "",
-            price: 2500,
+            price: 3000,
           },
           {
             name: "Heineken Regular",
             size: "",
-            price: 1500,
+            price: 2500,
           },
           {
-            name: "Water",
+            name: "Bottle Water",
             size: "",
             price: 500,
           },
@@ -675,11 +715,81 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 5000,
           },
+          {
+            name: "Schweppes",
+            size: "",
+            price: 1500,
+          },
+          {
+            name: "Fayrouz",
+            size: "",
+            price: 1500,
+          },
+          {
+            name: "Chi Exotic",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Flying Fish/Star Radler/Smirnoff/Black Bullet",
+            size: "",
+            price: 2000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
+          {
+            name: "Hollandia",
+            size: "",
+            price: 3000,
+          },
         ],
       },
-      
+
         ],
-      
+
     cart: [],
    }),
 
