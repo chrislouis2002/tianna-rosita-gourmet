@@ -100,7 +100,6 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 6000,
           },
-
         ],
       },
       /**
@@ -110,8 +109,6 @@ export const useMenu = defineStore("menus", {
         name: "Burgers/Sandwiches/Wraps",
         category_image: "burgers.png",
         items: [
-
-
           {
             name: "Double King Burger",
             size: "",
@@ -146,7 +143,6 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 7000,
           },
-
         ],
       },
 
@@ -212,7 +208,6 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 8500,
           },
-
         ],
       },
       /**
@@ -305,7 +300,6 @@ export const useMenu = defineStore("menus", {
         ],
       },
 
-
       /**
        * PIZZAS
        */
@@ -359,7 +353,6 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 4000,
           },
-
         ],
       },
       /**
@@ -579,7 +572,6 @@ export const useMenu = defineStore("menus", {
         name: "Salads",
         category_image: "salad.jpeg",
         items: [
-
           {
             name: "Vegetable salad",
             size: "",
@@ -596,7 +588,6 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 8000,
           },
-
 
           {
             name: "Potato & Egg Salad",
@@ -787,16 +778,18 @@ export const useMenu = defineStore("menus", {
           },
         ],
       },
-
-        ],
+    ],
 
     cart: [],
-   }),
+  }),
 
   getters: {
     // total price of items in cart
     cartTotal: (state) =>
-      state.cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0),
+      state.cart.reduce(
+        (sum, item) => sum + item.price * (item.quantity || 1),
+        0
+      ),
   },
 
   actions: {
@@ -829,8 +822,7 @@ export const useMenu = defineStore("menus", {
 
     // clear entire cart
     clearCart() {
-      this.cart = []
+      this.cart = [];
     },
-
   },
 });

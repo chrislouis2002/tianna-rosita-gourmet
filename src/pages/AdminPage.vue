@@ -20,7 +20,7 @@
 import { ref, onMounted } from "vue"
 import { collection, onSnapshot } from "firebase/firestore"
 import { signOut } from "firebase/auth"
-import { db, auth } from "boot/firebase"
+import { auth, db } from "src/firebase"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
@@ -29,10 +29,14 @@ const orders = ref([])
 // Define table columns
 const columns = [
   { name: "id", label: "Order ID", field: "id" },
-  { name: "customer", label: "Customer", field: row => row.customer?.name || "" },
+  { name: "customerName", label: "Customer", field: "customerName" },
   { name: "total", label: "Total (₦)", field: "total" },
   { name: "status", label: "Status", field: "status" },
-  { name: "createdAt", label: "Created", field: row => new Date(row.createdAt).toLocaleString() }
+  {
+    name: "createdAt",
+    label: "Created",
+    field: row => row.createdAt?.toDate ? row.createdAt.toDate().toLocaleString() : ""
+  }
 ]
 
 // Fetch orders in realtime

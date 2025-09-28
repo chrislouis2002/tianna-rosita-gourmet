@@ -1,18 +1,23 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// src/firebase.js
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
+// 📝 your Firebase config (copy from Firebase Console)
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyBV4JTbrCuJKJEOwX5qzg4sfK8jefl7PeU",
+  authDomain: "tianna--rosita.firebaseapp.com",
+  projectId: "tianna--rosita",
+  storageBucket: "tianna--rosita.firebasestorage.app",
+  messagingSenderId: "200362079339",
+  appId: "1:200362079339:web:a2fc86fe31b7fd7a122d2e",
+  measurementId: "G-J16K36N17R"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// ✅ Only start Firebase ONCE
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-export { app, analytics };
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export { app, auth, db };

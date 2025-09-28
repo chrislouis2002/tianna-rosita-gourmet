@@ -9,7 +9,10 @@
       <q-list bordered>
         <q-item v-for="(item, i) in store.cart" :key="i">
           <q-item-section>
-            <q-item-label>{{ item.name }} <span v-if="item.size">({{ item.size }})</span></q-item-label>
+            <q-item-label>
+              {{ item.name }}
+              <span v-if="item.size">({{ item.size }})</span>
+            </q-item-label>
             <q-item-label caption>Qty: {{ item.quantity }}</q-item-label>
           </q-item-section>
           <q-item-section side>
@@ -46,6 +49,8 @@
 <script>
 import { defineComponent, reactive } from "vue";
 import { useMenu } from "stores/menus";
+import { db } from "src/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default defineComponent({
   name: "CheckoutPage",
@@ -59,7 +64,20 @@ export default defineComponent({
       phone: ""
     });
 
-    // Payment
+    // Save order to Firestore
+    const saveOrder = async (orderData) => {
+      try {
+        await addDoc(collection(db, "orders"), {
+          ...orderData,
+          createdAt: serverTimestamp() // ✅ Firebase timestamp
+        });
+        console.log("✅ Order saved to Firebase!");
+      } catch (error) {
+        console.error("❌ Error saving order:", error);
+      }
+    };
+
+    // Paystack Payment
     const payWithPaystack = () => {
       if (!window.PaystackPop) {
         alert("Paystack SDK not loaded yet!");
@@ -67,9 +85,9 @@ export default defineComponent({
       }
 
       let handler = window.PaystackPop.setup({
-        key: "pk_test_xxxxxxxxxxxxxx", // 🔑 Replace with your Paystack PUBLIC KEY
+        key: "pk_test_47389f411f78f2755503aeed9b65d7a5ca91d62f", // Replace with your Paystack PUBLIC KEY
         email: customer.email,
-        amount: store.cartTotal * 100, // kobo
+        amount: store.cartTotal * 100, // in kobo
         currency: "NGN",
         ref: "" + Math.floor(Math.random() * 1000000000 + 1),
         metadata: {
@@ -81,11 +99,24 @@ export default defineComponent({
             }
           ]
         },
-        callback: function(response) {
+        callback: (response) => {
           alert("Payment successful! Reference: " + response.reference);
-          // TODO: Save order to Firebase here for Admin dashboard
+
+          // Build the order object
+          const orderData = {
+            customerName: customer.name,  // ✅ Save customer name
+            customerEmail: customer.email,
+            customerPhone: customer.phone,
+            items: store.cart,
+            total: store.cartTotal,
+            paymentRef: response.reference,
+            status: "paid"
+          };
+
+          // Save to Firestore
+          saveOrder(orderData);
         },
-        onClose: function() {
+        onClose: function () {
           alert("Transaction cancelled.");
         }
       });
