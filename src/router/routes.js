@@ -7,7 +7,7 @@ const routes = [
       { path: 'checkout', component: () => import('pages/CheckoutPage.vue') },
       { path: 'admin', component: () => import('pages/AdminPage.vue'), meta: { requiresAuth: true } },
       { path: 'login', component: () => import('pages/LoginPage.vue') },
-      { path: 'product/:id', component: () => import('pages/ProductPage.vue') }
+      // { path: 'product/:id', component: () => import('pages/ProductPage.vue') }
 
     ]
   },
