@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed, onMounted } from 'vue'
 import MenuList from "components/MenuList.vue"
 import MenuNavigation from "components/MenuNavigation.vue"
 import LastFooter from "components/LastFooter.vue"
@@ -137,6 +137,7 @@ export default defineComponent({
   setup () {
     const store = useMenu()
     const searchQuery = ref("")
+    const cart_list = ref(false)
 
     // ✅ Search across all categories + items
     const filteredMenu = computed(() => {
@@ -153,11 +154,31 @@ export default defineComponent({
         .filter(category => category.items.length > 0)
     })
 
-    return { store, searchQuery, filteredMenu }
+    // ✅ Function to open cart with a given item
+    const openCartWithItem = (itemName) => {
+      for (let cat of store.menu) {
+        const found = cat.items.find((i) => i.name.toLowerCase() === itemName.toLowerCase())
+        if (found) {
+          store.addToCart(found)
+          cart_list.value = true   // opens cart popup
+          break
+        }
+      }
+    }
+
+    // ✅ Check URL for ?item=...
+    onMounted(() => {
+      const params = new URLSearchParams(window.location.search)
+      const itemName = params.get("item")
+      if (itemName) {
+        openCartWithItem(itemName)
+      }
+    })
+
+    return { store, searchQuery, filteredMenu, cart_list, openCartWithItem }
   },
   data: () => ({
     cart: [],
-    cart_list: false,
     cat_name_list: []
   }),
   methods: {
@@ -170,6 +191,7 @@ export default defineComponent({
   }
 })
 </script>
+
 
 
 <style lang="scss">
