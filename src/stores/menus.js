@@ -355,51 +355,74 @@ export const useMenu = defineStore("menus", {
           },
         ],
       },
-      /**
-       * Proteins
-       */
       {
-        name: "Proteins",
-        category_image: "whole-grilled-chicken-fp.jpg",
+        //Extras
+        name: "Extras",
+        category_image: "Loaded-Fries-735x490.webp",
         items: [
           {
-            name: "Beef",
-            size: "",
-            price: 2000,
-          },
-          {
-            name: "Chicken",
+            name: "Extra Cheese",
             size: "",
             price: 5000,
-          },
-          {
-            name: "Turkey",
-            size: "",
-            price: 6500,
           },
 
           {
-            name: "Catfish",
+            name: "Extra Fries",
             size: "",
-            price: 5000,
+            price: 3000,
           },
           {
-            name: "Goatmeat",
+            name: "Extra Toppings",
             size: "",
-            price: 5000,
-          },
-          {
-            name: "Ice Fish",
-            size: "",
-            price: 2500,
-          },
-          {
-            name: "Boiled Egg",
-            size: "",
-            price: 1000,
+            price: 1500,
           },
         ],
       },
+      /**
+       * Proteins
+       */
+      // {
+      //   name: "Proteins",
+      //   category_image: "whole-grilled-chicken-fp.jpg",
+      //   items: [
+      //     {
+      //       name: "Beef",
+      //       size: "",
+      //       price: 2000,
+      //     },
+      //     {
+      //       name: "Chicken",
+      //       size: "",
+      //       price: 5000,
+      //     },
+      //     {
+      //       name: "Turkey",
+      //       size: "",
+      //       price: 6500,
+      //     },
+
+      //     {
+      //       name: "Catfish",
+      //       size: "",
+      //       price: 5000,
+      //     },
+      //     {
+      //       name: "Goatmeat",
+      //       size: "",
+      //       price: 5000,
+      //     },
+      //     {
+      //       name: "Ice Fish",
+      //       size: "",
+      //       price: 2500,
+      //     },
+      //     {
+      //       name: "Boiled Egg",
+      //       size: "",
+      //       price: 1000,
+      //     },
+      //   ],
+      // },
       /**
        * Main Dishes
        */
@@ -731,51 +754,7 @@ export const useMenu = defineStore("menus", {
             size: "",
             price: 2000,
           },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
-          {
-            name: "Hollandia",
-            size: "",
-            price: 3000,
-          },
+
         ],
       },
     ],
