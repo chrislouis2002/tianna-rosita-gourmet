@@ -42,7 +42,7 @@
 /* HERO SECTION */
 .visit-section {
   position: relative;
-  background-image: url('slider/_ (5).jpeg'); /* Change to your image path */
+  background-image: url('slider/find.jpeg'); /* Change to your image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

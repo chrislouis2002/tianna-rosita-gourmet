@@ -38,7 +38,7 @@ Tianna Treats Café began as a passion for bringing people together over delicio
 <style scoped>
 .about-hero {
   position: relative;
-  background-image: url('slider/_ (4).jpeg');
+  background-image: url('slider/about.jpeg');
   background-size: cover;
   background-position: center;
   height: 60vh;
