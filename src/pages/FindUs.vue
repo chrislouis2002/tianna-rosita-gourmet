@@ -42,7 +42,7 @@
 /* HERO SECTION */
 .visit-section {
   position: relative;
-  background-image: url('slider/istockphoto-1065651036-612x612.jpg'); /* Change to your image path */
+  background-image: url('/slider/istockphoto-1065651036-612x612.jpg'); /* Change to your image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
