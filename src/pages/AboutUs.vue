@@ -38,7 +38,7 @@ Tianna Treats Café began as a passion for bringing people together over delicio
 <style scoped>
 .about-hero {
   position: relative;
-  background-image: url('slider/about.jpeg');
+  background-image: url('slider/african-american-chef-teaching-women-men-kitchen-african-american-chef-teaching-women-men-to-cook-kitchen-116031721.webp');
   background-size: cover;
   background-position: center;
   height: 60vh;
