@@ -25,6 +25,7 @@ module.exports = configure(function (/* ctx */) {
     extras: [
       'roboto-font',
       'material-icons',
+        'fontawesome-v6' // ✅ this loads Font Awesome officially into Quasar
     ],
 
     build: {

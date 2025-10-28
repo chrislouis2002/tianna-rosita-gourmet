@@ -1,14 +1,22 @@
 const routes = [
   {
     path: '/',
-    component: () => import('pages/MainLayout.vue'),   // 👈 wrap in layout
+    component: () => import('pages/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'checkout', component: () => import('pages/CheckoutPage.vue') },
-      { path: 'admin', component: () => import('pages/AdminPage.vue'), meta: { requiresAuth: true } },
-      { path: 'login', component: () => import('pages/LoginPage.vue') },
-      // { path: 'product/:id', component: () => import('pages/ProductPage.vue') }
+      { path: '', name: 'home', component: () => import('pages/HomePage.vue') },
+      { path: 'menu', name: 'menu', component: () => import('pages/IndexPage.vue') },
+      { path: 'about', name: 'about', component: () => import('pages/AboutUs.vue') },
+      { path: 'events', name: 'events', component: () => import('pages/EventsPage.vue') },
+      { path: 'find', name: 'find', component: () => import('pages/FindUs.vue') },
 
+      // ✅ Checkout should hide background + footer
+      { path: 'checkout', name: 'checkout', component: () => import('pages/CheckoutPage.vue'), meta: { hideFooter: true, noBackground: true } },
+
+      // ✅ Admin should hide background + footer
+      { path: 'admin', name: 'admin', component: () => import('pages/AdminPage.vue'), meta: { requiresAuth: true, hideFooter: true, noBackground: true } },
+
+      // ✅ Login should hide background + footer
+      { path: 'login', name: 'login', component: () => import('pages/LoginPage.vue'), meta: { hideFooter: true, noBackground: true } },
     ]
   },
 
