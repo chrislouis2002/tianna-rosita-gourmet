@@ -1,9 +1,9 @@
 {
   "name": "tianna",
   "version": "0.0.1",
-  "description": "Tianna menu project by Success .N.O",
+  "description": "Tianna menu project by Chris Louis",
   "productName": "tianamenu",
-  "author": "Success Nkeonyeasua Onyegbanokwu <sonobktech@gmail.com>",
+  "author": "Christopher Nwabunike Chigozie <chris.louis.orm@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",

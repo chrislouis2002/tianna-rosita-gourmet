@@ -1,6 +1,6 @@
 # tianamenu (tianna)
 
-Tianna menu project by Success .N.O
+Tianna menu project by Chris Louis
 
 ## Install the dependencies
 ```bash
