@@ -36,7 +36,7 @@
     :image="categoryImages[category.category]"
       :categoryIndex="index"
       :description="category.description"
-      @select="select"
+     
     />
   </div>
 </div>

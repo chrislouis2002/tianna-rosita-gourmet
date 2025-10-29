@@ -48,15 +48,23 @@
               <div>{{ item.name }}</div>
               <div v-if="item.size">{{ item.size }}</div>
               <div class="btncc">
-                <q-btn
-                  flat
-                  class="sb"
-@click="$emit('select', item)"
-                  rounded
-                >
-                  <span>SELECT</span>
-                  <q-icon name="add" />
-                </q-btn>
+               <div class="quantity-controls">
+  <q-btn
+    dense
+    flat
+    icon="remove"
+      :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
+    @click="decreaseQuantity(item)"
+  />
+  <span class="quantity-display">{{ cart[item.id] || 0 }}</span>
+  <q-btn
+    dense
+    flat
+    icon="add"
+      :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
+    @click="increaseQuantity(item)"
+  />
+</div>
               </div>
             </div>
 
@@ -77,7 +85,8 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
+import { useMenu } from "stores/menus";
 
 export default defineComponent({
   name: "MenuList",
@@ -88,20 +97,38 @@ export default defineComponent({
     categoryIndex: { type: Number, default: undefined },
     description: { type: String, default: undefined },
   },
-  data: () => ({
-    search: "", // 👈 for box
-  }),
-  // computed: {
-  //   filteredFoods() {
-  //     if (!this.search) return this.foods;
-  //     return this.foods.filter((item) =>
-  //       item.name.toLowerCase().includes(this.search.toLowerCase())
-  //     );
-  //   },
-  // },
+
+  setup() {
+    const store = useMenu();
+
+    // 🧮 Create quick lookup of item quantities from store.cart
+    const cartQuantities = computed(() => {
+      const q = {};
+      store.cart.forEach((item) => {
+        q[item.id] = item.quantity;
+      });
+      return q;
+    });
+
+    // ➕ Add/increase item quantity
+    const increaseQuantity = (item) => {
+      store.addToCart(item);
+    };
+
+    // ➖ Decrease item quantity
+    const decreaseQuantity = (item) => {
+      store.decreaseQuantity(item);
+    };
+
+    return {
+      store,
+      cart: cartQuantities,
+      increaseQuantity,
+      decreaseQuantity,
+    };
+  },
 });
 </script>
-
 <style scoped>
 /* (keep your existing styles unchanged) */
 </style>
@@ -247,5 +274,30 @@ export default defineComponent({
 .sb {
   background: hsla(0, 69%, 60%, 1);
   color: hsla(0, 69%, 80%, 1);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  background: rgba(229, 115, 115, 0.1);
+  padding: 4px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.quantity-controls:hover {
+  background: rgba(229, 115, 115, 0.25);
+}
+
+.quantity-display {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.9);
+  /* font-family: "rubik"; */
+  min-width: 20px;
+  text-align: center;
+  font-size: 16px;
 }
 </style>
