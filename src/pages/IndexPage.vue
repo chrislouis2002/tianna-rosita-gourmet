@@ -36,7 +36,7 @@
     :image="categoryImages[category.category]"
       :categoryIndex="index"
       :description="category.description"
-     
+
     />
   </div>
 </div>
@@ -118,7 +118,7 @@
 
               <q-btn
                 style="position: absolute; right: 0.5rem; top: 1.5rem"
-                @click.stop="store.removeFromCart(i)"
+                @click.stop="store.removeFromCart(item)"
                 flat
                 class="bg-transparent text-red"
                 fab-mini
@@ -149,7 +149,7 @@
                   dense
                   flat
                   icon="remove"
-                  @click="store.decreaseQuantity(i)"
+                  @click="store.decreaseQuantity(item)"
                 />
                 <span>{{ item.quantity }}</span>
                 <q-btn dense flat icon="add" @click="store.addToCart(item)" />
