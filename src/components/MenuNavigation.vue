@@ -37,7 +37,7 @@ export default defineComponent({
 <style scoped>
 .menunavcont{
     position:fixed;
-    top:30px;
+    top:60px;
     left:20px;
     min-width:100%;
     z-index:9;

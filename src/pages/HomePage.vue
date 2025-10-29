@@ -30,7 +30,7 @@
             <div class="hero-ctas">
                 <!-- ✅ Menu Button -->
         <q-btn
-        label="Explore Menu"
+        label="Order Now"
         color="red"
         class="menu-btn"
         unelevated
@@ -67,6 +67,27 @@
   </Swiper>
 </section>
 
+<section class="delivery">
+  <div class="delivery-img">
+    <img
+      src="/slider/pngtree-food-delivery-rider-on-red-scooter-png-image_15870715-removebg-preview.png"
+      alt="Fast Delivery"
+    />
+  </div>
+
+  <div class="delivery-text">
+    <h1>Fastest Delivery & Easy Pick</h1>
+    <p>Hot meals delivered to your door in minutes — quick, reliable, and fresh!</p>
+    <q-btn
+      color="red"
+      label="Order Now"
+      class="q-mt-md q-px-lg q-py-sm"
+      glossy
+      no-caps
+      @click="$router.push('/menu')"
+    />
+  </div>
+</section>
 
 
   <section class="category-grid q-pa-lg">
@@ -119,7 +140,11 @@ export default {
 
     // hero slides (dummy images — replace with actual ones later)
     const slides = [
-
+      {
+        title: "FRESH OFF THE GRILL",
+        subtitle: "Perfectly grilled fish & chicken, seasoned to perfection",
+        image: "/slider/ikan-bakar-semporna-scaled.webp",
+      },
       {
         title: "SUNDAY BUFFET FEAST",
         subtitle: "Eat all you can • Every Sunday • From 12 PM",
@@ -377,6 +402,62 @@ const categories = [
   }
   .image-card {
     height: 300px;
+  }
+}
+
+.delivery {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: linear-gradient(135deg, #1a1a1a, #2a0000);
+  padding: 4rem 2rem;
+  border-radius: 25px;
+  color: white;
+  flex-wrap: wrap;
+  gap: 2rem;
+  text-align: center;
+}
+
+.delivery-img img {
+  width: 370px;
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.delivery-img img:hover {
+  transform: scale(1.05);
+}
+
+.delivery-text h1 {
+  /* font-family: "rubik", sans-serif; */
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #d4af37;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+.delivery-text p {
+  font-family: "martian", monospace;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .delivery {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+  }
+
+  .delivery-text h1 {
+    font-size: 2rem;
+  }
+
+  .delivery-img img {
+    width: 220px;
   }
 }
 </style>
