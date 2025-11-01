@@ -34,10 +34,34 @@
   </div>
 </template>
 
-<script setup>
-// No script needed for now
+<script>
+export default {
+  name: "FindPage",
+  meta: {
+    title: "Find Us — Tianna Rosita Gourmet Location in Awka",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Visit Tianna Rosita Gourmet at Solution Fun City, Awka. We’re open daily from 10 AM to 11 PM. Dine in, take out, or order online today!",
+      },
+      {
+        property: "og:title",
+        content: "Find Tianna Rosita Gourmet — Location & Contact Info",
+      },
+      {
+        property: "og:description",
+        content:
+          "Looking for Tianna Rosita Gourmet in Awka? Find our restaurant at Solution Fun City and enjoy a great meal today.",
+      },
+      {
+        property: "og:image",
+        content: "/logo.png",
+      },
+    ],
+  },
+};
 </script>
-
 <style scoped>
 /* HERO SECTION */
 .visit-section {

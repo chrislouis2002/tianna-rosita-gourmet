@@ -58,41 +58,69 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useMeta } from 'quasar';
+
+// 🧠 SEO Meta setup
+useMeta({
+  title: 'Events & Catering — Tianna Rosita Gourmet Awka',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Host your private events, corporate parties, and Sunday buffets with Tianna Rosita Gourmet. We offer premium catering services and event spaces in Awka, Anambra.',
+    },
+    {
+      property: 'og:title',
+      content: 'Events & Catering — Tianna Rosita Gourmet Awka',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Book Tianna Rosita Gourmet for your next event in Awka. Perfect venue for birthdays, meetings, and celebrations with excellent catering service.',
+    },
+    {
+      property: 'og:image',
+      content: '/logo.png',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+  ],
+});
 
 const services = ref([
   {
     title: 'Private Events & Celebrations',
-    image: '/slider/_ (6).jpeg', // ← replace with your image (put in public/slider/)
+    image: '/slider/_ (6).jpeg',
     desc:
-      'Reserve our elegant indoor space for birthdays, meetings, corporate gatherings and memorable celebrations. Full-service event planning available.'
+      'Reserve our elegant indoor space for birthdays, meetings, corporate gatherings and memorable celebrations. Full-service event planning available.',
   },
   {
     title: 'Sunday Buffet Experience',
     image: '/slider/_ (7).jpeg',
     desc:
-      'Sunday Buffet — Adults: ₦25,000 • Ages 5–12: ₦15,000 • 0–4yrs: FREE. A lavish buffet with live stations and family-friendly options.'
+      'Sunday Buffet — Adults: ₦25,000 • Ages 5–12: ₦15,000 • 0–4yrs: FREE. A lavish buffet with live stations and family-friendly options.',
   },
   {
     title: 'Full Bar & Evening Ambience',
     image: '/slider/hero5.jpeg',
     desc:
-      'Cozy bar with premium drinks and mood lighting — perfect for after-parties and intimate gatherings.'
+      'Cozy bar with premium drinks and mood lighting — perfect for after-parties and intimate gatherings.',
   },
   {
     title: 'Outdoor Park Packages',
     image: '/slider/_ (8).jpeg',
     desc:
-      'Lightweight outdoor setups near the rides — casual food stands, quick bites and open-air vibes.'
-  }
+      'Lightweight outdoor setups near the rides — casual food stands, quick bites and open-air vibes.',
+  },
 ]);
 
 const goToWhatsApp = () => {
-  // replace `yourwhatsapplink` with your whatsapp link e.g. "https://wa.me/2347069637571"
   window.open('https://wa.me/+2347069637571', '_blank');
 };
 
 const openDetails = (i) => {
-  // placeholder action — later you can open a modal with more details
   alert(services.value[i].title + '\n\nMore details will be here.');
 };
 

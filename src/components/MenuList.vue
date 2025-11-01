@@ -4,7 +4,6 @@
       <div class="img-tray-outer">
         <div class="img-tray-inner">
           <img class="category-image" :src="'category_images/' + image" />
-
         </div>
       </div>
     </div>
@@ -12,16 +11,6 @@
     <div style="min-width: 100%">
       <div class="title-cat">{{ category }}</div>
       <div v-if="description" class="food-info q-mb-md">{{ description }}</div>
-
-      <!-- 🔎 Search bar -->
-      <!-- <q-input
-        filled
-        v-model="search"
-        label="Search this category..."
-        class="q-mb-md"
-        debounce="300"
-        clearable
-      /> -->
 
       <div class="listxcont">
         <div
@@ -45,26 +34,38 @@
 
           <div class="food-info">
             <div>
-              <div>{{ item.name }}</div>
+              <div>
+                {{ item.name }}
+                <div class="view-btn-container"></div>
+              </div>
               <div v-if="item.size">{{ item.size }}</div>
               <div class="btncc">
-               <div class="quantity-controls">
-  <q-btn
-    dense
-    flat
-    icon="remove"
-      :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
-    @click="decreaseQuantity(item)"
-  />
-  <span class="quantity-display">{{ cart[item.id] || 0 }}</span>
-  <q-btn
-    dense
-    flat
-    icon="add"
-      :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
-    @click="increaseQuantity(item)"
-  />
-</div>
+                <div class="quantity-controls">
+                  <q-btn
+                    label="View"
+                    :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
+                    unelevated
+                    class="view-btn"
+                    @click="openDialog(item)"
+                  />
+
+                  <q-btn
+                    dense
+                    flat
+                    icon="remove"
+                    :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
+                    @click="decreaseQuantity(item)"
+                  />
+                  <span class="quantity-display">{{ cart[item.id] || 0 }}</span>
+
+                  <q-btn
+                    dense
+                    flat
+                    icon="add"
+                    :style="{ color: 'hsla(0, 69%, 80%, 1)' }"
+                    @click="increaseQuantity(item)"
+                  />
+                </div>
               </div>
             </div>
 
@@ -82,10 +83,72 @@
       </div>
     </div>
   </div>
+
+  <!-- 🧩 DIALOG BOX -->
+  <q-dialog
+    v-model="showDialog"
+    persistent
+    transition-show="fade"
+    transition-hide="fade"
+  >
+    <q-card class="dialog-card">
+      <q-card-section>
+        <div class="dialog-image-container">
+          <img
+            v-if="selectedItem?.image"
+            :src="selectedItem.image"
+            alt="food image"
+            class="dialog-image"
+          />
+        </div>
+        <div class="dialog-details">
+          <h4>{{ selectedItem?.name }}</h4>
+          <p>
+            {{ selectedItem?.description || "" }}
+          </p>
+          <h5>
+            {{
+              new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+              }).format(selectedItem?.price || 0)
+            }}
+          </h5>
+
+          <div
+            class="quantity-controls"
+            style="justify-content: center; margin-top: 10px"
+          >
+            <q-btn
+              dense
+              flat
+              icon="remove"
+              color="pink-4"
+              @click="decreaseQuantity(selectedItem)"
+            />
+            <span class="quantity-display">{{
+              cart[selectedItem?.id] || 0
+            }}</span>
+            <q-btn
+              dense
+              flat
+              icon="add"
+              color="pink-4"
+              @click="increaseQuantity(selectedItem)"
+            />
+          </div>
+        </div>
+      </q-card-section>
+
+      <q-card-actions align="center">
+        <q-btn flat label="Close" color="white" v-close-popup />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script>
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import { useMenu } from "stores/menus";
 
 export default defineComponent({
@@ -101,7 +164,14 @@ export default defineComponent({
   setup() {
     const store = useMenu();
 
-    // 🧮 Create quick lookup of item quantities from store.cart
+    const showDialog = ref(false);
+    const selectedItem = ref(null);
+
+    const openDialog = (item) => {
+      selectedItem.value = item;
+      showDialog.value = true;
+    };
+
     const cartQuantities = computed(() => {
       const q = {};
       store.cart.forEach((item) => {
@@ -110,12 +180,10 @@ export default defineComponent({
       return q;
     });
 
-    // ➕ Add/increase item quantity
     const increaseQuantity = (item) => {
       store.addToCart(item);
     };
 
-    // ➖ Decrease item quantity
     const decreaseQuantity = (item) => {
       store.decreaseQuantity(item);
     };
@@ -125,15 +193,16 @@ export default defineComponent({
       cart: cartQuantities,
       increaseQuantity,
       decreaseQuantity,
+      showDialog,
+      selectedItem,
+      openDialog,
     };
   },
 });
 </script>
-<style scoped>
-/* (keep your existing styles unchanged) */
-</style>
 
 <style scoped>
+/* ===== Your original styles (unchanged) ===== */
 .img-tray-outer {
   border-radius: 100%;
   background: linear-gradient(
@@ -229,7 +298,6 @@ export default defineComponent({
 }
 .bgg {
   background: rgba(10, 10, 10, 1);
-  /* background:rgba(23, 23, 23, 0.08); */
   margin-top: 1rem;
   border-radius: 25px;
 }
@@ -271,11 +339,6 @@ export default defineComponent({
   justify-content: flex-end;
   padding-right: 1rem;
 }
-.sb {
-  background: hsla(0, 69%, 60%, 1);
-  color: hsla(0, 69%, 80%, 1);
-}
-
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -285,19 +348,49 @@ export default defineComponent({
   padding: 4px 8px;
   border-radius: 12px;
   transition: all 0.2s ease-in-out;
-
 }
-
 .quantity-controls:hover {
   background: rgba(229, 115, 115, 0.25);
 }
-
 .quantity-display {
   font-weight: bold;
   color: rgba(255, 255, 255, 0.9);
-  /* font-family: "rubik"; */
   min-width: 20px;
   text-align: center;
   font-size: 16px;
+}
+
+/* ===== Dialog styles ===== */
+.dialog-card {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+backdrop-filter: blur(5px);
+}
+
+.dialog-image-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.dialog-image {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.dialog-details h4 {
+  margin: 0;
+  font-size: 22px;
+}
+.dialog-details p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.dialog-details h5 {
+  margin-top: 10px;
+  color: #ffcdd2;
 }
 </style>

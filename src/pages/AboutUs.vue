@@ -33,6 +33,49 @@ Tianna Treats Café began as a passion for bringing people together over delicio
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useMeta } from 'quasar';
+
+// 🧠 SEO setup for the About Page
+useMeta({
+  title: 'About Tianna Rosita Gourmet — Fine Dining & Outdoor Restaurant in Awka',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Learn about Tianna Rosita Gourmet, Awka’s top restaurant offering delicious Nigerian and continental meals, outdoor dining, and premium catering services.',
+    },
+    {
+      property: 'og:title',
+      content: 'About Tianna Rosita Gourmet — Awka’s Best Restaurant Experience',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Discover our story at Tianna Rosita Gourmet, where gourmet flavors meet relaxation. Located inside Solution Fun City, Awka.',
+    },
+    {
+      property: 'og:image',
+      content: '/logo.png',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://tiannarosita.netlify.app/about', // ✅ Replace later with your real domain
+    },
+  ],
+});
+
+// 🥗 You can keep your current About page content here
+const restaurantStory = ref(`
+Tianna Rosita Gourmet is a proudly Nigerian restaurant located in the heart of Awka, Anambra.
+We blend traditional flavors with a modern touch — serving fresh meals, grilled delights, and chef-curated buffets in a cozy indoor and outdoor space.
+From romantic dinners to Sunday family feasts, we offer an unforgettable dining experience.
+`);
+
 </script>
 
 <style scoped>

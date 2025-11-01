@@ -127,13 +127,38 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 
-
-
-
-
 export default {
   name: "HomePage",
   components: { Swiper, SwiperSlide },
+
+  // 🧠 Added this "meta" section for SEO
+  meta: {
+    title: "Order Food Online in Awka — Tianna Rosita Gourmet",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Order delicious meals from Tianna Rosita Gourmet in Awka. Freshly prepared, fast delivery, and the best local and continental dishes in town!",
+      },
+      {
+        property: "og:title",
+        content: "Order Food Online in Awka — Tianna Rosita Gourmet",
+      },
+      {
+        property: "og:description",
+        content:
+          "Order delicious meals from Tianna Rosita Gourmet in Awka. Freshly prepared and delivered fast to your doorstep.",
+      },
+      {
+        property: "og:image",
+        content: "/logo.png",
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+    ],
+  },
 
   setup() {
     const slide = ref(0);
@@ -150,72 +175,82 @@ export default {
         subtitle: "Eat all you can • Every Sunday • From 12 PM",
         image: "/slider/hero1.jpeg",
       },
+     
       {
-        title: "ENJOY OUR OUTDOOR EXPERIENCE",
-        subtitle: "",
-        image: "/slider/hero4.jpeg",
-      },
-      {
-        title: "ENJOY EXCLUSIVE DISCOUNTS WHEN YOU ORDER DIRECTLY FROM OUR WEBSITE",
+        title:
+          "ENJOY EXCLUSIVE DISCOUNTS WHEN YOU ORDER DIRECTLY FROM OUR WEBSITE",
         subtitle: "",
         image: "/slider/gourmetpasta.jpeg",
       },
-
-
     ];
-   // ✅ Signature dishes slider items
-const signatureDishes = ref([
-  { name: "Loaded Fries", image: "/slider/IMG_0158.jpg" },
-  { name: "Loaded Fries", image: "/slider/IMG_0159.jpg" },
-  { name: "Loaded Fries", image: "/slider/hero2.JPG" },
-  { name: "Loaded Fries", image: "/slider/hero6.JPG" },
-  { name: "Loaded Fries", image: "/category_images/Loaded-Fries-735x490.webp/" },
-  { name: "Loaded Fries", image: "/slider/chicken_wings_lolipop _food _foodie_ food lover_ delicious street food _chicken recipe_ snacks.jpeg" },
-  { name: "Loaded Fries", image: "/slider/19a277a8-d746-4ff2-982f-d372d4b250ba.JPG" },
-  { name: "Buffet Sunday Special", image: "/slider/417378f1-36e0-44d4-9ad9-c263b8802354.JPG" },
 
-  { name: "Grilled Chicken Platter", image: "/slider/hero2.JPG" },
+    // ✅ Signature dishes slider items
+    const signatureDishes = ref([
+      { name: "Loaded Fries", image: "/slider/IMG_0158.jpg" },
+      { name: "Loaded Fries", image: "/slider/IMG_0159.jpg" },
+      { name: "Loaded Fries", image: "/slider/hero2.JPG" },
+      { name: "Loaded Fries", image: "/slider/hero6.JPG" },
+      {
+        name: "Loaded Fries",
+        image: "/category_images/Loaded-Fries-735x490.webp/",
+      },
+      {
+        name: "Loaded Fries",
+        image:
+          "/slider/chicken_wings_lolipop _food _foodie_ food lover_ delicious street food _chicken recipe_ snacks.jpeg",
+      },
+      { name: "Loaded Fries", image: "/slider/19a277a8-d746-4ff2-982f-d372d4b250ba.JPG" },
+      {
+        name: "Buffet Sunday Special",
+        image: "/slider/417378f1-36e0-44d4-9ad9-c263b8802354.JPG",
+      },
+      { name: "Grilled Chicken Platter", image: "/slider/hero2.JPG" },
+    ]);
 
-]);
-// responsive breakpoints (3 on desktop, 2 on tablet, 1 on phone)
+    // responsive breakpoints
     const breakpoints = {
       100: { slidesPerView: 1 },
       640: { slidesPerView: 3 },
       1024: { slidesPerView: 4 },
     };
 
-
-
-
     function openContact() {
       alert("Contact modal will be added later!"); // temporary
     }
 
-const categories = [
-  {
-    title: "MENU",
-    image: "/slider/_ (2).jpeg", // ✅ Replace with your actual image
-    route: "/menu"
-  },
-  {
-    title: "ABOUT US",
-    image: "/slider/chef.jpeg", // ✅ Replace
-    route: "/about"
-  },
-  {
-    title: "FIND US",
-    image: "/slider/park.jpeg", // ✅ Replace
-    route: "/find"
-  },
-  {
-    title: "EVENTS & CATERING",
-    image: "/slider/_ (3).jpeg", // ✅ Replace
-    route: "/events"
-  }
-];
+    const categories = [
+      {
+        title: "MENU",
+        image: "/slider/_ (2).jpeg",
+        route: "/menu",
+      },
+      {
+        title: "ABOUT US",
+        image: "/slider/chef.jpeg",
+        route: "/about",
+      },
+      {
+        title: "FIND US",
+        image: "/slider/park.jpeg",
+        route: "/find",
+      },
+      {
+        title: "EVENTS & CATERING",
+        image: "/slider/_ (3).jpeg",
+        route: "/events",
+      },
+    ];
 
-
-    return { slide, slides, signatureDishes, Autoplay, Navigation, breakpoints, categories, openContact };
+    return {
+      slide,
+      slides,
+      signatureDishes,
+      Autoplay,
+      Navigation,
+      breakpoints,
+      categories,
+      openContact,
+    };
   },
 };
 </script>

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= productName %></title>
+    <!-- DEFAULT SITE TITLE -->
+    <title>Order Food Online in Awka — Tianna Rosita Gourmet</title>
 
     <meta charset="utf-8">
-    <meta name="description" content="<%= productDescription %>">
+
+    <!-- DEFAULT META DESCRIPTION (visible in search results) -->
+    <meta name="description" content="Order delicious meals from Tianna Rosita Gourmet in Awka. Freshly prepared, fast delivery to your door. Order now!">
+
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (ctx.mode.cordova || ctx.mode.capacitor) { %>, viewport-fit=cover<% } %>">
@@ -12,10 +16,45 @@
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
     <link rel="icon" type="image/ico" href="favicon.ico">
+
+    <!-- Open Graph: how the link looks when shared -->
+    <!-- Replace the og:image and og:url below with your actual domain and image when ready -->
+    <meta property="og:title" content="Order Food Online in Awka — Tianna Rosita Gourmet">
+    <meta property="og:description" content="Order delicious meals from Tianna Rosita Gourmet in Awka. Freshly prepared, fast delivery to your door.">
+    <meta property="og:image" content="/logo.png"> <!-- REPLACE if needed -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tiannarosita.netlify.app"> <!-- REPLACE with your real domain -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- LocalBusiness schema for Google (replace placeholders below with your exact details) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Tianna Rosita Gourmet",
+      "image": "/logo.png",  /* REPLACE with your logo URL if different */
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Soltuion Fun City, Awka, Anambra",   /* REPLACE with your real street */
+        "addressLocality": "Awka",
+        "addressRegion": "Anambra",
+        "postalCode": "420001",
+        "addressCountry": "NG"
+      },
+      "telephone": "+2347069637571", /* REPLACE with your real phone number */
+      "url": "https://tiannarosita.netlify.app", /* REPLACE with your real domain */
+      "servesCuisine": ["Nigerian","Continental"],
+      "priceRange": "₦₦",
+      "openingHours": "Mo-Su 10:00-23:00"
+    }
+    </script>
   </head>
   <body>
     <!-- quasar:entry-point -->
-     <script src="https://js.paystack.co/v1/inline.js"></script>
-
+    <script src="https://js.paystack.co/v1/inline.js"></script>
   </body>
 </html>
+
+
+
+

@@ -188,6 +188,30 @@ export default defineComponent({
     FirstFooter,
     MenuNavigation,
   },
+  meta: {
+    title: "Menu — Tianna Rosita Gourmet | Delicious Meals in Awka",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Discover our menu at Tianna Rosita Gourmet! Enjoy Nigerian and Continental dishes, freshly made and available for delivery in Awka.",
+      },
+      {
+        property: "og:title",
+        content: "Menu — Tianna Rosita Gourmet | Order Delicious Meals in Awka",
+      },
+      {
+        property: "og:description",
+        content:
+          "Explore the Tianna Rosita Gourmet menu and order freshly cooked meals for delivery or pickup in Awka, Anambra.",
+      },
+      {
+        property: "og:image",
+        content: "/logo.png",
+      },
+    ],
+  },
+
   setup() {
     const store = useMenu();
     const searchQuery = ref("");
