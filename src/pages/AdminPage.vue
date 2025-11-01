@@ -103,7 +103,7 @@
               <q-input v-model.number="menuForm.price" label="Price (₦)" outlined class="q-mb-sm" />
               <q-input v-model="menuForm.category" label="Category" outlined class="q-mb-sm" />
               <q-input v-model="menuForm.description" label="Description (optional)" outlined class="q-mb-sm" />
-              <q-input v-model="menuForm.imageURL" label="Image URL (optional)" outlined class="q-mb-sm" />
+              <q-input v-model="menuForm.image" label="Image (optional)" outlined class="q-mb-sm" />
               <q-toggle v-model="menuForm.available" label="Available (show to customers)" />
             </q-card-section>
 
@@ -194,7 +194,7 @@ const menuForm = ref({
   price: 0,
   category: "",
   description: "",
-  imageURL: "",
+  image: "",
   available: true
 })
 const editingItem = ref(null)
@@ -278,7 +278,7 @@ async function clearAllOrders() {
 
 // MENU FUNCTIONS
 function openAddDialog() {
-  menuForm.value = { name: "", price: 0, category: "", description: "", imageURL: "", available: true }
+  menuForm.value = { name: "", price: 0, category: "", description: "", image: "", available: true }
   editingItem.value = null
   showDialog.value = true
 }
@@ -290,7 +290,7 @@ function openEditDialog(item) {
     price: Number(item.price || 0),
     category: item.category || "",
     description: item.description || "",
-    imageURL: item.imageURL || "",
+    image: item.image || "",
     available: item.available === undefined ? true : item.available
   }
   editingItem.value = item
@@ -308,7 +308,7 @@ async function saveMenuItem() {
     price: Number(menuForm.value.price),
     category: menuForm.value.category,
     description: menuForm.value.description || "",
-    imageURL: menuForm.value.imageURL || "",
+    image: menuForm.value.image || "",
     available: !!menuForm.value.available,
     createdAt: serverTimestamp()
   }
