@@ -54,19 +54,20 @@
         </div>
 
         <q-table
-          title="Orders"
-          :rows="orders"
-          :columns="columns"
-          row-key="id"
-          flat
-          bordered
-        >
-          <template v-slot:body-cell-actions="props">
-            <q-td align="center">
-              <q-btn dense flat color="negative" icon="delete" @click="deleteOrder(props.row.id)" />
-            </q-td>
-          </template>
-        </q-table>
+  title="Menu Items"
+  :rows="filteredMenu"
+  :columns="menuColumns"
+  row-key="id"
+  flat
+  bordered
+>
+  <template v-slot:body-cell-actions="props">
+    <q-td align="center">
+      <q-btn dense flat icon="edit" color="primary" @click="openEditDialog(props.row)" />
+      <q-btn dense flat icon="delete" color="negative" @click="deleteMenuItem(props.row.id)" />
+    </q-td>
+  </template>
+</q-table>
       </q-tab-panel>
 
       <!-- MENU TAB -->
@@ -75,14 +76,32 @@
           <q-btn color="primary" label="Add New Item" @click="openAddDialog" />
         </div>
 
-        <q-table
-          title="Menu Items"
-          :rows="menu"
-          :columns="menuColumns"
-          row-key="id"
-          flat
-          bordered
-        >
+         <div class="q-pa-md flex flex-center">
+      <q-input
+        v-model="searchQuery"
+        placeholder="Search for a food item..."
+        filled
+        dense
+
+        standout="bg-red text-white"
+        input-class="text-white"
+        class="search-bar"
+      >
+        <template v-slot:append>
+          <q-icon name="search" color="white" />
+        </template>
+      </q-input>
+    </div>
+
+
+       <q-table
+  title="Menu Items"
+  :rows="filteredMenu"
+  :columns="menuColumns"
+  row-key="id"
+  flat
+  bordered
+>
           <template v-slot:body-cell-actions="props">
             <q-td align="center">
               <q-btn dense flat icon="edit" color="primary" @click="openEditDialog(props.row)" />
@@ -187,6 +206,7 @@ const tab = ref("overview")
 
 const orders = ref([])
 const menu = ref([])
+const searchQuery = ref("")
 
 const showDialog = ref(false)
 const menuForm = ref({
@@ -244,8 +264,10 @@ onMounted(async () => {
   // menu (real-time)
   const menuRef = collection(db, "menu")
   onSnapshot(menuRef, snapshot => {
-    menu.value = snapshot.docs.map(docSnap => ({ id: docSnap.id, ...docSnap.data() }))
-  })
+  menu.value = snapshot.docs
+    .map(docSnap => ({ id: docSnap.id, ...docSnap.data() }))
+    .sort((a, b) => a.name.localeCompare(b.name)) // <-- Sort alphabetically by name
+})
 
   // load settings (once)
   await loadSettings()
@@ -329,6 +351,18 @@ async function deleteMenuItem(id) {
   await deleteDoc(doc(db, "menu", id))
   // onSnapshot will update UI
 }
+
+ // ✅ Filter menu by search
+const filteredMenu = computed(() => {
+  const query = searchQuery.value.toLowerCase().trim();
+  if (!query) return menu.value;
+
+  return menu.value.filter(item =>
+    item.name.toLowerCase().includes(query) ||
+    (item.category && item.category.toLowerCase().includes(query))
+  );
+});
+
 
 // SETTINGS FUNCTIONS
 const settingsDocRef = doc(db, "settings", "site")

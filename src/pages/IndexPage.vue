@@ -234,12 +234,21 @@ export default defineComponent({
 
 
     // ✅ Fetch menu from Firestore when page loads
-    onMounted(async () => {
-      await store.fetchMenu();
+   onMounted(async () => {
+  await store.fetchMenu();
 
-      // ✅ Build category name list for top navigation
-cat_name_list.value = store.menu.map((cat) => cat.category);
-    });
+  // ✅ Sort each category's items alphabetically
+  store.menu.forEach(category => {
+    if (category.items && Array.isArray(category.items)) {
+      category.items.sort((a, b) => a.name.localeCompare(b.name));
+    }
+  });
+
+  // ✅ Build category name list for top navigation
+  cat_name_list.value = store.menu.map(cat => cat.category);
+});
+
+
 
     // ✅ Filter menu by search
 const filteredMenu = computed(() => {
