@@ -1,6 +1,6 @@
 import { boot } from 'quasar/wrappers'
 
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // replace with your ID
+const GA_MEASUREMENT_ID = 'G-VQ4HF3R8L1' // replace with your ID
 
 export default boot(() => {
   if (process.env.MODE === 'spa' && typeof window !== 'undefined') {
