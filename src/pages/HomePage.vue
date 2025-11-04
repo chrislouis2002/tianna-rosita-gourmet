@@ -67,28 +67,37 @@
   </Swiper>
 </section>
 
-<section class="delivery">
-  <div class="delivery-img">
-    <img
-      src="/slider/pngtree-food-delivery-rider-on-red-scooter-png-image_15870715-removebg-preview.png"
-      alt="Fast Delivery"
-    />
-  </div>
+<section class="order-process">
+  <h2>How to Order</h2>
+  <div class="order-steps">
+   <div
+  class="step clickable-step"
+  @click="$router.push('/menu')"
+>
+  <q-icon name="restaurant_menu" size="50px" color="red" />
+  <h4>Browse Menu</h4>
+  <p>Explore our delicious meals and pick your favorites.</p>
+</div>
 
-  <div class="delivery-text">
-    <h1>Fastest Delivery & Easy Pick</h1>
-    <p>Hot meals delivered to your door in minutes — quick, reliable, and fresh!</p>
-    <q-btn
-      color="red"
-      label="Order Now"
-      class="q-mt-md q-px-lg q-py-sm"
-      glossy
-      no-caps
-      @click="$router.push('/menu')"
-    />
+    <div class="step">
+      <q-icon name="add_shopping_cart" size="50px" color="red" />
+      <h4>Add to Cart</h4>
+      <p>Select what you want and customize your order easily.</p>
+    </div>
+
+    <div class="step">
+      <q-icon name="payment" size="50px" color="red" />
+      <h4>Place Order</h4>
+      <p>Confirm your details and checkout securely in seconds.</p>
+    </div>
+
+    <div class="step">
+      <q-icon name="delivery_dining" size="50px" color="red" />
+      <h4>Enjoy</h4>
+      <p>We’ll deliver your meal hot and fresh, right to your door.</p>
+    </div>
   </div>
 </section>
-
 
   <section class="category-grid q-pa-lg">
     <div class="row q-col-gutter-lg justify-center">
@@ -494,5 +503,59 @@ export default {
   .delivery-img img {
     width: 220px;
   }
+}
+
+.order-process {
+  background: #07070a;
+  color: #fdfdfd;
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.order-process h2 {
+  font-size: 2rem;
+  color: #ff4d4d;
+  margin-bottom: 50px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.order-steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.step {
+  background: #101014;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+  padding: 35px 25px;
+  width: 230px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 77, 77, 0.15);
+}
+
+.step h4 {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.step p {
+  color: #dcdcdc;
+  font-size: 0.95rem;
+  margin-top: 8px;
+  line-height: 1.5;
 }
 </style>

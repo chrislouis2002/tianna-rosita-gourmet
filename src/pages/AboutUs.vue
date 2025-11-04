@@ -4,158 +4,169 @@
     <!-- ✅ Hero Section -->
     <section class="about-hero">
       <div class="overlay">
-        <!-- <h1>About Tianna Rosita Gourmet</h1>
-        <p>Crafting unforgettable flavors and heartfelt experiences.</p> -->
+        <h1>About Tianna Rosita Gourmet</h1>
+        <p>Where gourmet flavors meet elegant dining experiences.</p>
       </div>
     </section>
 
     <!-- ✅ Our Story Section -->
-    <section class="our-story">
+    <section class="our-story fade-in">
       <div class="story-container">
         <h3>OUR STORY</h3>
         <p class="intro-text">
-          Introducing Tianna Rosita Gourmet — our newest branch, located inside Solution Fun City, Awka, is where Italian-inspired recipes meet gourmet dining. At Tianna Rosita Gourmet, we’ve created a space that blends vibrant flavors with a fine dining atmosphere, perfect for family outings, date nights, or simply treating yourself.
+          Introducing <strong>Tianna Rosita Gourmet</strong> — our newest branch located inside Solution Fun City, Awka, where Italian-inspired recipes meet Nigerian soul. We've created a space that blends vibrant flavors with an inviting fine-dining atmosphere, perfect for family outings, date nights, or simply treating yourself.
         </p>
         <p class="intro-text">
-          From a wide variety of treats to carefully prepared à la carte dishes, every plate is crafted with love and a touch of sophistication. Whether you’re here for a quick bite, a celebration, or to explore authentic Italian-inspired meals, Tianna Rosita Gourmet promises a dining experience you’ll never forget.
+          From handcrafted à la carte dishes to signature desserts, every meal is prepared with passion, artistry, and love. Whether it’s a celebration or a quiet evening out, <strong>Tianna Rosita Gourmet</strong> promises a dining experience you’ll always remember.
         </p>
       </div>
 
-       <!-- ✅ Horizontal Image Section -->
+      <!-- ✅ Horizontal Image Section -->
       <div class="image-gallery">
         <img src="/slider/IMG_0191.JPG" alt="Restaurant interior" />
         <img src="/slider/IMG_0188.JPG" alt="Chef cooking" />
-
       </div>
 
+      <div class="divider"></div>
 
-      <div class="story-container">
+      <div class="story-container fade-in">
         <h3>OUR JOURNEY</h3>
         <p class="intro-text">
-          Tianna Treats Café began as a passion for bringing people together over delicious food. What started as a cozy spot in Awka has now grown into a franchise with three branches across the city — each one serving quality, creativity, and unforgettable flavors.
+          <strong>Tianna Treats Café</strong> began as a small dream — a cozy café built to bring people together over the love of food. Today, that dream has blossomed into a growing franchise across Awka, serving creativity, comfort, and unforgettable taste at every branch.
         </p>
       </div>
-
-
     </section>
-
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useMeta } from 'quasar';
+import { useMeta } from "quasar";
 
-// 🧠 SEO setup for the About Page
 useMeta({
-  title: 'About Tianna Rosita Gourmet — Fine Dining & Outdoor Restaurant in Awka',
+  title: "About Tianna Rosita Gourmet — Fine Dining in Awka",
   meta: [
-    {
-      name: 'description',
-      content:
-        'Learn about Tianna Rosita Gourmet, Awka’s top restaurant offering delicious Nigerian and continental meals, outdoor dining, and premium catering services.',
-    },
-    {
-      property: 'og:title',
-      content: 'About Tianna Rosita Gourmet — Awka’s Best Restaurant Experience',
-    },
-    {
-      property: 'og:description',
-      content:
-        'Discover our story at Tianna Rosita Gourmet, where gourmet flavors meet relaxation. Located inside Solution Fun City, Awka.',
-    },
-    {
-      property: 'og:image',
-      content: '/logo.png',
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-    {
-      property: 'og:url',
-      content: 'https://tiannarosita.netlify.app/about', // ✅ Replace later with your real domain
-    },
+    { name: "description", content: "Learn about Tianna Rosita Gourmet, Awka’s premier restaurant offering fine dining and outdoor experiences with Paystack ordering." },
+    { property: "og:title", content: "About Tianna Rosita Gourmet — Awka’s Fine Dining Experience" },
+    { property: "og:image", content: "/logo.png" },
   ],
 });
-
-// 🥗 You can keep your current About page content here
-const restaurantStory = ref(`
-Tianna Rosita Gourmet is a proudly Nigerian restaurant located in the heart of Awka, Anambra.
-We blend traditional flavors with a modern touch — serving fresh meals, grilled delights, and chef-curated buffets in a cozy indoor and outdoor space.
-From romantic dinners to Sunday family feasts, we offer an unforgettable dining experience.
-`);
-
 </script>
 
 <style scoped>
+/* 🌅 HERO SECTION */
 .about-hero {
   position: relative;
   background-image: url('/slider/IMG_0189.JPG');
   background-size: cover;
   background-position: center;
-  height: 60vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.about-hero .overlay {
+.about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(7, 7, 10, 0.4), rgba(7, 7, 10, 0.8));
+}
+
+.overlay {
+  position: relative;
   text-align: center;
-  color: white;
-  padding: 0 20px;
+  color: #fff;
+  z-index: 2;
 }
 
-.about-hero h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+.overlay h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
-.about-hero p {
+.overlay p {
   font-size: 1.2rem;
+  font-weight: 300;
+  color: #f2f2f2;
 }
 
+/* 🥂 OUR STORY SECTION */
 .our-story {
-  padding: 60px 20px;
-  background: #07070a;
-
+  padding: 80px 20px;
+  background: #0a0a0d;
   color: #fdfdfd;
 }
 
 .story-container {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 950px;
+  margin: 0 auto 60px;
   text-align: center;
+}
+
+.story-container h3 {
+  font-size: 1.8rem;
+  color: #e7b96a;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
 }
 
 .intro-text {
   max-width: 800px;
-  margin: 0 auto 40px;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  margin: 0 auto 25px;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #d9d9d9;
 }
 
-
+/* 📸 IMAGE GALLERY */
 .image-gallery {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap; /* Makes it responsive */
-  margin-top: 40px;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 60px auto;
 }
 
 .image-gallery img {
-  width: 300px;
-  height: 200px;
+  width: 310px;
+  height: 210px;
   object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  filter: brightness(90%) contrast(105%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.35s ease;
 }
 
 .image-gallery img:hover {
-  transform: scale(1.05);
+  transform: scale(1.06);
+  filter: brightness(100%) contrast(110%);
 }
 
+/* ✨ DIVIDER */
+.divider {
+  width: 80px;
+  height: 3px;
+  background: #e7b96a;
+  margin: 50px auto;
+  border-radius: 3px;
+}
+
+/* 💫 ANIMATIONS */
+.fade-in {
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
