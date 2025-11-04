@@ -175,7 +175,7 @@ export default {
         subtitle: "Eat all you can • Every Sunday • From 12 PM",
         image: "/slider/hero1.jpeg",
       },
-     
+
       {
         title:
           "ENJOY EXCLUSIVE DISCOUNTS WHEN YOU ORDER DIRECTLY FROM OUR WEBSITE",
@@ -226,7 +226,7 @@ export default {
       },
       {
         title: "ABOUT US",
-        image: "/slider/chef.jpeg",
+        image: "/slider/IMG_0190.JPG",
         route: "/about",
       },
       {
