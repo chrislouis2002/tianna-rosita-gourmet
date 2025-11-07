@@ -94,7 +94,7 @@
     <div class="step">
       <q-icon name="delivery_dining" size="50px" color="red" />
       <h4>Enjoy</h4>
-      <p>We’ll deliver your meal hot and fresh, right to your door.</p>
+      <p>We’ll deliver your meal hot and fresh, right to your door in minutes.</p>
     </div>
   </div>
 </section>
@@ -109,15 +109,16 @@
         :to="item.route"
         class="col-12 col-md-6 category-card"
       >
-        <q-img
-          :src="item.image"
-          :ratio="16/9"
-          class="image-card"
-        >
-          <div class="overlay flex flex-center">
-            <h2 class="text-white text-h4 text-bold">{{ item.title }}</h2>
-          </div>
-        </q-img>
+    <q-img
+  :src="item.image"
+  :ratio="16/9"
+  class="image-card"
+  style="object-fit: contain; object-position: top center;"
+>
+  <div class="overlay flex flex-center">
+    <h2 class="text-white text-h4 text-bold">{{ item.title }}</h2>
+  </div>
+</q-img>
       </router-link>
 
 
@@ -234,7 +235,7 @@ export default {
       },
       {
         title: "ABOUT US",
-        image: "/slider/IMG_0190.JPG",
+        image: "/slider/IMG_0203.jpg",
         route: "/about",
       },
       {
@@ -406,8 +407,9 @@ export default {
   transition: transform 0.5s ease;
   width: 100%;
   height: 480px;
-  object-fit: cover;
+
 }
+
 
 .category-card:hover .image-card {
   transform: scale(1.04);

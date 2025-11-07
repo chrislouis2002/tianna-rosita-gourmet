@@ -23,7 +23,7 @@
 
       <!-- ✅ Horizontal Image Section -->
       <div class="image-gallery">
-        <img src="/slider/IMG_0191.JPG" alt="Restaurant interior" />
+        <img src="/slider/IMG_0190.JPG" alt="Restaurant interior" />
         <img src="/slider/IMG_0188.JPG" alt="Chef cooking" />
       </div>
 
@@ -131,8 +131,8 @@ useMeta({
 }
 
 .image-gallery img {
-  width: 310px;
-  height: 210px;
+  width: 350px;
+  height: 250px;
   object-fit: cover;
   border-radius: 12px;
   filter: brightness(90%) contrast(105%);
