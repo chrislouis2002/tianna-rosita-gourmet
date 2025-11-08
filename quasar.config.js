@@ -32,7 +32,7 @@ module.exports = configure(function (/* ctx */) {
         node: "node16",
       },
 
-      vueRouterMode: "history",
+      vueRouterMode: "hash",
 
       extendViteConf(viteConf) {
         viteConf.resolve = viteConf.resolve || {};

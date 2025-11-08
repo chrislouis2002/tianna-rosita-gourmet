@@ -235,7 +235,7 @@ export default {
       },
       {
         title: "ABOUT US",
-        image: "/slider/IMG_0203.jpg",
+        image: "/slider/Tianna-chef1.jpg",
         route: "/about",
       },
       {

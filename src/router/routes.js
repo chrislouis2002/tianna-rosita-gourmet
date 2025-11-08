@@ -8,7 +8,7 @@ const routes = [
       { path: 'about', name: 'about', component: () => import('pages/AboutUs.vue') },
       { path: 'events', name: 'events', component: () => import('pages/EventsPage.vue') },
       { path: 'find', name: 'find', component: () => import('pages/FindUs.vue') },
-
+      
       // ✅ Checkout should hide background + footer
       { path: 'checkout', name: 'checkout', component: () => import('pages/CheckoutPage.vue'), meta: { hideFooter: true, noBackground: true } },
 
@@ -20,6 +20,14 @@ const routes = [
     ]
   },
 
+  // ✅ Move order-success OUTSIDE the MainLayout
+  {
+    path: '/order-success',
+    name: 'order-success',
+    component: () => import('pages/OrderSuccess.vue'),
+    meta: { hideFooter: true, noBackground: true },
+  },
+
   // Always leave this as last one
   {
     path: '/:catchAll(.*)*',
@@ -28,3 +36,8 @@ const routes = [
 ]
 
 export default routes
+
+
+
+
+

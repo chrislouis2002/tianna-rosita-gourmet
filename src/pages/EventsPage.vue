@@ -92,19 +92,19 @@ useMeta({
 const services = ref([
   {
     title: 'Private Events & Celebrations',
-    image: '/slider/_ (6).jpeg',
+    image: '/slider/dinning.jpg',
     desc:
       'Reserve our elegant indoor space for birthdays, meetings, corporate gatherings and memorable celebrations. Full-service event planning available.',
   },
   {
     title: 'Sunday Buffet Experience',
-    image: '/slider/_ (7).jpeg',
+    image: '/slider/buffet2.jpg',
     desc:
       'Sunday Buffet — Adults: ₦25,000 • Ages 5–12: ₦15,000 • 0–4yrs: FREE. A lavish buffet with live stations and family-friendly options.',
   },
   {
     title: 'Full Bar & Evening Ambience',
-    image: '/slider/hero5.jpeg',
+    image: '/slider/bar2.jpg',
     desc:
       'Cozy bar with premium drinks and mood lighting — perfect for after-parties and intimate gatherings.',
   },
@@ -141,7 +141,7 @@ const openContactForm = () => {
 .hero {
   background-image:
     linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-    url('/slider/Glamorous-black-and-gold-wedding-reception.jpeg'); /* 👈 your actual image here */
+    url('/slider/lounge.jpg'); /* 👈 your actual image here */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
