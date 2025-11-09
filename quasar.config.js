@@ -1,13 +1,5 @@
 /* eslint-env node */
 
-/*
- * This file runs in a Node context (it's NOT transpiled by Babel), so use only
- * the ES6 features that are supported by your Node version. https://node.green/
- */
-
-// Configuration for your app
-// https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
 const { configure } = require("quasar/wrappers");
 const path = require("path");
 
@@ -23,16 +15,17 @@ module.exports = configure(function (/* ctx */) {
     extras: [
       "roboto-font",
       "material-icons",
-      "fontawesome-v6", // ✅ this loads Font Awesome officially into Quasar
+      "fontawesome-v6",
     ],
 
     build: {
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
-        node: "node16",
+        node: "node22", // matches Vercel runtime
       },
 
-      vueRouterMode: "hash",
+      vueRouterMode: "history", // clean URLs for SPA
+      publicPath: "/",          // ensures assets load correctly on Vercel
 
       extendViteConf(viteConf) {
         viteConf.resolve = viteConf.resolve || {};
@@ -46,12 +39,11 @@ module.exports = configure(function (/* ctx */) {
     },
 
     devServer: {
-      open: true, // opens browser window automatically
+      open: true,
     },
 
     framework: {
       config: {},
-
       plugins: [],
     },
 
@@ -72,7 +64,6 @@ module.exports = configure(function (/* ctx */) {
     },
 
     cordova: {},
-
     capacitor: {
       hideSplashscreen: true,
     },
