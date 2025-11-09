@@ -70,19 +70,19 @@
 <!-- CINEMATIC VIDEO SHOWCASE -->
 <section class="video-showcase">
  <div class="video-wrapper">
-  <iframe
+ <iframe
     id="player"
-    src="https://www.youtube.com/embed/r0fCureBKAI?autoplay=1&mute=1&loop=1&playlist=r0fCureBKAI&controls=0&modestbranding=1&rel=0"
+    src="https://www.youtube.com/embed/U17lNLoJeKs?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=U17lNLoJeKs&controls=0&modestbranding=1&rel=0"
     frameborder="0"
     allow="autoplay; encrypted-media"
     allowfullscreen
     loading="lazy"
-  ></iframe>
+></iframe>
 </div>
   <div class="video-overlay">
     <!-- <h2 class="video-title">The Tianna Rosita Experience</h2>
     <p class="video-subtitle">A taste of passion, culture, and flavor — all in one frame.</p> -->
-    <!-- <button id="video-toggle" class="video-btn">❚❚ Pause</button> -->
+    <button id="video-toggle" class="video-btn">❚❚</button>
   </div>
 </section>
 
@@ -191,6 +191,37 @@ export default {
 
   setup() {
     const slide = ref(0);
+
+    onMounted(() => {
+  // 1️⃣ Load YouTube API
+  const tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.body.appendChild(tag);
+
+  // 2️⃣ Player and state
+  let player;
+  let isPlaying = true;
+
+  // 3️⃣ This runs when API is ready
+  window.onYouTubeIframeAPIReady = function () {
+    player = new YT.Player("player");
+  };
+
+  // 4️⃣ Connect your button
+  const button = document.getElementById("video-toggle");
+  button.addEventListener("click", () => {
+    if (!player) return;
+
+    if (isPlaying) {
+      player.pauseVideo();
+      button.textContent = "▶"; // changes to play icon
+    } else {
+      player.playVideo();
+      button.textContent = "❚❚"; // changes to pause icon
+    }
+    isPlaying = !isPlaying;
+  });
+});
 
     // hero slides (dummy images — replace with actual ones later)
     const slides = [
@@ -605,13 +636,13 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 160vw; /* zooms video wider than the screen */
-  height: 160vh; /* ensures full coverage vertically too */
+  
   transform: translate(-50%, -50%);
   object-fit: cover;
   transform-origin: center;
   animation: zoomSlow 30s ease-in-out infinite alternate;
   pointer-events: none; /* so overlay buttons still work */
+ 
 }
 
 /* Subtle cinematic zoom animation */
@@ -627,11 +658,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.25) 0%,
     rgba(0, 0, 0, 0.6) 90%
-  );
+  ); */
   backdrop-filter: blur(0px);
   display: flex;
   flex-direction: column;
