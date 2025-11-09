@@ -67,6 +67,26 @@
   </Swiper>
 </section>
 
+<!-- CINEMATIC VIDEO SHOWCASE -->
+<section class="video-showcase">
+ <div class="video-wrapper">
+  <iframe
+    id="player"
+    src="https://www.youtube.com/embed/r0fCureBKAI?autoplay=1&mute=1&loop=1&playlist=r0fCureBKAI&controls=0&modestbranding=1&rel=0"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+</div>
+  <div class="video-overlay">
+    <!-- <h2 class="video-title">The Tianna Rosita Experience</h2>
+    <p class="video-subtitle">A taste of passion, culture, and flavor — all in one frame.</p> -->
+    <!-- <button id="video-toggle" class="video-btn">❚❚ Pause</button> -->
+  </div>
+</section>
+
+
 <section class="order-process">
   <h2>How to Order</h2>
   <div class="order-steps">
@@ -129,7 +149,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -249,6 +269,7 @@ export default {
         route: "/events",
       },
     ];
+
 
     return {
       slide,
@@ -558,5 +579,142 @@ export default {
   font-size: 0.95rem;
   margin-top: 8px;
   line-height: 1.5;
+}
+
+/* ===========================
+   CINEMATIC VIDEO SHOWCASE
+   =========================== */
+.video-showcase {
+  position: relative;
+  width: 100%;
+  height: 70vh; /* fills most of the screen height */
+  overflow: hidden;
+  background: #000;
+}
+
+/* Make the video fill a landscape container beautifully */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+#player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160vw; /* zooms video wider than the screen */
+  height: 160vh; /* ensures full coverage vertically too */
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  transform-origin: center;
+  animation: zoomSlow 30s ease-in-out infinite alternate;
+  pointer-events: none; /* so overlay buttons still work */
+}
+
+/* Subtle cinematic zoom animation */
+@keyframes zoomSlow {
+  from { transform: translate(-50%, -50%) scale(1); }
+  to { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* Overlay with gradient + text + button */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.6) 90%
+  );
+  backdrop-filter: blur(0px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  animation: fadeIn 1.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Text animations */
+.video-title, .video-subtitle {
+  opacity: 0;
+  animation: fadeText 2s ease forwards;
+}
+.video-title { animation-delay: 0.5s; }
+.video-subtitle { animation-delay: 1s; }
+
+@keyframes fadeText {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Title + Subtitle styling */
+.video-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #d4af37;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.video-subtitle {
+  font-size: 1.2rem;
+  max-width: 650px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Glassy Play/Pause button */
+.video-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.video-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .video-showcase { height: 60vh; }
+  #player { width: 160%; height: 160%; }
+}
+
+@media (max-width: 768px) {
+  .video-showcase { height: 55vh; }
+  .video-title { font-size: 1.6rem; }
+  .video-subtitle { font-size: 1rem; }
+  .video-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-showcase { height: 50vh; }
+  .video-title { font-size: 1.4rem; }
+  .video-subtitle { font-size: 0.9rem; }
 }
 </style>
