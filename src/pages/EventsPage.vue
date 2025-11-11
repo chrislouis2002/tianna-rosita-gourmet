@@ -110,7 +110,7 @@ const services = ref([
   },
   {
     title: 'Outdoor Park Packages',
-    image: '/slider/_ (8).jpeg',
+    image: '/slider/waterpark.webp',
     desc:
       'Lightweight outdoor setups near the rides — casual food stands, quick bites and open-air vibes.',
   },

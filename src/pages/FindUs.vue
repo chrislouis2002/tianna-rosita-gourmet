@@ -4,13 +4,13 @@
     <section class="visit-section">
       <div class="overlay"></div>
       <div class="overlay-content">
-        <h2>COME SAY HI! FIND US AT SOLUTION FUN CITY, AWKA</h2>
+        <h2>COME SAY HI!! FIND US AT SOLUTION FUN CITY, AWKA</h2>
         <q-btn
           label="Visit Us"
           unelevated
           rounded
           class="q-mt-md custom-visit-btn"
-          href="https://www.google.com/maps/place/Solution+Fun+City/@6.2175551,7.0617862,3a,75y,90t/data=!3m8!1e5!3m6!1sCIABIhDDzqejtUf8FZe8FAFz6Hbf!2e10!3e10!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FAG0ilSznzCVkU0pxv_TzfnZ_v5y40dgHd03lJkJawHNSOkKzrjI1PzE7kul8rxCBAt00uxQdrjnVknNsxqQMGmDnqRkDN1wGgXOUkKzQBwx08vpVV4f8wQsTWcft_tmodkmsKLW9ibLst2QdBYc%3Dw86-h152-k-no!7i1080!8i1920!4m7!3m6!1s0x104383ffde16a36f:0x2e1fa0f31309a13e!8m2!3d6.2175551!4d7.0617862!10e5!16s%2Fg%2F11yd9x38tk?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D"
+          href="https://www.google.com/maps?sca_esv=34615b30853c4efe&hl=en-GB&gl=ng&kgmid=/g/11ymnd569f&shndl=30&um=1&ie=UTF-8&fb=1&sa=X&geocode=KeVAGOVtg0MQMTqOMpLIuuBY&daddr=Solution+fun+city,+Onitsha+-+Enugu+Expy,+Awka+420103,+Anambra"
           target="_blank"
         />
       </div>
@@ -66,7 +66,7 @@ export default {
 /* HERO SECTION */
 .visit-section {
   position: relative;
-  background-image: url('/slider/istockphoto-1065651036-612x612.jpg'); /* Change to your image path */
+  background-image: url('/slider/lounge2.jpg'); /* Change to your image path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
