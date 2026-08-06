@@ -18,8 +18,8 @@
       <div class="footer-section">
                   <p class="text-h6 text-weight-medium text-yellow-6 q-my-lg">OPENING HOURS</p>
 
-        <p>Mon - Sat: 10AM - 6PM</p>
-        <p>Sun: 12PM - 9PM</p>
+        <p>Mon - Sat: 10AM - 9PM</p>
+        <p>Sun: 12PM - 10PM</p>
       </div>
 
       <!-- Social Links -->
