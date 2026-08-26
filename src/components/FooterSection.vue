@@ -11,6 +11,7 @@
           <p class="text-h6 text-weight-medium text-yellow-6 q-my-lg">VISIT US</p>
         <p>📍 Solution Fun City, Awka, Anambra</p>
         <p>📞 +234 706 963 7571</p>
+        <p>📞 +234 812 969 1245</p>
         <p>📩 tiannarosita@gmail.com</p>
       </div>
 
