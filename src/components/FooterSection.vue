@@ -15,6 +15,7 @@
         <p>📩 tiannarosita@gmail.com</p>
       </div>
 
+
       <!-- Working Hours -->
       <div class="footer-section">
                   <p class="text-h6 text-weight-medium text-yellow-6 q-my-lg">OPENING HOURS</p>

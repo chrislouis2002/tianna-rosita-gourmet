@@ -246,25 +246,23 @@ export default {
 
     // ✅ Signature dishes slider items
     const signatureDishes = ref([
-      { name: "Loaded Fries", image: "/slider/IMG_0158.jpg" },
-      { name: "Loaded Fries", image: "/slider/IMG_0159.jpg" },
-      { name: "Loaded Fries", image: "/slider/hero2.JPG" },
+      { name: "asun rice", image: "/slider/asun-rice.jpg" },
+      { name: "pizza", image: "/slider/IMG_0158.jpg" },
+      { name: "catfish", image: "/slider/peppered-catfish.jpg" },
+      { name: "waffles-and-icecream", image: "/slider/waffles-and-icecream.jpg" },
+      { name: "indomie", image: "/slider/indomie-and-eggs.jpg" },
+      { name: "seafood boil", image: "/slider/IMG_0159.jpg" },
+
+      { name: "alfredo pasta", image: "/slider/alfredo-pasta-penne.jpg" },
+      
       { name: "Loaded Fries", image: "/slider/hero6.JPG" },
-      {
-        name: "Loaded Fries",
-        image: "/category_images/Loaded-Fries-735x490.webp/",
-      },
-      {
-        name: "Loaded Fries",
-        image:
-          "/slider/chicken_wings_lolipop _food _foodie_ food lover_ delicious street food _chicken recipe_ snacks.jpeg",
-      },
+
       { name: "Loaded Fries", image: "/slider/19a277a8-d746-4ff2-982f-d372d4b250ba.JPG" },
       {
         name: "Buffet Sunday Special",
         image: "/slider/417378f1-36e0-44d4-9ad9-c263b8802354.JPG",
       },
-      { name: "Grilled Chicken Platter", image: "/slider/hero2.JPG" },
+
     ]);
 
     // responsive breakpoints
@@ -636,13 +634,13 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  
+
   transform: translate(-50%, -50%);
   object-fit: cover;
   transform-origin: center;
   animation: zoomSlow 30s ease-in-out infinite alternate;
   pointer-events: none; /* so overlay buttons still work */
- 
+
 }
 
 /* Subtle cinematic zoom animation */
