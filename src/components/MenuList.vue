@@ -173,6 +173,9 @@ export default defineComponent({
 
 
     const openProduct = (item) => {
+      // ✅ Save the exact menu position before opening the product
+      sessionStorage.setItem("menuScrollPosition", String(window.scrollY));
+
       router.push({
         name: "product",
         params: {

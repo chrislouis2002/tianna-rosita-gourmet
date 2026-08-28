@@ -233,20 +233,42 @@ export default defineComponent({
 
 
 
-    // ✅ Fetch menu from Firestore when page loads
-   onMounted(async () => {
-  await store.fetchMenu();
+    // ✅ Restore the exact menu position after returning from a product
+    const restoreMenuScroll = () => {
+      const savedScroll = sessionStorage.getItem("menuScrollPosition");
 
-  // ✅ Sort each category's items alphabetically
-  store.menu.forEach(category => {
-    if (category.items && Array.isArray(category.items)) {
-      category.items.sort((a, b) => a.name.localeCompare(b.name));
-    }
-  });
 
-  // ✅ Build category name list for top navigation
-  cat_name_list.value = store.menu.map(cat => cat.category);
-});
+      if (savedScroll !== null) {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            window.scrollTo(0, Number(savedScroll));
+            sessionStorage.removeItem("menuScrollPosition");
+          });
+        });
+      }
+    };
+
+
+    onMounted(async () => {
+      await store.fetchMenu();
+
+
+      // Sort each category's items alphabetically
+      store.menu.forEach(category => {
+        if (category.items && Array.isArray(category.items)) {
+          category.items.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      });
+
+
+      // Build category name list for top navigation
+      cat_name_list.value = store.menu.map(cat => cat.category);
+
+
+      // Restore position after the menu has rendered
+      restoreMenuScroll();
+    });
+
 
 
 
