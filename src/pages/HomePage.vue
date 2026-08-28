@@ -247,15 +247,17 @@ export default {
     // ✅ Signature dishes slider items
     const signatureDishes = ref([
       { name: "asun rice", image: "/slider/asun-rice.jpg" },
+      { name: "asun", image: "/slider/Asun.jpg" },
+      { name: "chicken shawarma", image: "/slider/chicken-shawarma.jpg" },
       { name: "pizza", image: "/slider/IMG_0158.jpg" },
       { name: "catfish", image: "/slider/peppered-catfish.jpg" },
       { name: "waffles-and-icecream", image: "/slider/waffles-and-icecream.jpg" },
-      { name: "indomie", image: "/slider/indomie-and-eggs.jpg" },
       { name: "seafood boil", image: "/slider/IMG_0159.jpg" },
+      { name: "jollof spaghetti", image: "/slider/jollof-spaghetti.jpg" },
+      { name: "chocolate milkshake", image: "/slider/chocolate-milkshake.jpg" },
+      { name: "protein platter", image: "/slider/protein-platter.jpg" },
 
       { name: "alfredo pasta", image: "/slider/alfredo-pasta-penne.jpg" },
-      
-      { name: "Loaded Fries", image: "/slider/hero6.JPG" },
 
       { name: "Loaded Fries", image: "/slider/19a277a8-d746-4ff2-982f-d372d4b250ba.JPG" },
       {
