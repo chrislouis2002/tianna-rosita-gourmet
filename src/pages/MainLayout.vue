@@ -193,6 +193,34 @@
         </q-scroll-area>
 
 
+        <!-- ✅ Cart Total -->
+        <div
+          style="
+            text-align: center;
+            padding: 15px 10px 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 10px;
+          "
+        >
+          <div
+            style="
+              font-size: 20px;
+              font-weight: bold;
+              color: #ffd600;
+              font-family: 'rubik';
+            "
+          >
+            Total:
+            {{
+              new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+              }).format(cartTotal)
+            }}
+          </div>
+        </div>
+
+
         <div style="text-align: center; margin-top: 1rem; padding: 10px">
           <q-btn
             color="red"
@@ -219,6 +247,14 @@ const route = useRoute()
 // ✅ Shared cart state for all pages
 const store = useMenu()
 const cart_list = ref(false)
+
+
+// ✅ Calculate total price of all items in the cart
+const cartTotal = computed(() => {
+  return store.cart.reduce((total, item) => {
+    return total + (Number(item.price) * Number(item.quantity || 1))
+  }, 0)
+})
 
 // Pages where footer & background should NOT show
 const excludePages = ['login', 'admin', 'checkout']
