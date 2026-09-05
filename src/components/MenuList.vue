@@ -1,5 +1,8 @@
 <template>
-  <div class="bgg">
+  <div
+    class="bgg"
+    :id="`menu-category-${category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`"
+  >
     <div class="q-pa-sm imgcc" style="display: flex; justify-content: center">
       <div class="img-tray-outer">
         <div class="img-tray-inner">
@@ -319,17 +322,19 @@ export default defineComponent({
   border-radius: 100%;
 }
 .bgg {
-  background: rgba(10, 10, 10, 1);
+  background: #fff;
   margin-top: 1rem;
   border-radius: 25px;
+  border: 1px solid #eaded6;
+  box-shadow: 0 8px 28px rgba(43, 23, 18, 0.06);
 }
 .title-cat {
   overflow: break-word;
   font-size: 25px;
   font-family: "rubik";
   padding-top: 1rem;
-  color: rgba(255, 255, 255, 1);
-  text-shadow: 1px 1px rgb(0, 0, 0);
+  color: #2b1712;
+  text-shadow: none;
 }
 .outer-count {
   height: 45px;
@@ -376,7 +381,7 @@ export default defineComponent({
 }
 .quantity-display {
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
+  color: #2b1712;
   min-width: 20px;
   text-align: center;
   font-size: 16px;
@@ -384,12 +389,13 @@ export default defineComponent({
 
 /* ===== Dialog styles ===== */
 .dialog-card {
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  border-radius: 16px;
+  background: #fff;
+  color: #2b1712;
+  border-radius: 20px;
   max-width: 400px;
   width: 90%;
-backdrop-filter: blur(5px);
+  border: 1px solid #eaded6;
+  box-shadow: 0 20px 60px rgba(43, 23, 18, 0.18);
 }
 
 .dialog-image-container {
@@ -409,11 +415,11 @@ backdrop-filter: blur(5px);
 }
 .dialog-details p {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #806f68;
 }
 .dialog-details h5 {
   margin-top: 10px;
-  color: #ffcdd2;
+  color: #f4511e;
 }
 </style>
 
@@ -432,9 +438,17 @@ backdrop-filter: blur(5px);
   min-width: 0;
   overflow: hidden;
   border-radius: 18px;
-  background: rgba(28, 28, 28, 0.96);
-  border: 1px solid rgba(229, 115, 115, 0.28);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  background: #fff;
+  border: 1px solid #eaded6;
+  box-shadow: 0 8px 22px rgba(43, 23, 18, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(43, 23, 18, 0.12);
 }
 
 
@@ -442,7 +456,7 @@ backdrop-filter: blur(5px);
   width: 100%;
   aspect-ratio: 1 / 0.82;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.35);
+  background: #fff7f1;
 }
 
 
@@ -480,7 +494,7 @@ backdrop-filter: blur(5px);
   font-size: 15px;
   line-height: 1.35;
   font-weight: 700;
-  color: white;
+  color: #2b1712;
 }
 
 
@@ -488,7 +502,7 @@ backdrop-filter: blur(5px);
   margin-top: 5px;
   font-family: "rubik";
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
+  color: #806f68;
 }
 
 
@@ -514,7 +528,7 @@ backdrop-filter: blur(5px);
   font-family: "martian";
   font-size: 14px;
   font-weight: 700;
-  color: rgba(255, 215, 64, 1);
+  color: #f4511e;
 }
 
 

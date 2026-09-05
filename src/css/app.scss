@@ -1,1 +1,26 @@
-// app global css in SCSS form
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
+
+// Global light restaurant theme
+
+
+html,
+body,
+#q-app {
+  background: #FFF9F2;
+  color: #2B1712;
+  min-height: 100%;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.q-layout,
+.q-page-container,
+.q-page {
+  background: #FFF9F2;
+  color: #2B1712;
+}

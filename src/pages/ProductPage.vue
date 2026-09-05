@@ -26,8 +26,8 @@
         flat
         icon="arrow_back"
         label="Back to Menu"
-        color="white"
-        to="/menu"
+        color="brown-10"
+        @click="goBackToMenu"
         class="back-btn"
       />
 
@@ -217,6 +217,29 @@ export default defineComponent({
     const store = useMenu();
 
 
+
+
+    // Return to the correct menu category when this product
+    // was opened from Homepage Popular Picks.
+    const goBackToMenu = () => {
+      const category = route.query.category;
+
+
+      if (category) {
+        router.push({
+          path: "/menu",
+          query: {
+            category,
+          },
+        });
+        return;
+      }
+
+
+      router.push("/menu");
+    };
+
+
     const productId = computed(() => route.params.id);
 
 
@@ -311,6 +334,7 @@ export default defineComponent({
 
 
     return {
+      goBackToMenu,
       store,
       product,
       productCategory,
@@ -331,12 +355,8 @@ export default defineComponent({
 .product-page {
   min-height: 100vh;
   padding: 30px 16px 60px;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.94)),
-    url("../6.png");
-  background-size: cover;
-  background-position: center;
-  color: white;
+  background: #fff;
+  color: #2b1712;
 }
 
 
@@ -367,9 +387,9 @@ export default defineComponent({
   align-items: center;
   padding: 22px;
   border-radius: 28px;
-  background: rgba(18, 18, 18, 0.94);
-  border: 1px solid rgba(229, 115, 115, 0.25);
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+  background: #ffffff;
+  border: 1px solid #eaded6;
+  box-shadow: 0 15px 45px rgba(43, 23, 18, 0.12);
 }
 
 
@@ -377,7 +397,7 @@ export default defineComponent({
   overflow: hidden;
   border-radius: 22px;
   aspect-ratio: 1 / 0.9;
-  background: rgba(0, 0, 0, 0.4);
+  background: #fff7f1;
 }
 
 
@@ -403,7 +423,7 @@ export default defineComponent({
   font-family: "rubik", sans-serif;
   letter-spacing: 2px;
   font-size: 13px;
-  color: rgba(255, 215, 64, 1);
+  color: #f4511e;
 }
 
 
@@ -421,14 +441,14 @@ export default defineComponent({
   padding: 5px 12px;
   border-radius: 20px;
   background: rgba(229, 115, 115, 0.14);
-  color: rgba(255, 255, 255, 0.75);
+  color: #806f68;
 }
 
 
 .product-description {
   max-width: 520px;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.7);
+  color: #806f68;
   font-family: "martian", sans-serif;
   font-size: 14px;
 }
@@ -439,7 +459,7 @@ export default defineComponent({
   font-family: "martian", sans-serif;
   font-size: 27px;
   font-weight: 700;
-  color: rgba(255, 215, 64, 1);
+  color: #f4511e;
 }
 
 
@@ -512,15 +532,16 @@ export default defineComponent({
   overflow: hidden;
   border-radius: 18px;
   cursor: pointer;
-  background: rgba(28, 28, 28, 0.96);
-  border: 1px solid rgba(229, 115, 115, 0.2);
+  background: #ffffff;
+  border: 1px solid #eaded6;
+  box-shadow: 0 8px 22px rgba(43, 23, 18, 0.08);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 
 .related-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(229, 115, 115, 0.7);
+  border-color: rgba(229, 115, 115, 0.55);
 }
 
 
@@ -540,7 +561,7 @@ export default defineComponent({
 .related-placeholder {
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.35);
+  background: #fff7f1;
 }
 
 
@@ -553,7 +574,7 @@ export default defineComponent({
   font-family: "martian", sans-serif;
   font-size: 13px;
   font-weight: 700;
-  color: white;
+  color: #2b1712;
 }
 
 
@@ -561,7 +582,7 @@ export default defineComponent({
   margin-top: 8px;
   font-family: "martian", sans-serif;
   font-size: 12px;
-  color: rgba(255, 215, 64, 1);
+  color: #f4511e;
 }
 
 

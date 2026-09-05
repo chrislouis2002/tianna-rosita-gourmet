@@ -10,7 +10,7 @@
           unelevated
           rounded
           class="q-mt-md custom-visit-btn"
-          href="https://www.google.com/maps?sca_esv=34615b30853c4efe&hl=en-GB&gl=ng&kgmid=/g/11ymnd569f&shndl=30&um=1&ie=UTF-8&fb=1&sa=X&geocode=KeVAGOVtg0MQMTqOMpLIuuBY&daddr=Solution+fun+city,+Onitsha+-+Enugu+Expy,+Awka+420103,+Anambra"
+          href="https://www.google.com/maps/place/Tianna+Rosita/@6.2136739,7.0476694,14z/data=!4m10!1m2!2m1!1stianna+rosita+awka!3m6!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!15sChJ0aWFubmEgcm9zaXRhIGF3a2FaFCISdGlhbm5hIHJvc2l0YSBhd2thkgEVaXRhbGlhbl9ncm9jZXJ5X3N0b3JlmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4T2ExTXhVbmxrUlRGd1lXNVNOV0Z0ZHpGWFJUbEpZakJzVGs5VlJSQULgAQD6AQQIABA3!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
         />
       </div>
