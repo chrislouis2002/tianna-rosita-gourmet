@@ -1,7 +1,12 @@
 <template>
   <div id="body">
     <!-- ✅ Top navigation -->
-    <MenuNavigation :categories="cat_name_list" :category-images="cat_name_list.map(category => categoryImages[category])" />
+    <MenuNavigation
+      :categories="cat_name_list"
+      :category-images="
+        cat_name_list.map((category) => categoryImages[category])
+      "
+    />
 
     <!-- <div id="header-section" class="q-pa-sm">
       <div class="logobx"><img src="logo.png" id="logo" /></div>
@@ -12,7 +17,7 @@
     <div class="q-pa-md flex flex-center">
       <q-input
         v-model="searchQuery"
-        placeholder="Search for a food item..."
+        placeholder=" a food item..."
         filled
         dense
         rounded
@@ -26,31 +31,25 @@
       </q-input>
     </div>
 
-   <!-- ✅ Display each category and its items -->
-<div class="q-ma-sm">
-  <div class="q-ma-sm">
-<div v-for="(category, index) in filteredMenu" :key="index">
-    <MenuList
-      :foods="category.items"
-      :category="category.category"
-    :image="categoryImages[category.category]"
-      :categoryIndex="index"
-      :description="category.description"
-
-    />
-  </div>
-</div>
-
-</div>
-
+    <!-- ✅ Display each category and its items -->
+    <div class="q-ma-sm">
+      <div class="q-ma-sm">
+        <div v-for="(category, index) in filteredMenu" :key="index">
+          <MenuList
+            :foods="category.items"
+            :category="category.category"
+            :image="categoryImages[category.category]"
+            :categoryIndex="index"
+            :description="category.description"
+          />
+        </div>
+      </div>
+    </div>
 
     <!-- ✅ Footer sections -->
     <!-- <FirstFooter />
     <LastFooter /> -->
-
   </div>
-
-
 </template>
 
 <script>
@@ -101,28 +100,24 @@ export default defineComponent({
     const cart_list = ref(false);
     const cat_name_list = ref([]);
     const categoryImages = {
-  Starters: "starters.jpeg",
-  Pizza: "pizza.png",
-  Extras: "Loaded-Fries-735x490.webp",
-  Salads: "salad.jpeg",
-  Drinks: "wine.png",
-  Desserts: "dessert.jpg",
-  "Finger Foods & Sides": "fingerfoods&sides.jpeg",
-  "Main Dishes": "rice.jpg",
-  "Burgers/Sandwiches/Wraps": "burgers.png"
+      Starters: "starters.jpeg",
+      Pizza: "pizza.png",
+      Extras: "Loaded-Fries-735x490.webp",
+      Salads: "salad.jpeg",
+      Drinks: "wine.png",
+      Desserts: "dessert.jpg",
+      "Finger Foods & Sides": "fingerfoods&sides.jpeg",
+      "Main Dishes": "rice.jpg",
+      "Burgers/Sandwiches/Wraps": "burgers.png",
 
-  // Add all your real category names here!
-};
-
-
+      // Add all your real category names here!
+    };
 
     // Scroll directly to a category requested through the URL
     const scrollToRequestedCategory = () => {
       const requestedCategory = route.query.category;
 
-
       if (!requestedCategory) return;
-
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -131,9 +126,7 @@ export default defineComponent({
             .replace(/[^a-z0-9]+/g, "-")
             .replace(/^-|-$/g, "")}`;
 
-
           const categoryElement = document.getElementById(categoryId);
-
 
           if (categoryElement) {
             categoryElement.scrollIntoView({
@@ -145,13 +138,9 @@ export default defineComponent({
       });
     };
 
-
-
-
     // ✅ Restore the exact menu position after returning from a product
     const restoreMenuScroll = () => {
       const savedScroll = sessionStorage.getItem("menuScrollPosition");
-
 
       if (savedScroll !== null) {
         requestAnimationFrame(() => {
@@ -163,64 +152,49 @@ export default defineComponent({
       }
     };
 
-
     onMounted(async () => {
       await store.fetchMenu();
 
-
       // Sort each category's items alphabetically
-      store.menu.forEach(category => {
+      store.menu.forEach((category) => {
         if (category.items && Array.isArray(category.items)) {
           category.items.sort((a, b) => a.name.localeCompare(b.name));
         }
       });
 
-
       // Build category name list for top navigation
-      cat_name_list.value = store.menu.map(cat => cat.category);
-
+      cat_name_list.value = store.menu.map((cat) => cat.category);
 
       // Restore position after the menu has rendered
       restoreMenuScroll();
-
 
       // Scroll to a category requested from the homepage
       scrollToRequestedCategory();
     });
 
-
-
-
     // ✅ Filter menu by search
-const filteredMenu = computed(() => {
-  const query = searchQuery.value.toLowerCase().trim();
-  if (!query) return store.menu; // ✅ No search? Show everything normally.
+    const filteredMenu = computed(() => {
+      const query = searchQuery.value.toLowerCase().trim();
+      if (!query) return store.menu; // ✅ No search? Show everything normally.
 
-  // ✅ Loop through categories and filter items inside them
-  return store.menu
-    .map(category => {
-      const filteredItems = category.items.filter(item =>
-        item.name.toLowerCase().includes(query)
-      );
-      return {
-        ...category,
-        items: filteredItems
-      };
-    })
-    .filter(category => category.items.length > 0); // ✅ Only keep categories with results
-});
-
-
-
-
+      // ✅ Loop through categories and filter items inside them
+      return store.menu
+        .map((category) => {
+          const filteredItems = category.items.filter((item) =>
+            item.name.toLowerCase().includes(query)
+          );
+          return {
+            ...category,
+            items: filteredItems,
+          };
+        })
+        .filter((category) => category.items.length > 0); // ✅ Only keep categories with results
+    });
 
     // ✅ Select item to add to cart (fixed to pick exact item)
-const select = (selectedItem) => {
-  store.addToCart(selectedItem);
-};
-
-
-
+    const select = (selectedItem) => {
+      store.addToCart(selectedItem);
+    };
 
     return {
       store,
@@ -252,7 +226,6 @@ const select = (selectedItem) => {
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(43, 23, 18, 0.2);
 }
-
 
 #body {
   background: #fffaf5;

@@ -86,30 +86,6 @@
         </div>
 
 
-        <div v-if="searchQuery.trim() && searchResults.length" class="home-search-results">
-          <button
-            v-for="item in searchResults"
-            :key="item.id"
-            type="button"
-            class="home-search-result"
-            @click="$router.push(`/product/${item.id}`)"
-          >
-            <img :src="item.image" :alt="item.name" />
-            <span class="home-search-result-info">
-              <strong>{{ item.name }}</strong>
-              <small>{{ item.category }}</small>
-            </span>
-            <span class="home-search-result-price">
-              ₦{{ Number(item.price || 0).toLocaleString() }}
-            </span>
-          </button>
-        </div>
-
-
-        <div v-else-if="searchQuery.trim() && !searchResults.length" class="home-search-empty">
-          <q-icon name="search_off" />
-          <span>No food found for "{{ searchQuery }}"</span>
-        </div>
 
       </div>
     </section>
@@ -213,6 +189,37 @@
 
 
         </div>
+
+
+        <div v-if="searchQuery.trim() && searchResults.length" class="home-search-results">
+          <button
+            v-for="item in searchResults"
+            :key="item.id"
+            type="button"
+            class="home-search-result"
+            @click="$router.push(`/product/${item.id}`)"
+          >
+            <img :src="item.image" :alt="item.name" />
+
+
+            <span class="home-search-result-info">
+              <strong>{{ item.name }}</strong>
+              <small>{{ item.category }}</small>
+            </span>
+
+
+            <span class="home-search-result-price">
+              ₦{{ Number(item.price || 0).toLocaleString() }}
+            </span>
+          </button>
+        </div>
+
+
+        <div v-else-if="searchQuery.trim() && !searchResults.length" class="home-search-empty">
+          <q-icon name="search_off" />
+          <span>No food found for "{{ searchQuery }}"</span>
+        </div>
+
 
 
       </div>
