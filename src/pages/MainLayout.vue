@@ -3,14 +3,19 @@
     <!-- Premium Restaurant Header -->
     <q-header class="restaurant-header">
       <q-toolbar class="restaurant-toolbar">
-
         <!-- Logo / Brand -->
-        <div class="brand-area" @click="$router.push('/')">
-
-          <div class="brand-name">
-            <span>TIANNA ROSITA</span>
-            <small>GOURMET</small>
-          </div>
+        <div
+          class="brand-area"
+          @click="$router.push('/')"
+          role="button"
+          tabindex="0"
+          aria-label="Tianna Rosita Gourmet - Home"
+        >
+          <img
+            src="/orange-logo.png"
+            alt="Tianna Rosita Gourmet"
+            class="brand-logo"
+          />
         </div>
 
         <!-- Desktop Navigation -->
@@ -367,6 +372,25 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alfa+Slab+One&family=Bebas+Neue&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700;6..96,800;6..96,900&family=Cinzel:wght@400;500;600;700;800;900&family=Comforter&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Lobster&family=Oswald:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@400;500;600;700;800;900&family=Righteous&family=Rye&family=UnifrakturCook:wght@700&display=swap');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+<style>
 /* ✅ Shared floating cart */
 .cart-outer {
   position: fixed;
@@ -515,12 +539,12 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 }
 
 .brand-logo {
-  width: 52px;
-  height: 52px;
+  width: 280px;
+  height: 105px;
   object-fit: contain;
-  background: #e87524;
-  border-radius: 50%;
-  padding: 5px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -531,12 +555,13 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 }
 
 .brand-name span {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 21px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #2b1712;
+  font-family: "Lobster", cursive;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #f4511e;
   font-style: normal;
+  line-height: 0.95;
 }
 
 .brand-name small {
@@ -675,8 +700,8 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   }
 
   .brand-logo {
-    width: 46px;
-    height: 46px;
+    width: 140px;
+    height: 58px;
   }
 
   .brand-name span {
@@ -692,8 +717,8 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   }
 
   .brand-logo {
-    width: 42px;
-    height: 42px;
+    width: 230px;
+    height: 88px;
   }
 
   .brand-name span {

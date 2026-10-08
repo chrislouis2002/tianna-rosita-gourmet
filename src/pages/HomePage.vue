@@ -44,8 +44,7 @@
                     label="ORDER NOW"
                     unelevated
                     class="hero-primary-btn"
-                    @click="$router.push({ path: '/menu', query: { category: category.name } })"
-                  />
+                     @click="$router.push('/menu')"                  />
 
                   <q-btn
                     label="VIEW MENU"
@@ -140,30 +139,6 @@
 
 
 
-
-    <!-- WELCOME
-    <section class="welcome-section">
-      <div class="section-container">
-        <span class="section-eyebrow">WELCOME TO TIANNA ROSITA</span>
-
-        <h2 class="section-heading">
-          GOOD FOOD. GREAT MOMENTS.
-        </h2>
-
-        <p class="section-intro">
-          From carefully prepared local favourites to delicious continental
-          dishes, we bring together great food, warm hospitality and an
-          unforgettable dining experience in Awka.
-        </p>
-
-        <q-btn
-          label="DISCOVER OUR STORY"
-          unelevated
-          class="outline-orange-btn"
-          @click="$router.push('/about')"
-        />
-      </div>
-    </section> -->
 
 
     <!-- SEARCH -->
@@ -297,7 +272,7 @@
                     icon="add"
                     size="sm"
                     class="dish-add-btn"
-                    @click.stop="menuStore.addToCart(dish)"
+                    @click.stop="addPromoItemToCart('Soul Burger combo (burger, crispy chicken & chips)')"
                     aria-label="Add to cart"
                   />
                 </div>
@@ -312,7 +287,7 @@
       </div>
     </section>
 
-   
+
 
     <!-- FOOD CATEGORIES -->
     <section class="home-categories-section">
@@ -361,143 +336,283 @@
 
 
 
+    <!-- PROMOTIONAL FOOD BANNERS -->
+    <section class="promo-banners-section">
+      <div class="section-container promo-banners-container">
+
+
+        <!-- SOUL BURGER COMBO -->
+        <article class="promo-banner promo-banner-soul">
+          <img
+            src="/slider/soul-burger-banner.png"
+            alt="Soul Burger Combo"
+            class="promo-banner-image"
+            draggable="false"
+          />
+
+
+          <div class="promo-banner-content">
+            <span class="promo-banner-badge">
+              <q-icon name="workspace_premium" />
+              SPECIAL COMBO
+            </span>
+
+
+            <h2 class="promo-banner-title">
+              Soul Burger Combo
+              <span>₦14,500 Only!</span>
+            </h2>
+
+
+            <p class="promo-banner-description">
+              1 Juicy Burger + Crispy Fries + Coke + Chicken
+            </p>
+
+
+            <p class="promo-banner-subtitle">
+              The perfect combo for your cravings!
+            </p>
+
+
+            <q-btn
+              label="ORDER NOW →"
+              unelevated
+              class="promo-banner-btn"
+              @click.stop="addPromoItemToCart('Soul Burger combo (burger, crispy chicken & chips)')"
+            />
+          </div>
+        </article>
+
+
+
+
+        <!-- SUYA PIZZA FEAST -->
+        <article class="promo-banner promo-banner-pizza">
+          <img
+            src="/slider/pizza-combo-banner.png"
+            alt="Suya Pizza Feast"
+            class="promo-banner-image"
+            draggable="false"
+          />
+
+
+          <div class="promo-banner-content">
+            <span class="promo-banner-badge">
+              <q-icon name="local_fire_department" />
+              LIMITED TIME
+            </span>
+
+
+            <h2 class="promo-banner-title">
+              Suya Pizza Feast
+              <span>₦10,500 Only!</span>
+            </h2>
+
+
+            <p class="promo-banner-description">
+              Beef Suya Pizza + 2 Cokes
+            </p>
+
+
+            <p class="promo-banner-subtitle">
+              Bold flavours, unforgettable moments.
+            </p>
+
+
+            <q-btn
+              label="ORDER NOW →"
+              unelevated
+              class="promo-banner-btn"
+              @click.stop="addPromoItemToCart('Beef suya pizza Feast ( plus 2 bottles of coke)')"
+            />
+          </div>
+        </article>
+
+
+      </div>
+    </section>
+
+
+
+
     <!-- HOW TO ORDER -->
     <section class="order-section">
       <div class="section-container">
+
+
         <div class="centered-heading">
           <span class="section-eyebrow">SIMPLE & EASY</span>
+
 
           <h2 class="section-heading">
             HOW TO ORDER
           </h2>
+
 
           <p class="section-intro">
             Your favourite meal is only a few clicks away.
           </p>
         </div>
 
+
         <div class="order-steps">
+
+
           <div
-            class="order-step clickable-step"
-            @click="$router.push('/menu')"
+            v-for="(step, index) in orderSteps"
+            :key="step.number"
+            class="order-step"
+            :class="{ 'clickable-step': step.route }"
+            @click="step.route && $router.push(step.route)"
           >
-            <div class="step-number">01</div>
-            <q-icon
-              name="restaurant_menu"
-              size="42px"
-            />
-            <h3>Browse Menu</h3>
-            <p>Explore our dishes and choose your favourites.</p>
+
+
+            <div class="step-number">
+              {{ step.number }}
+            </div>
+
+
+            <div class="step-visual">
+              <img
+                :src="step.image"
+                :alt="step.title"
+                class="step-image"
+                draggable="false"
+              />
+            </div>
+
+
+            <h3>{{ step.title }}</h3>
+
+
+            <p>{{ step.description }}</p>
+
+
+            <div
+              v-if="index < orderSteps.length - 1"
+              class="order-step-arrow"
+            >
+              <q-icon name="arrow_forward" />
+            </div>
+
+
           </div>
 
-          <div class="order-step">
-            <div class="step-number">02</div>
-            <q-icon
-              name="add_shopping_cart"
-              size="42px"
-            />
-            <h3>Add to Cart</h3>
-            <p>Select your meals and add them to your order.</p>
-          </div>
 
-          <div class="order-step">
-            <div class="step-number">03</div>
-            <q-icon
-              name="payment"
-              size="42px"
-            />
-            <h3>Checkout</h3>
-            <p>Confirm your details and pay securely.</p>
-          </div>
-
-          <div class="order-step">
-            <div class="step-number">04</div>
-            <q-icon
-              name="delivery_dining"
-              size="42px"
-            />
-            <h3>Enjoy</h3>
-            <p>Relax while your freshly prepared meal comes to you.</p>
-          </div>
         </div>
+
 
         <div class="order-cta">
           <q-btn
-            label="ORDER FOOD NOW"
+            label="ORDER FOOD NOW →"
             unelevated
             class="orange-btn large-orange-btn"
             @click="$router.push('/menu')"
           />
         </div>
-      </div>
-    </section>
 
 
-
-    <!-- EVENTS -->
-    <section class="events-section">
-      <div class="section-container">
-        <div class="events-card">
-          <div class="events-image">
-            <img
-              src="/slider/Glamorous-black-and-gold-wedding-reception.jpeg"
-              alt="Tianna Rosita Gourmet event"
-            />
-          </div>
-
-          <div class="events-content">
-            <span class="section-eyebrow">MAKE IT SPECIAL</span>
-
-            <h2 class="section-heading">
-              EVENTS, CELEBRATIONS
-              <span>& CATERING</span>
-            </h2>
-
-            <p>
-              Planning a celebration, private gathering or corporate event?
-              Let Tianna Rosita Gourmet help make it memorable.
-            </p>
-
-            <q-btn
-              label="EXPLORE EVENTS"
-              unelevated
-              class="orange-btn"
-              @click="$router.push('/events')"
-            />
-          </div>
-        </div>
       </div>
     </section>
 
 
     <!-- LOCATION -->
     <section class="location-section">
-      <div class="section-container location-content">
-        <span class="section-eyebrow">COME VISIT US</span>
+      <div class="location-container">
 
-        <h2 class="section-heading">
-          FIND US IN AWKA
-        </h2>
 
-        <p>
-          Come dine with us at Solution Fun City, Awka, Anambra State.
-        </p>
+        <div class="location-heading">
+          <span class="section-eyebrow">COME VISIT US</span>
+
+
+          <h2 class="section-heading">
+            FIND US IN AWKA
+          </h2>
+
+
+          <p>
+            Come dine with us at Solution Fun City, Awka, Anambra State.
+          </p>
+        </div>
+
+
+         <div class="q-pa-md location-map-card">
+      <iframe
+        class="map-frame"
+       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.000000000000!2d7.0617862!3d6.2175551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104383ffde16a36f%3A0x2e1fa0f31309a13e!2sSolution+Fun+City!5e0!3m2!1sen!2sng!4v0000000000000!5m2!1sen!2sng"
+  width="100%"
+  height="300"
+  style="border:0; border-radius:12px;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="Google Map Location"
+      >
+    </iframe>
+    </div>
+
+
+
+        <div class="location-info-card">
+
+
+          <div class="location-info-item">
+            <div class="location-info-icon">
+              <q-icon name="location_on" />
+            </div>
+
+
+            <div>
+              <span class="location-info-label">LOCATION</span>
+              <strong>Solution Fun City, Awka</strong>
+              <p>Anambra State, Nigeria</p>
+            </div>
+          </div>
+
+
+          <div class="location-divider"></div>
+
+
+          <div class="location-info-item">
+            <div class="location-info-icon">
+              <q-icon name="schedule" />
+            </div>
+
+
+            <div>
+              
+              <span class="location-info-label">OPENING HOURS</span>
+              <strong>Mon–Sat · 10:00 AM–9:00 PM</strong>
+              <p>Sun · 12:00 PM–10:00 PM</p>
+            </div>
+          </div>
+
+
+        </div>
+
 
         <div class="location-actions">
           <q-btn
-            label="FIND US"
+            label="GET DIRECTIONS"
+            icon="directions"
             unelevated
             class="orange-btn"
-            :href="'https://www.google.com/maps/place/Tianna+Rosita/@6.2127385,7.0647874,12z/data=!4m10!1m2!2m1!1stianna+rosita+awka!3m6!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!15sChJ0aWFubmEgcm9zaXRhIGF3a2FaFCISdGlhbm5hIHJvc2l0YSBhd2thkgEVaXRhbGlhbl9ncm9jZXJ5X3N0b3JlmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4T2ExTXhVbmxrUlRGd1lXNVNOV0Z0ZHpGWFJUbEpZakJzVGs5VlJSQULgAQD6AQQIABA3!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D'" target="_blank" rel="noopener noreferrer"
+            :href="'https://www.google.com/maps/place/Tianna+Rosita/@6.2127385,7.0647874,12z/data=!4m10!1m2!2m1!1stianna+rosita+awka!3m6!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!15sChJ0aWFubmEgcm9zaXRhIGF3a2FaFCISdGlhbm5hIHJvc2l0YSBhd2thkgEVaXRhbGlhbl9ncm9jZXJ5X3N0b3JlmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4T2ExTXhVbmxrUlRGd1lXNVNOV0Z0ZHpGWFJUbEpZakJzVGs5VlJSQULgAQD6AQQIABA3!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D'"
+            target="_blank"
+            rel="noopener noreferrer"
           />
+
 
           <q-btn
             label="ORDER ONLINE"
+            icon="shopping_bag"
             flat
             class="outline-orange-btn"
             @click="$router.push('/menu')"
           />
         </div>
+
+
       </div>
     </section>
 
@@ -554,10 +669,10 @@ export default {
     // Hero slides
     const slides = [
       {
-        title: "Good Food, Great Moments",
+        title: "Freshly baked Meaty Pizza with extra cheese",
         subtitle:
-          "From satisfying meals to unforgettable flavors.",
-        image: "/slider/cream-hero1.png",
+          "Can't get away from that cheese pull.",
+        image: "/slider/pizza-hero.png",
       },
       {
         title: "Free Popcorn & Ice-cream",
@@ -566,9 +681,9 @@ export default {
         image: "/slider/cream-hero2.png",
       },
       {
-        title: "Yummy and Satisfying",
+        title: "Come for our  Sunday Buffet",
         subtitle:
-          "Delicious meals prepared with quality ingredients and served just the way you love them.",
+          "Bring your appetite for our all you can eat Buffet with variety of exquisite mouth watering dishes every Sunday. ",
         image: "/slider/cream-hero3.png",
       },
       {
@@ -609,6 +724,35 @@ export default {
         },
       });
     };
+
+
+    // Add a promotional banner item directly from the Firestore menu.
+    const addPromoItemToCart = async (itemName) => {
+      if (!menuStore.menu.length) {
+        await menuStore.fetchMenu();
+      }
+
+
+      const item = menuStore.menu
+        .flatMap((category) => category.items || [])
+        .find(
+          (item) =>
+            String(item.name || "").trim().toLowerCase() ===
+            itemName.trim().toLowerCase()
+        );
+
+
+      if (!item) {
+        console.error(`❌ Promo item not found in Firestore menu: ${itemName}`);
+        return;
+      }
+
+
+      menuStore.addToCart(item);
+      console.log(`✅ Added to cart: ${item.name}`, item);
+    };
+
+
 
 
     const categoryImageMap = {
@@ -681,6 +825,44 @@ export default {
     });
 
 
+    // HOW TO ORDER steps
+    // Edit the text, icon or route here whenever you want.
+    const orderSteps = [
+      {
+        number: "01",
+        icon: "restaurant_menu",
+        image: "/how-to-order/browse-menu.png",
+        title: "Browse Menu",
+        description: "Explore our delicious dishes and choose your favourites.",
+        route: "/menu",
+      },
+      {
+        number: "02",
+        icon: "add_shopping_cart",
+        image: "/how-to-order/add-to-cart.png",
+        title: "Add to Cart",
+        description: "Select your meals and add them to your order.",
+        route: "/menu",
+      },
+      {
+        number: "03",
+        icon: "credit_card",
+        image: "/how-to-order/checkout.png",
+        title: "Checkout",
+        description: "Confirm your details and pay securely.",
+        route: "/checkout",
+      },
+      {
+        number: "04",
+        icon: "delivery_dining",
+        image: "/how-to-order/enjoy.png",
+        title: "Enjoy",
+        description: "Relax while your freshly prepared meal comes to you.",
+        route: null,
+      },
+    ];
+
+
     // responsive breakpoints
     const breakpoints = {
       0: { slidesPerView: 2.15 },
@@ -721,6 +903,7 @@ export default {
 
     return {
       openPopularDish,
+      addPromoItemToCart,
       slide,
       slides,
       signatureDishes,
@@ -731,6 +914,7 @@ export default {
       Autoplay,
       Navigation,
       breakpoints,
+      orderSteps,
       categories,
       openContact,
     };
@@ -739,23 +923,31 @@ export default {
 </script>
 
 <style scoped>
-/* =========================================================
-   TIANNA ROSITA GOURMET — LIGHT RESTAURANT HOMEPAGE
-   ========================================================= */
 
-/* =========================================================
-   BENEFITS ROW
-   ========================================================= */
 
-/* =========================================================
-   HOMEPAGE SEARCH
-   ========================================================= */
+/* 🎛️ HOMEPAGE DIMENSIONS — CHANGE THESE NUMBERS */
+/* 📏 DEFAULT SPACE BETWEEN HOMEPAGE SECTIONS */
+.home-page > section {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+
+
+:root {
+  --section-space: 20px;
+  --content-width: 1200px;
+  --side-space: 24px;
+  --card-gap: 12px;
+}
+
+
 
 
 .home-categories-section {
   width: 100%;
   background: #fff;
-  padding: 34px 0 38px;
+  padding: 18px 0 22px;
 }
 
 
@@ -1798,6 +1990,305 @@ export default {
   color: #ffb15c !important;
 }
 
+
+/* ---------------------------------------------------------
+   REDESIGNED LOCATION / FIND US
+   --------------------------------------------------------- */
+
+
+.location-section {
+  padding: 90px 20px 100px;
+  background: #2b1712;
+  color: #fff;
+  padding-bottom: 35px !important;
+}
+
+
+.location-container {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+}
+
+
+.location-heading {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 34px;
+}
+
+
+.location-heading .section-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+
+.location-heading .section-heading {
+  margin: 0;
+  color: #fff;
+}
+
+
+.location-heading p {
+  margin: 16px auto 0;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+
+/* Map */
+.location-map-card {
+  width: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25);
+}
+
+
+.location-map-placeholder {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(rgba(255, 250, 245, 0.78), rgba(255, 250, 245, 0.78)),
+    repeating-linear-gradient(
+      45deg,
+      #e8ddd3 0,
+      #e8ddd3 2px,
+      #f4ece5 2px,
+      #f4ece5 42px
+    );
+}
+
+
+.location-map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50% 50% 50% 0;
+  background: #a83f19;
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
+  transform: translate(-50%, -75%) rotate(-45deg);
+}
+
+
+.location-map-pin .q-icon {
+  font-size: 32px;
+  transform: rotate(45deg);
+}
+
+
+.location-map-label {
+  position: absolute;
+  top: calc(50% + 38px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 210px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #2b1712;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
+}
+
+
+.location-map-label strong,
+.location-map-label span {
+  display: block;
+}
+
+
+.location-map-label strong {
+  font-size: 0.9rem;
+}
+
+
+.location-map-label span {
+  margin-top: 3px;
+  font-size: 0.74rem;
+  color: #765c51;
+}
+
+
+/* Information card */
+.location-info-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 28px;
+  margin-top: 18px;
+  padding: 26px 30px;
+  border-radius: 22px;
+  background: #fffaf5;
+  color: #2b1712;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.16);
+}
+
+
+.location-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+}
+
+find
+.location-info-icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(168, 63, 25, 0.1);
+  color: #a83f19;
+}
+
+
+.location-info-icon .q-icon {
+  font-size: 22px;
+}
+
+
+.location-info-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #a83f19;
+}
+
+
+.location-info-item strong {
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+
+.location-info-item p {
+  margin: 4px 0 0;
+  color: #765c51;
+  font-size: 0.8rem;
+}
+
+
+.location-divider {
+  width: 1px;
+  height: 60px;
+  background: rgba(43, 23, 18, 0.12);
+}
+
+
+/* Actions */
+.location-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+
+.location-actions .q-btn {
+  min-height: 50px;
+  padding: 0 25px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+
+.location-actions .orange-btn {
+  background: #ff8a1f !important;
+  color: #fff !important;
+}
+
+
+.location-actions .outline-orange-btn {
+  border: 1px solid #ffb15c;
+  color: #ffb15c !important;
+}
+
+
+/* ---------------------------------------------------------
+   LOCATION MOBILE
+   --------------------------------------------------------- */
+
+
+@media (max-width: 640px) {
+  .location-section {
+    padding: 62px 14px 70px;
+  }
+
+
+  .location-heading {
+    margin-bottom: 24px;
+  }
+
+
+  .location-heading p {
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+
+  .location-map-card {
+    border-radius: 18px;
+  }
+
+
+  .location-map-placeholder {
+    min-height: 330px;
+  }
+
+
+  .location-map-label {
+    min-width: 190px;
+  }
+
+
+  .location-info-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 12px;
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+
+  .location-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+
+  .location-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+
+  .location-actions .q-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
 /* ---------------------------------------------------------
    TABLET
    --------------------------------------------------------- */
@@ -2751,7 +3242,7 @@ export default {
 
 
   .hero-carousel {
-    aspect-ratio: 1.45 / 1;
+    aspect-ratio: 1 / 1;
     border-radius: 15px;
   }
 
@@ -2905,5 +3396,1904 @@ export default {
   }
 }
 
+
+
+/* CTA spacing fix */
+.order-cta {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 0 25px !important;
+}
+
+
+/* =========================================================
+   HOW TO ORDER — MODERN ORDERING APP DESIGN
+   ========================================================= */
+
+
+.order-section {
+  background: #ffffff !important;
+}
+
+
+.order-section .centered-heading {
+  text-align: center !important;
+  margin-bottom: 38px !important;
+}
+
+
+.order-section .section-eyebrow {
+  display: block !important;
+  margin-bottom: 8px !important;
+  color: #f4511e !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px !important;
+}
+
+
+.order-section .section-heading {
+  margin: 0 !important;
+  color: #24140f !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+}
+
+
+.order-section .section-intro {
+  margin: 10px auto 0 !important;
+  max-width: 520px !important;
+  color: #777777 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+
+.order-steps {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  align-items: stretch !important;
+}
+
+
+.order-step {
+  position: relative !important;
+  min-height: 250px !important;
+  box-sizing: border-box !important;
+  padding: 28px 22px 25px !important;
+  background: #fffaf7 !important;
+  border: 1px solid #f0e2da !important;
+  border-radius: 22px !important;
+  text-align: center !important;
+  box-shadow: 0 8px 24px rgba(43, 23, 18, 0.06) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+
+.order-step:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 14px 32px rgba(43, 23, 18, 0.11) !important;
+}
+
+
+.step-number {
+  margin: 0 0 16px !important;
+  color: #f4511e !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px !important;
+}
+
+
+.step-visual {
+  width: 76px !important;
+  height: 76px !important;
+  margin: 0 auto 18px !important;
+  border-radius: 50% !important;
+  background: #fff0e8 !important;
+  color: #f4511e !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+.step-visual .q-icon {
+  color: #f4511e !important;
+}
+
+
+.order-step h3 {
+  margin: 0 0 9px !important;
+  color: #2b1712 !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+}
+
+
+.order-step p {
+  margin: 0 auto !important;
+  max-width: 220px !important;
+  color: #786b66 !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+
+.order-step-arrow {
+  position: absolute !important;
+  right: -26px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 34px !important;
+  height: 34px !important;
+  box-sizing: border-box !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1px solid #f0e2da !important;
+  color: #f4511e !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10 !important;
+  box-shadow: 0 4px 12px rgba(43, 23, 18, 0.08) !important;
+}
+
+
+.order-cta {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 34px !important;
+  padding: 0 0 4px !important;
+}
+
+
+@media (max-width: 900px) {
+  .order-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+
+  .order-step-arrow {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .order-section .section-heading {
+    font-size: 26px !important;
+  }
+
+
+  .order-section .section-intro {
+    font-size: 13px !important;
+  }
+
+
+  .order-section .centered-heading {
+    margin-bottom: 24px !important;
+  }
+
+
+  .order-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+
+  .order-step {
+    min-height: 215px !important;
+    padding: 20px 11px 18px !important;
+    border-radius: 17px !important;
+  }
+
+
+  .step-number {
+    margin-bottom: 10px !important;
+  }
+
+
+  .step-visual {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 13px !important;
+  }
+
+
+  .order-step h3 {
+    font-size: 15px !important;
+    margin-bottom: 6px !important;
+  }
+
+
+  .order-step p {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+  }
+
+
+  .order-cta {
+    margin-top: 24px !important;
+  }
+}
+
+
+
+/* HOW TO ORDER — VISUAL ILLUSTRATIONS */
+
+
+.step-visual {
+  width: 100% !important;
+  height: 145px !important;
+  margin: 0 auto 16px !important;
+  border-radius: 20px !important;
+  background: #fff1e8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+
+.step-image {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+
+@media (max-width: 767px) {
+  .step-visual {
+    height: 92px !important;
+    margin-bottom: 11px !important;
+    border-radius: 15px !important;
+  }
+
+
+  .step-image {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   HOW TO ORDER — COMPACT MOBILE 4-STEP ROW
+   ========================================================= */
+@media (max-width: 767px) {
+
+
+  .order-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+
+  .order-section .section-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+
+  .order-section .centered-heading {
+    margin-bottom: 18px !important;
+  }
+
+
+  .order-section .section-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+  }
+
+
+  .order-section .section-heading {
+    font-size: 27px !important;
+    line-height: 1.05 !important;
+    margin: 6px 0 8px !important;
+  }
+
+
+  .order-section .section-intro {
+    font-size: 12px !important;
+    margin: 0 !important;
+  }
+
+
+  /* ALL FOUR STEPS STAY ON ONE ROW */
+  .order-section .order-steps {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 5px !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+
+  /* SMALL COMPACT CARDS */
+  .order-section .order-step {
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 13px 4px 12px !important;
+    border-radius: 12px !important;
+    border: 1px solid #f1e7e1 !important;
+    box-shadow: 0 3px 12px rgba(43, 23, 18, 0.05) !important;
+    overflow: hidden !important;
+  }
+
+
+  .order-section .step-number {
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 8px !important;
+  }
+
+
+  .order-section .step-visual {
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 auto 9px !important;
+  }
+
+
+  .order-section .step-visual .q-icon {
+    font-size: 27px !important;
+  }
+
+
+  .order-section .order-step h3 {
+    font-size: 11px !important;
+    line-height: 1.15 !important;
+    margin: 0 0 5px !important;
+    white-space: nowrap !important;
+  }
+
+
+  .order-section .order-step p {
+    font-size: 8.5px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+  }
+
+
+  /* NO ARROWS ON MOBILE — KEEP THE FOUR STEPS COMPACT */
+  .order-section .order-step-arrow {
+    display: none !important;
+  }
+
+
+  .order-section .order-cta {
+    padding: 18px 0 3px !important;
+  }
+
+
+  .order-section .large-orange-btn {
+    min-height: 38px !important;
+    padding: 0 22px !important;
+    font-size: 11px !important;
+    border-radius: 20px !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   HOW TO ORDER — FINAL COMPACT MOBILE STRIP
+   ========================================================= */
+@media (max-width: 767px) {
+
+
+  .order-section {
+    padding-top: 10px !important;
+    padding-bottom: 2px !important;
+  }
+
+
+  .order-section .section-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+
+  .order-section .centered-heading {
+    margin-bottom: 16px !important;
+  }
+
+
+  .order-section .section-eyebrow {
+    font-size: 10px !important;
+    letter-spacing: 2px !important;
+  }
+
+
+  .order-section .section-heading {
+    font-size: 27px !important;
+    line-height: 1 !important;
+    margin: 5px 0 7px !important;
+  }
+
+
+  .order-section .section-intro {
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+
+
+  /* FOUR STAGES — ONE ROW, NEVER SCROLL */
+  .order-section .order-steps {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: start !important;
+    overflow: visible !important;
+  }
+
+
+  /* COMPACT TILE */
+  .order-section .order-step {
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 10px 3px 9px !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    background: #fffaf6 !important;
+    border: 1px solid #f3e5dc !important;
+    box-shadow: 0 2px 8px rgba(43, 23, 18, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
+
+  /* NUMBER */
+  .order-section .step-number {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 auto 8px !important;
+    border-radius: 50% !important;
+    background: #fff0e5 !important;
+    color: #f4511e !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0 !important;
+  }
+
+
+  /* BIGGER ICON */
+  .order-section .step-visual {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    margin: 0 auto 8px !important;
+    border-radius: 50% !important;
+    background: #fff0e5 !important;
+    color: #f4511e !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+
+  .order-section .step-visual .q-icon {
+    font-size: 34px !important;
+  }
+
+
+  /* TITLE */
+  .order-section .order-step h3 {
+    width: 100% !important;
+    margin: 0 !important;
+    color: #2b1712 !important;
+    font-size: 10px !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    white-space: normal !important;
+  }
+
+
+  /* HIDE DESCRIPTIONS ON SMALL MOBILE */
+  .order-section .order-step p {
+    display: none !important;
+  }
+
+
+  /* NO CONNECTING ARROWS ON MOBILE */
+  .order-section .order-step-arrow {
+    display: none !important;
+  }
+
+
+  /* CTA */
+  .order-section .order-cta {
+    padding: 12px 0 0 !important;
+  }
+
+
+  .order-section .large-orange-btn {
+    min-height: 36px !important;
+    height: 36px !important;
+    padding: 0 20px !important;
+    border-radius: 20px !important;
+    font-size: 10px !important;
+  }
+}
+
+
+/* =========================================================
+   PROMOTIONAL FOOD BANNERS
+   ========================================================= */
+
+
+.promo-banners-section {
+  width: 100%;
+  padding: 8px 0 24px;
+  background: #fffaf5;
+}
+
+
+.promo-banners-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+
+.promo-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(250px, 26vw, 315px);
+  overflow: hidden;
+  border-radius: 24px;
+  isolation: isolate;
+  background: #eadbca;
+}
+
+
+.promo-banner-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+
+  width: 100%;
+  height: 100%;
+
+
+  display: block;
+
+
+  object-fit: cover;
+  object-position: center;
+
+
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+
+
+/* LEFT-SIDE READABILITY */
+
+
+/* NO IMAGE BLUR / GRADIENT OVERLAY */
+
+
+.promo-banner::after {
+  display: none;
+}
+
+
+
+
+/* CONTENT */
+
+
+.promo-banner-content {
+  position: relative;
+  z-index: 2;
+
+
+  width: 50%;
+  height: 100%;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+
+  padding: 28px clamp(24px, 4vw, 54px);
+}
+
+
+
+
+/* BADGE */
+
+
+.promo-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+
+  margin-bottom: 10px;
+  padding: 7px 14px;
+
+
+  border-radius: 999px;
+
+
+  background: #f4511e;
+  color: #fff;
+
+
+  font-size: clamp(0.58rem, 0.7vw, 0.72rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+
+  box-shadow: 0 5px 14px rgba(244, 81, 30, 0.18);
+}
+
+
+.promo-banner-badge .q-icon {
+  font-size: 16px;
+}
+
+
+
+
+/* TITLE */
+
+
+.promo-banner-title {
+  max-width: 470px;
+
+
+  margin: 0;
+
+
+  color: #2b1712;
+
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(2rem, 3.8vw, 3.55rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+
+.promo-banner-title span {
+  display: block;
+
+
+  margin-top: 2px;
+
+
+  color: #f4511e;
+
+
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 0.82em;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+
+
+
+/* PIZZA TITLE */
+
+
+.promo-banner-pizza .promo-banner-title {
+  color: #fff;
+}
+
+
+.promo-banner-pizza .promo-banner-title span {
+  color: #ff7043;
+}
+
+
+
+
+/* DESCRIPTION */
+
+
+.promo-banner-description {
+  max-width: 410px;
+
+
+  margin: 12px 0 0;
+
+
+  color: #2b1712;
+
+
+  font-size: clamp(0.75rem, 1vw, 0.96rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+.promo-banner-pizza .promo-banner-description {
+  color: #fff;
+}
+
+
+
+
+/* SUBTITLE */
+
+
+.promo-banner-subtitle {
+  max-width: 330px;
+
+
+  margin: 5px 0 0;
+
+
+  color: #6f5b52;
+
+
+  font-size: clamp(0.66rem, 0.85vw, 0.84rem);
+  line-height: 1.45;
+}
+
+
+.promo-banner-pizza .promo-banner-subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+
+
+
+/* BUTTON */
+
+
+.promo-banner-btn {
+  min-height: 42px;
+
+
+  margin-top: 16px;
+  padding: 0 22px;
+
+
+  border-radius: 999px;
+
+
+  background: #f4511e !important;
+  color: #fff !important;
+
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+
+
+  box-shadow: 0 7px 18px rgba(244, 81, 30, 0.2);
+}
+
+
+.promo-banner-btn:hover {
+  background: #e74312 !important;
+}
+
+
+
+
+/* =========================================================
+   PROMO BANNERS — TABLETS
+   ========================================================= */
+
+
+@media (max-width: 900px) {
+  .promo-banner {
+    height: clamp(220px, 31vw, 275px);
+    border-radius: 20px;
+  }
+
+
+  .promo-banner-content {
+    width: 54%;
+    padding: 22px clamp(18px, 4vw, 36px);
+  }
+
+
+  .promo-banner-title {
+    font-size: clamp(1.65rem, 5vw, 2.8rem);
+  }
+
+
+  .promo-banner-description {
+    font-size: 0.72rem;
+  }
+
+
+  .promo-banner-subtitle {
+    font-size: 0.62rem;
+  }
+
+
+  .promo-banner-btn {
+    min-height: 38px;
+    margin-top: 12px;
+    padding: 0 17px;
+    font-size: 0.62rem;
+  }
+}
+
+
+
+
+/* =========================================================
+   PROMO BANNERS — PHONES
+   ========================================================= */
+
+
+@media (max-width: 640px) {
+  .promo-banners-section {
+    padding: 4px 0 20px;
+  }
+
+
+  .promo-banners-container {
+    gap: 12px;
+  }
+
+
+  .promo-banner {
+    height: 190px;
+    border-radius: 16px;
+  }
+
+
+  .promo-banner-content {
+    width: 58%;
+    padding: 14px 10px 14px 16px;
+  }
+
+
+  .promo-banner-badge {
+    gap: 4px;
+
+
+    margin-bottom: 6px;
+    padding: 5px 9px;
+
+
+    font-size: 0.44rem;
+    letter-spacing: 0.04em;
+  }
+
+
+  .promo-banner-badge .q-icon {
+    font-size: 11px;
+  }
+
+
+  .promo-banner-title {
+    font-size: clamp(1.25rem, 7vw, 1.75rem);
+    line-height: 0.98;
+  }
+
+
+  .promo-banner-title span {
+    margin-top: 1px;
+  }
+
+
+  .promo-banner-description {
+    margin-top: 7px;
+
+
+    font-size: 0.52rem;
+    line-height: 1.35;
+  }
+
+
+  .promo-banner-subtitle {
+    margin-top: 3px;
+
+
+    font-size: 0.47rem;
+    line-height: 1.3;
+  }
+
+
+  .promo-banner-btn {
+    min-height: 29px;
+
+
+    margin-top: 8px;
+    padding: 0 10px;
+
+
+    font-size: 0.45rem;
+  }
+}
+
+
+
+
+/* =========================================================
+   PROMO BANNERS — VERY SMALL PHONES
+   ========================================================= */
+
+
+@media (max-width: 380px) {
+  .promo-banner {
+    height: 175px;
+    border-radius: 14px;
+  }
+
+
+  .promo-banner-content {
+    width: 60%;
+    padding-left: 13px;
+    padding-right: 7px;
+  }
+
+
+  .promo-banner-title {
+    font-size: 1.15rem;
+  }
+
+
+  .promo-banner-description {
+    font-size: 0.48rem;
+  }
+
+
+  .promo-banner-subtitle {
+    font-size: 0.43rem;
+  }
+
+
+  .promo-banner-btn {
+    min-height: 27px;
+    padding: 0 9px;
+    font-size: 0.42rem;
+  }
+}
+
+
+
+
+/* FINAL FIND US MOBILE DESIGN */
+
+
+.location-section {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 130, 40, 0.07), transparent 28%),
+    radial-gradient(circle at 90% 80%, rgba(255, 130, 40, 0.05), transparent 30%),
+    #2b1712;
+}
+
+
+.location-container {
+  width: min(1080px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+
+.location-heading {
+  text-align: center;
+}
+
+
+.location-heading .section-eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+  color: #ff9a32;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+
+.location-heading .section-eyebrow::before,
+.location-heading .section-eyebrow::after {
+  content: "";
+  width: 42px;
+  height: 2px;
+  border-radius: 99px;
+  background: #e87519;
+}
+
+
+.location-heading .section-heading {
+  margin: 0;
+  color: #fffaf5;
+  font-size: clamp(2.35rem, 9vw, 4rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+
+.location-heading p {
+  max-width: 700px;
+  margin: 18px auto 0;
+  color: rgba(255, 250, 245, 0.82);
+  font-size: clamp(0.9rem, 2.8vw, 1.08rem);
+  line-height: 1.65;
+}
+
+
+/* Map */
+
+
+.location-map-card {
+  width: 100%;
+  min-height: 360px;
+  margin-top: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  background: #e8dfd6;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.28),
+    0 2px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+
+.location-map-placeholder {
+  background:
+    linear-gradient(
+      rgba(249, 244, 237, 0.76),
+      rgba(249, 244, 237, 0.76)
+    ),
+    repeating-linear-gradient(
+      28deg,
+      #d7cec4 0,
+      #d7cec4 2px,
+      #f5efe8 2px,
+      #f5efe8 46px
+    );
+}
+
+
+.location-map-pin {
+  width: 66px;
+  height: 66px;
+  background: #e84b1a;
+  box-shadow: 0 12px 30px rgba(70, 20, 8, 0.32);
+}
+
+
+.location-map-label {
+  top: calc(50% + 48px);
+  min-width: 220px;
+  padding: 13px 17px;
+  border-radius: 14px;
+}
+
+
+/* Information card */
+
+
+.location-info-card {
+  margin-top: 14px;
+  padding: 22px;
+  border: 1px solid rgba(255, 177, 92, 0.22);
+  border-radius: 22px;
+  background: #fffaf5;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+}
+
+
+.location-info-item {
+  gap: 14px;
+}
+
+
+.location-info-icon {
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #fff0df;
+  color: #d95b19;
+}
+
+
+.location-info-label {
+  margin-bottom: 5px;
+  color: #d15e20;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+
+.location-info-item strong {
+  color: #2b1712;
+  font-size: 0.91rem;
+  line-height: 1.45;
+}
+
+
+.location-info-item p {
+  margin: 4px 0 0;
+  color: #765c51;
+  font-size: 0.77rem;
+}
+
+
+.location-divider {
+  margin: 20px 0;
+  background: rgba(43, 23, 18, 0.1);
+}
+
+
+/* Buttons */
+
+
+.location-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 11px;
+  margin-top: 14px;
+}
+
+
+.location-actions .q-btn {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 15px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+}
+
+
+.location-actions .q-btn .q-icon {
+  font-size: 21px;
+}
+
+
+.location-actions .orange-btn {
+  background: #ff7f18 !important;
+  color: #fff !important;
+  box-shadow: 0 10px 25px rgba(255, 127, 24, 0.22);
+}
+
+
+.location-actions .outline-orange-btn {
+  border: 1.5px solid #ffab52 !important;
+  background: transparent !important;
+  color: #ffb15c !important;
+}
+
+
+/* Mobile-first refinement */
+
+
+@media (max-width: 640px) {
+  .location-section {
+    padding: 64px 0 70px;
+  }
+
+
+  .location-container {
+    width: calc(100% - 28px);
+  }
+
+
+  .location-heading {
+    padding: 0 4px;
+  }
+
+
+  .location-heading .section-eyebrow {
+    margin-bottom: 12px;
+    font-size: 0.64rem;
+    letter-spacing: 0.15em;
+  }
+
+
+  .location-heading .section-eyebrow::before,
+  .location-heading .section-eyebrow::after {
+    width: 28px;
+  }
+
+
+  .location-heading .section-heading {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+
+  .location-heading p {
+    margin-top: 15px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+
+  .location-map-card {
+    min-height: 310px;
+    margin-top: 26px;
+    border-radius: 21px;
+  }
+
+
+  .location-map-label {
+    min-width: 190px;
+    padding: 11px 14px;
+  }
+
+
+  .location-map-label strong {
+    font-size: 0.82rem;
+  }
+
+
+  .location-map-label span {
+    font-size: 0.68rem;
+  }
+
+
+  .location-info-card {
+    margin-top: 12px;
+    padding: 20px 18px;
+    border-radius: 20px;
+  }
+
+
+  .location-info-item strong {
+    font-size: 0.84rem;
+  }
+
+
+  .location-info-item p {
+    font-size: 0.73rem;
+  }
+
+
+  .location-actions {
+    margin-top: 12px;
+    gap: 9px;
+  }
+
+
+  .location-actions .q-btn {
+    min-height: 54px;
+  }
+}
+
+
+/* Very small phones */
+
+
+@media (max-width: 380px) {
+  .location-section {
+    padding-top: 56px;
+  }
+
+
+  .location-container {
+    width: calc(100% - 22px);
+  }
+
+
+  .location-heading .section-heading {
+    font-size: 1.9rem;
+  }
+
+
+  .location-map-card {
+    min-height: 285px;
+  }
+
+
+  .location-info-card {
+    padding: 17px 15px;
+  }
+}
+
+
+
+
+/* =========================================================
+   LOCATION — MOBILE POLISH
+   ========================================================= */
+
+
+@media (max-width: 640px) {
+
+
+  /* Keep the map exactly as it is for now */
+
+
+  /* Dark information card — remove the oversized white look */
+  .location-info-card {
+    background: rgba(255, 255, 255, 0.045) !important;
+    border: 1px solid rgba(255, 177, 92, 0.20) !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+    padding: 18px 16px !important;
+    color: #fff !important;
+  }
+
+
+  .location-info-item {
+    align-items: flex-start;
+  }
+
+
+  .location-info-icon {
+    flex-shrink: 0;
+  }
+
+
+  .location-info-label {
+    color: #ffb15c !important;
+  }
+
+
+  .location-info-item strong {
+    color: #fffaf5 !important;
+  }
+
+
+  .location-info-item p {
+    color: rgba(255, 250, 245, 0.68) !important;
+  }
+
+
+  .location-divider {
+    background: rgba(255, 177, 92, 0.18) !important;
+  }
+
+
+  /* BUTTONS */
+  .location-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+  }
+
+
+  .location-actions .q-btn {
+    width: 100% !important;
+    min-height: 58px !important;
+    height: 58px !important;
+    padding: 0 10px !important;
+    border-radius: 30px !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.03em !important;
+  }
+
+
+  .location-actions .orange-btn {
+    background: #ff641f !important;
+    color: #fff !important;
+    box-shadow: none !important;
+  }
+
+
+  .location-actions .outline-orange-btn {
+    background: transparent !important;
+    border: 2px solid #ff8a22 !important;
+    color: #ffb15c !important;
+  }
+
+
+  .location-actions .q-btn .q-icon {
+    font-size: 22px !important;
+    margin-right: 7px !important;
+  }
+}
+
+
+
+
+/* =========================================================
+   FIND US — FINAL MOBILE CLEANUP
+   ========================================================= */
+
+
+@media (max-width: 640px) {
+
+
+  /* -------------------------------------------------------
+     KEEP MAP UNTOUCHED
+     ------------------------------------------------------- */
+
+
+  .location-map-card {
+    /* intentionally unchanged */
+  }
+
+
+
+
+  /* -------------------------------------------------------
+     COMPACT HORIZONTAL LOCATION / HOURS BAR
+     ------------------------------------------------------- */
+
+
+  .location-info-card {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+
+    margin-top: 12px !important;
+    padding: 13px 10px !important;
+
+
+    min-height: 0 !important;
+    border-radius: 16px !important;
+
+
+    background: rgba(255, 255, 255, 0.045) !important;
+    border: 1px solid rgba(255, 177, 92, 0.18) !important;
+    box-shadow: none !important;
+  }
+
+
+
+
+  .location-info-item {
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+
+
+
+  .location-info-icon {
+    flex: 0 0 31px !important;
+    width: 31px !important;
+    height: 31px !important;
+    border-radius: 50% !important;
+
+
+    background: rgba(255, 177, 92, 0.12) !important;
+    color: #ffb15c !important;
+  }
+
+
+
+
+  .location-info-icon .q-icon {
+    font-size: 17px !important;
+  }
+
+
+
+
+  .location-info-label {
+    margin-bottom: 2px !important;
+    font-size: 0.52rem !important;
+    line-height: 1 !important;
+    letter-spacing: 0.12em !important;
+    color: #ffb15c !important;
+  }
+
+
+
+
+  .location-info-item strong {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+    color: #fffaf5 !important;
+
+
+    white-space: nowrap !important;
+  }
+
+
+
+
+  .location-info-item p {
+    margin: 2px 0 0 !important;
+    font-size: 0.58rem !important;
+    line-height: 1.2 !important;
+    color: rgba(255, 250, 245, 0.65) !important;
+
+
+    white-space: nowrap !important;
+  }
+
+
+
+
+  /* Vertical divider */
+  .location-divider {
+    width: 1px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    background: rgba(255, 177, 92, 0.20) !important;
+  }
+
+
+
+
+  /* -------------------------------------------------------
+     COMPACT BUTTON ROW
+     ------------------------------------------------------- */
+
+
+  .location-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+
+
+    width: 100% !important;
+    margin-top: 16px !important;
+    margin-bottom: 0 !important;
+  }
+
+
+
+
+  .location-actions .q-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 52px !important;
+    height: 52px !important;
+
+
+    padding: 0 7px !important;
+    border-radius: 28px !important;
+
+
+    font-size: 0.68rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.025em !important;
+  }
+
+
+
+
+  .location-actions .q-btn .q-icon {
+    font-size: 20px !important;
+    margin-right: 6px !important;
+  }
+
+
+
+
+  .location-actions .orange-btn {
+    background: #ff641f !important;
+    color: #fff !important;
+    box-shadow: none !important;
+  }
+
+
+
+
+  .location-actions .outline-orange-btn {
+    background: transparent !important;
+    border: 2px solid #ff8a22 !important;
+    color: #ffb15c !important;
+  }
+
+
+
+
+  /* -------------------------------------------------------
+     BREATHING ROOM BEFORE FOOTER
+     ------------------------------------------------------- */
+
+
+  .location-section {
+    padding-bottom: 35px !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(255, 177, 92, 0.08);
+  }
+}
+
+
+
+
+/* Extra-tight phones */
+@media (max-width: 380px) {
+
+
+  .location-info-card {
+    padding: 11px 7px !important;
+    gap: 7px !important;
+  }
+
+
+  .location-info-item {
+    gap: 6px !important;
+  }
+
+
+  .location-info-icon {
+    flex-basis: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+
+  .location-info-icon .q-icon {
+    font-size: 15px !important;
+  }
+
+
+  .location-info-item strong {
+    font-size: 0.61rem !important;
+  }
+
+
+  .location-info-item p {
+    font-size: 0.52rem !important;
+  }
+
+
+  .location-actions .q-btn {
+    min-height: 50px !important;
+    height: 50px !important;
+    font-size: 0.62rem !important;
+  }
+}
+
+
+
+
+
+/* =========================================================
+   FINAL LOCATION CLEANUP
+   Keep the map as-is.
+   ========================================================= */
+
+
+.location-info-card {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+  padding: 18px 24px;
+  border: 1px solid rgba(255, 177, 92, 0.22);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.055);
+  color: #fff;
+  box-shadow: none;
+}
+
+
+.location-info-item {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.location-info-icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 155, 45, 0.16);
+  color: #ff9a32;
+}
+
+
+.location-info-label {
+  margin-bottom: 3px;
+  color: #ffb15c;
+  font-size: 0.64rem;
+}
+
+
+.location-info-item strong {
+  color: #fffaf5;
+  font-size: 0.9rem;
+  line-height: 1.25;
+}
+
+
+.location-info-item p {
+  margin: 3px 0 0;
+  color: rgba(255, 250, 245, 0.7);
+  font-size: 0.76rem;
+}
+
+
+.location-divider {
+  width: 1px;
+  height: 54px;
+  background: rgba(255, 177, 92, 0.28);
+}
+
+
+.location-actions {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin-top: 20px;
+}
+
+
+.location-actions .q-btn {
+  flex: 1 1 0;
+  max-width: 435px;
+  min-height: 54px;
+  border-radius: 28px;
+  padding: 0 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+
+.location-actions .orange-btn {
+  background: #ff7617 !important;
+  color: #fff !important;
+}
+
+
+.location-actions .outline-orange-btn {
+  border: 2px solid #ff9a32;
+  color: #ffb15c !important;
+  background: transparent !important;
+}
+
+
+
+
+/* -------------------------
+   MOBILE LOCATION
+   ------------------------- */
+
+
+@media (max-width: 640px) {
+
+
+  .location-section {
+    padding: 42px 10px 18px;
+  }
+
+
+  .location-heading {
+    margin-bottom: 18px;
+  }
+
+
+  .location-heading .section-eyebrow {
+    margin-bottom: 7px;
+    font-size: 0.62rem;
+  }
+
+
+  .location-heading .section-heading {
+    font-size: clamp(1.65rem, 7vw, 2.2rem);
+    line-height: 1.05;
+  }
+
+
+  .location-heading p {
+    margin-top: 9px;
+    font-size: 0.74rem;
+    line-height: 1.45;
+  }
+
+
+  /* MAP: deliberately unchanged in size */
+
+
+  .location-info-card {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+    padding: 12px 9px;
+    border-radius: 16px;
+  }
+
+
+  .location-info-item {
+    min-width: 0;
+    gap: 7px;
+  }
+
+
+  .location-info-icon {
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .location-info-icon .q-icon {
+    font-size: 16px;
+  }
+
+
+  .location-info-label {
+    margin-bottom: 2px;
+    font-size: 0.48rem;
+    letter-spacing: 0.09em;
+  }
+
+
+  .location-info-item strong {
+    font-size: 0.61rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+
+  .location-info-item p {
+    margin-top: 2px;
+    font-size: 0.52rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+
+  .location-divider {
+    height: 44px;
+  }
+
+
+  .location-actions {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+
+  .location-actions .q-btn {
+    width: auto;
+    flex: 1 1 0;
+    min-height: 43px;
+    max-width: none;
+    padding: 0 8px;
+    border-radius: 24px;
+    font-size: 0.61rem;
+    letter-spacing: 0.02em;
+  }
+
+
+  .location-actions .q-btn .q-icon {
+    font-size: 17px;
+  }
+}
 
 </style>
