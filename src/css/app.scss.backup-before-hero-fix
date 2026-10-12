@@ -1,0 +1,927 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
+
+// Global restaurant theme — dark by default
+
+
+html,
+body,
+#q-app {
+  background: var(--trg-bg);
+  color: var(--trg-text);
+  min-height: 100%;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.q-layout,
+.q-page-container,
+.q-page {
+  background: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+/* ==========================================
+   TIANNA ROSITA GOURMET — THEME FOUNDATION
+   Default theme: Dark
+   ========================================== */
+
+
+:root {
+  color-scheme: dark;
+
+
+  /* Brand */
+  --trg-accent: #ff641c;
+  --trg-accent-hover: #ff7b35;
+  --trg-accent-soft: #3a1d0e;
+
+
+  /* Backgrounds */
+  --trg-bg: #100c09;
+  --trg-bg-elevated: #17100c;
+  --trg-surface: #20150f;
+  --trg-surface-hover: #2b1c13;
+
+
+  /* Text */
+  --trg-text: #fff3e5;
+  --trg-text-secondary: #c4b5a7;
+  --trg-text-muted: #948477;
+
+
+  /* Borders and shadows */
+  --trg-border: #453024;
+  --trg-divider: #34251b;
+  --trg-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+
+
+  /* Rounded corners */
+  --trg-radius-sm: 8px;
+  --trg-radius-md: 14px;
+  --trg-radius-lg: 22px;
+
+
+  /* Transitions */
+  --trg-transition: 180ms ease;
+}
+
+
+/* Light palette for the future theme switch */
+html[data-theme="light"] {
+  color-scheme: light;
+
+
+  --trg-accent: #ed511b;
+  --trg-accent-hover: #d94312;
+  --trg-accent-soft: #fff0e5;
+
+
+  --trg-bg: #fff9f2;
+  --trg-bg-elevated: #ffffff;
+  --trg-surface: #ffffff;
+  --trg-surface-hover: #fff0e5;
+
+
+  --trg-text: #2b1912;
+  --trg-text-secondary: #68564b;
+  --trg-text-muted: #817267;
+
+
+  --trg-border: #eadfd5;
+  --trg-divider: #eee3d9;
+  --trg-shadow: 0 8px 24px rgb(68 38 16 / 8%);
+}
+
+
+/* Global page defaults */
+html,
+body,
+#q-app {
+  min-height: 100%;
+}
+
+
+html,
+body {
+  background-color: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+body {
+  transition:
+    background-color var(--trg-transition),
+    color var(--trg-transition);
+}
+
+
+::selection {
+  color: #ffffff;
+  background: var(--trg-accent);
+}
+
+/* TIANNA ROSITA — DARK THEME SURFACE FIX
+   Keep existing brand colours and theme toggle.
+   Override fixed light surfaces only when dark mode is active.
+*/
+html[data-theme="dark"] .home-page,
+html[data-theme="dark"] .hero-section,
+html[data-theme="dark"] .favourites-section,
+html[data-theme="dark"] .home-categories-section,
+html[data-theme="dark"] .promo-banners-section,
+html[data-theme="dark"] .order-section,
+html[data-theme="dark"] .events-section {
+  background: var(--trg-bg) !important;
+  color: var(--trg-text);
+}
+
+
+html[data-theme="dark"] .home-page .dish-card,
+html[data-theme="dark"] .home-page .order-step,
+html[data-theme="dark"] .home-page .events-card,
+html[data-theme="dark"] .home-page .location-info-card,
+html[data-theme="dark"] .home-page .hero-card-content,
+html[data-theme="dark"] .home-page .home-search-result,
+html[data-theme="dark"] .home-page .promo-banner,
+html[data-theme="dark"] .home-page .step-visual,
+html[data-theme="dark"] .home-page .order-section .step-number {
+  background-color: var(--trg-surface) !important;
+  color: var(--trg-text) !important;
+  border-color: var(--trg-border) !important;
+  box-shadow: var(--trg-shadow);
+}
+
+
+html[data-theme="dark"] .home-page .signature-swiper .swiper-button-next,
+html[data-theme="dark"] .home-page .signature-swiper .swiper-button-prev {
+  background-color: var(--trg-surface-hover);
+  color: var(--trg-text);
+}
+
+
+html[data-theme="dark"] .product-page,
+html[data-theme="dark"] .checkout-page {
+  background: var(--trg-bg) !important;
+  color: var(--trg-text) !important;
+}
+
+
+html[data-theme="dark"] .product-page .product-card,
+html[data-theme="dark"] .product-page .related-card,
+html[data-theme="dark"] .product-page .product-image-section,
+html[data-theme="dark"] .product-page .related-placeholder,
+html[data-theme="dark"] .checkout-page .checkout-card,
+html[data-theme="dark"] .checkout-page .transfer-amount {
+  background: var(--trg-surface) !important;
+  color: var(--trg-text) !important;
+  border-color: var(--trg-border) !important;
+  box-shadow: var(--trg-shadow);
+}
+
+
+html[data-theme="dark"] .checkout-page .expired-banner {
+  background: #3a1715 !important;
+  color: #ffb4ab !important;
+  border-color: #71302a !important;
+}
+
+
+html[data-theme="dark"] .dialog-card,
+html[data-theme="dark"] .menu-card,
+html[data-theme="dark"] .menu-image-wrap,
+html[data-theme="dark"] .all-category-card {
+  background: var(--trg-surface) !important;
+  color: var(--trg-text) !important;
+  border-color: var(--trg-border) !important;
+}
+
+
+html[data-theme="dark"] .view-all-btn {
+  background: var(--trg-surface-hover) !important;
+  color: var(--trg-text) !important;
+}
+
+
+html[data-theme="dark"] .modern-cart {
+  background: var(--trg-surface) !important;
+  color: var(--trg-text) !important;
+  border: 1px solid var(--trg-border);
+}
+
+
+html[data-theme="dark"] .modern-cart > div:first-child,
+html[data-theme="dark"] .modern-cart-summary {
+  background: var(--trg-bg-elevated) !important;
+  color: var(--trg-text) !important;
+  border-color: var(--trg-border) !important;
+}
+
+
+html[data-theme="dark"] .drawer-list .q-item:hover {
+  background: var(--trg-surface-hover) !important;
+  color: var(--trg-text) !important;
+}
+
+
+/* TIANNA ROSITA — VISUAL POLISH PASS 01
+   Improve readability, typography and surfaces without changing app logic.
+*/
+
+
+/* Consistent typography and smoother rendering */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body,
+button,
+input,
+textarea,
+.q-btn,
+.q-field {
+  font-family: "Poppins", sans-serif;
+}
+
+
+.home-page .section-heading,
+.home-page .hero-title,
+.home-page .location-heading .section-heading {
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+
+.home-page .section-intro,
+.home-page .hero-subtitle {
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+
+/* Shared, theme-aware page surfaces */
+html[data-theme="dark"] #body,
+html[data-theme="dark"] .home-page {
+  background-color: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+html[data-theme="light"] #body,
+html[data-theme="light"] .home-page {
+  background-color: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+/* Menu category panels */
+#body .bgg {
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  border-radius: var(--trg-radius-lg);
+  box-shadow: var(--trg-shadow);
+  overflow: hidden;
+}
+
+
+#body .title-cat {
+  color: var(--trg-text);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+
+#body .food-info {
+  color: var(--trg-text-secondary);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.65;
+}
+
+
+#body .quantity-display {
+  color: var(--trg-text);
+}
+
+
+/* Menu product cards */
+#body .menu-card {
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  border-radius: 18px;
+  box-shadow: var(--trg-shadow);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+
+#body .menu-card:hover {
+  border-color: var(--trg-accent);
+  box-shadow: 0 14px 32px rgb(0 0 0 / 16%);
+}
+
+
+#body .menu-image-wrap {
+  background: var(--trg-bg-elevated);
+}
+
+
+#body .menu-card-content {
+  color: var(--trg-text);
+}
+
+
+#body .menu-card-title {
+  color: var(--trg-text);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+
+#body .menu-card-size {
+  color: var(--trg-text-secondary);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+
+#body .menu-card-description {
+  color: var(--trg-text-secondary);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+
+#body .menu-card-price {
+  color: var(--trg-accent);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+
+#body .menu-image-placeholder {
+  background: var(--trg-surface-hover);
+  color: var(--trg-text-secondary);
+}
+
+
+/* Category navigation */
+#body .menu-nav {
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+  border-color: var(--trg-border);
+}
+
+
+#body .menu-nav__header {
+  color: var(--trg-text);
+}
+
+
+#body .menu-nav__title {
+  color: var(--trg-text-secondary);
+  letter-spacing: 0.12em;
+}
+
+
+#body .view-all-btn {
+  background: var(--trg-surface-hover);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  font-weight: 700;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+
+#body .view-all-btn:hover {
+  background: var(--trg-accent-soft);
+  border-color: var(--trg-accent);
+}
+
+
+#body .all-categories-panel {
+  background: var(--trg-bg-elevated);
+  border-color: var(--trg-border);
+}
+
+
+#body .all-category-card {
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border-color: var(--trg-border);
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+
+#body .all-category-card:hover,
+#body .all-category-card.active {
+  border-color: var(--trg-accent);
+}
+
+
+#body .all-category-name,
+#body .category-name {
+  color: var(--trg-text);
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+
+#body .category-item.active .category-name,
+#body .all-category-card.active .all-category-name {
+  color: var(--trg-accent);
+}
+
+
+#body .category-image,
+#body .all-category-image-wrap {
+  border-color: var(--trg-border);
+}
+
+
+/* Menu search field */
+#body .search-bar {
+  width: min(100%, 560px);
+}
+
+
+#body .search-bar .q-field__control {
+  min-height: 48px;
+  background: var(--trg-surface);
+  border: 1px solid var(--trg-border);
+  border-radius: 16px;
+  color: var(--trg-text);
+  box-shadow: 0 5px 18px rgb(0 0 0 / 5%);
+}
+
+
+#body .search-bar .q-field__native,
+#body .search-bar .q-field__input,
+#body .search-bar .q-field__marginal,
+#body .search-bar .q-icon {
+  color: var(--trg-text);
+}
+
+
+#body .search-bar .q-field__native::placeholder,
+#body .search-bar .q-field__input::placeholder {
+  color: var(--trg-text-muted);
+  opacity: 1;
+}
+
+
+#body .search-bar .q-field--focused .q-field__control {
+  border-color: var(--trg-accent);
+}
+
+
+/* Dialogs opened from menu items */
+.q-dialog .dialog-card {
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  border-radius: var(--trg-radius-lg);
+  box-shadow: var(--trg-shadow);
+}
+
+
+.q-dialog .dialog-details p {
+  color: var(--trg-text-secondary);
+  line-height: 1.7;
+}
+
+
+.q-dialog .dialog-details h4 {
+  color: var(--trg-text);
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+
+.q-dialog .dialog-details h5 {
+  color: var(--trg-accent);
+}
+
+
+/* Homepage section hierarchy */
+.home-page .section-eyebrow {
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+
+.home-page .section-heading {
+  color: var(--trg-text);
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+
+.home-page .section-intro {
+  color: var(--trg-text-secondary);
+}
+
+
+.home-page .dish-card,
+.home-page .events-card,
+.home-page .location-info-card,
+.home-page .promo-banner,
+.home-page .order-step {
+  border: 1px solid var(--trg-border);
+  border-radius: var(--trg-radius-lg);
+  box-shadow: var(--trg-shadow);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+
+.home-page .dish-card:hover,
+.home-page .events-card:hover {
+  border-color: var(--trg-accent);
+}
+
+
+.home-page .dish-price {
+  color: var(--trg-accent);
+  font-weight: 800;
+}
+
+
+.home-page .location-info-item strong,
+.home-page .location-info-item p {
+  overflow-wrap: anywhere;
+}
+
+
+.home-page .location-info-item strong {
+  color: var(--trg-text);
+}
+
+
+.home-page .location-info-item p {
+  color: var(--trg-text-secondary);
+  line-height: 1.6;
+}
+
+
+/* Keyboard accessibility */
+#body a:focus-visible,
+#body button:focus-visible,
+#body .menu-card:focus-visible,
+.home-page a:focus-visible,
+.home-page button:focus-visible {
+  outline: 3px solid var(--trg-accent);
+  outline-offset: 3px;
+}
+
+
+/* Keep small-screen menu text readable */
+@media screen and (max-width: 620px) {
+  #body .menu-card-title {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+
+  #body .menu-card-size {
+    font-size: 0.7rem;
+  }
+
+
+  #body .menu-card-description {
+    font-size: 0.68rem;
+    line-height: 1.5;
+  }
+
+
+  #body .menu-card-price {
+    font-size: 0.78rem;
+  }
+
+
+  #body .menu-grid {
+    gap: 12px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  #body .menu-card,
+  #body .view-all-btn,
+  .home-page .dish-card,
+  .home-page .events-card {
+    transition: none;
+  }
+}
+
+
+/* TIANNA ROSITA — VISUAL POLISH PASS 02
+   Refine the homepage hero and menu category navigation.
+*/
+
+
+/* Homepage hero: premium framing without changing its layout */
+.home-page .hero-card {
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: clamp(18px, 2.5vw, 30px);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 20%);
+}
+
+
+.home-page .hero-card-image {
+  overflow: hidden;
+}
+
+
+.home-page .hero-card-image img {
+  transition: transform 600ms ease;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+  .home-page .hero-card:hover .hero-card-image img {
+    transform: scale(1.035);
+  }
+}
+
+
+.home-page .hero-card-content {
+  color: #fff;
+}
+
+
+.home-page .hero-eyebrow {
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 25%);
+}
+
+
+.home-page .hero-title {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+  text-shadow: 0 3px 18px rgb(0 0 0 / 28%);
+}
+
+
+.home-page .hero-subtitle {
+  color: rgb(255 255 255 / 92%);
+  font-size: clamp(0.9rem, 1.5vw, 1.08rem);
+  line-height: 1.75;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 24%);
+}
+
+
+.home-page .hero-primary-btn,
+.home-page .hero-secondary-btn {
+  min-height: 46px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+
+.home-page .hero-primary-btn:hover,
+.home-page .hero-secondary-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+.home-page .hero-primary-btn {
+  box-shadow: 0 8px 22px rgb(0 0 0 / 18%);
+}
+
+
+.home-page .hero-indicator {
+  transition: width 180ms ease, opacity 180ms ease;
+}
+
+
+/* Section headings: consistent editorial hierarchy */
+.home-page .section-heading-wrap {
+  margin-bottom: clamp(20px, 3vw, 34px);
+}
+
+
+.home-page .section-eyebrow {
+  text-transform: uppercase;
+}
+
+
+.home-page .section-heading {
+  text-wrap: balance;
+}
+
+
+/* Category navigation: consistent with both site themes */
+#body .menu-nav {
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+  border-bottom: 1px solid var(--trg-border);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 9%);
+}
+
+
+#body .menu-nav__header {
+  padding-bottom: 10px;
+  color: var(--trg-text);
+}
+
+
+#body .view-all-btn {
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+
+#body .all-categories-panel {
+  background: var(--trg-surface);
+  border-color: var(--trg-border);
+  border-radius: 20px;
+}
+
+
+#body .all-category-card {
+  border-radius: 14px;
+}
+
+
+#body .all-category-card.active {
+  background: var(--trg-accent-soft);
+}
+
+
+#body .category-scroll {
+  gap: 8px;
+  padding: 4px 12px 14px;
+  scroll-padding-inline: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+#body .category-item {
+  flex-basis: 104px;
+  gap: 8px;
+}
+
+
+#body .category-image {
+  width: 86px;
+  height: 86px;
+  border: 3px solid var(--trg-surface);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 10%);
+}
+
+
+#body .category-item.active .category-image {
+  border-color: var(--trg-accent);
+  box-shadow: 0 5px 18px rgb(255 100 28 / 20%);
+}
+
+
+#body .category-name {
+  width: 100%;
+  padding: 0 2px;
+  color: var(--trg-text-secondary);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+
+#body .category-item.active .category-name {
+  color: var(--trg-accent);
+}
+
+
+#body .all-category-image-wrap {
+  border-color: var(--trg-border);
+}
+
+
+@media screen and (max-width: 620px) {
+  .home-page .hero-card {
+    border-radius: 20px;
+  }
+
+
+  .home-page .hero-title {
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+  }
+
+
+  #body .category-scroll {
+    gap: 5px;
+    padding-inline: 8px;
+  }
+
+
+  #body .category-item {
+    flex-basis: 94px;
+  }
+
+
+  #body .category-image {
+    width: 76px;
+    height: 76px;
+  }
+
+
+  #body .category-name {
+    font-size: 0.69rem;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .home-page .hero-card-image img,
+  .home-page .hero-primary-btn,
+  .home-page .hero-secondary-btn {
+    transition: none;
+  }
+}
+
+
+/* TIANNA ROSITA — MENU DESCRIPTION VISIBILITY FIX
+   Keep food descriptions inside the clicked product details, not menu cards.
+*/
+#body .menu-card .menu-card-description {
+  display: none !important;
+}
+
+
+/* REMOVE BROWN HERO BACKGROUND IN DARK MODE */
+html[data-theme="dark"] .hero-section {
+  background: #100c09 !important;
+  background-image: none !important;
+}
+
+
+html[data-theme="dark"] .hero-card,
+html[data-theme="dark"] .hero-slide,
+html[data-theme="dark"] .hero-card-content {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+
+html[data-theme="dark"] .hero-title {
+  color: #fff3e5 !important;
+}
+
+
+html[data-theme="dark"] .hero-subtitle {
+  color: #d0c5ba !important;
+}
+
+
+html[data-theme="dark"] .hero-eyebrow {
+  color: #ff7840 !important;
+}
+
+
+html[data-theme="dark"] .hero-secondary-btn {
+  color: #ff7840 !important;
+  border-color: #ff641c !important;
+}

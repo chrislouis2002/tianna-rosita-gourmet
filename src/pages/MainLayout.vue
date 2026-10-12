@@ -37,6 +37,18 @@
           />
         </div>
 
+        <!-- Theme Toggle -->
+        <q-btn
+          flat
+          round
+          dense
+          :icon="theme === 'dark' ? 'light_mode' : 'dark_mode'"
+          class="theme-toggle"
+          :aria-label="theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'"
+          @click="toggleTheme"
+        />
+
+
         <!-- Mobile Menu -->
         <q-btn
           flat
@@ -146,8 +158,13 @@
     <!-- ✅ Shared Floating Cart -->
     <div
       v-if="store.cart.length"
-      @click.stop="cart_list = true"
       class="cart-outer"
+      :style="cartPositionStyle"
+      @pointerdown="startCartDrag"
+      @pointermove="moveCartDrag"
+      @pointerup="endCartDrag"
+      @pointercancel="endCartDrag"
+      @click.stop="openCartAfterTap"
     >
       <div class="cart-inner">
         <img
@@ -343,10 +360,34 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import FooterSection from 'src/components/FooterSection.vue'
 import { useMenu } from 'stores/menus'
+
+const getInitialTheme = () => {
+  if (typeof window === "undefined") return "dark"
+  return window.localStorage.getItem("trg-theme") === "light" ? "light" : "dark"
+}
+
+
+const theme = ref(getInitialTheme())
+
+
+watch(theme, (value) => {
+  if (typeof document !== "undefined") {
+    document.documentElement.setAttribute("data-theme", value)
+  }
+  if (typeof window !== "undefined") {
+    window.localStorage.setItem("trg-theme", value)
+  }
+}, { immediate: true })
+
+
+const toggleTheme = () => {
+  theme.value = theme.value === "dark" ? "light" : "dark"
+}
+
 
 const leftDrawerOpen = ref(false)
 const route = useRoute()
@@ -355,6 +396,101 @@ const route = useRoute()
 // ✅ Shared cart state for all pages
 const store = useMenu()
 const cart_list = ref(false)
+
+
+// Floating cart drag state
+const cartPosition = ref(null)
+const cartDrag = {
+  active: false,
+  moved: false,
+  pointerId: null,
+  startX: 0,
+  startY: 0,
+  left: 0,
+  top: 0,
+}
+const suppressCartClick = ref(false)
+
+
+const cartPositionStyle = computed(() => {
+  if (!cartPosition.value) return {}
+  return {
+    left: `${cartPosition.value.left}px`,
+    top: `${cartPosition.value.top}px`,
+    right: 'auto',
+    bottom: 'auto',
+    cursor: cartDrag.active ? 'grabbing' : 'grab',
+  }
+})
+
+
+const startCartDrag = (event) => {
+  if (event.button !== undefined && event.button !== 0) return
+
+
+  suppressCartClick.value = false
+  const element = event.currentTarget
+  const rect = element.getBoundingClientRect()
+
+
+  cartDrag.active = true
+  cartDrag.moved = false
+  cartDrag.pointerId = event.pointerId
+  cartDrag.startX = event.clientX
+  cartDrag.startY = event.clientY
+  cartDrag.left = rect.left
+  cartDrag.top = rect.top
+
+
+  cartPosition.value = { left: rect.left, top: rect.top }
+  element.setPointerCapture?.(event.pointerId)
+}
+
+
+const moveCartDrag = (event) => {
+  if (!cartDrag.active || event.pointerId !== cartDrag.pointerId) return
+
+
+  const deltaX = event.clientX - cartDrag.startX
+  const deltaY = event.clientY - cartDrag.startY
+
+
+  if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+    cartDrag.moved = true
+  }
+  if (!cartDrag.moved) return
+
+
+  const element = event.currentTarget
+  const maxLeft = Math.max(0, window.innerWidth - element.offsetWidth)
+  const maxTop = Math.max(0, window.innerHeight - element.offsetHeight)
+
+
+  cartPosition.value = {
+    left: Math.min(maxLeft, Math.max(0, cartDrag.left + deltaX)),
+    top: Math.min(maxTop, Math.max(0, cartDrag.top + deltaY)),
+  }
+}
+
+
+const endCartDrag = (event) => {
+  if (!cartDrag.active) return
+  if (event?.pointerId !== undefined && event.pointerId !== cartDrag.pointerId) return
+
+
+  suppressCartClick.value = cartDrag.moved
+  cartDrag.active = false
+  cartDrag.pointerId = null
+}
+
+
+const openCartAfterTap = () => {
+  if (suppressCartClick.value) {
+    suppressCartClick.value = false
+    return
+  }
+  cart_list.value = true
+}
 
 
 // ✅ Calculate total price of all items in the cart
@@ -396,6 +532,9 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   position: fixed;
   right: 20px;
   bottom: 25px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
   z-index: 9999;
 
 
@@ -517,9 +656,9 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   left: 0;
   right: 0;
   z-index: 7000;
-  background: #ffffff;
-  color: #2b1712;
-  box-shadow: 0 2px 14px rgba(43, 23, 18, 0.08);
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+  box-shadow: var(--trg-shadow);
 }
 
 .restaurant-toolbar {
@@ -581,7 +720,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 }
 
 .desktop-nav .q-btn {
-  color: #4a3028;
+  color: var(--trg-text-secondary);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -615,14 +754,14 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 
 .mobile-menu-btn {
   margin-left: auto;
-  color: #2b1712;
+  color: var(--trg-text);
   width: 44px;
   height: 44px;
 }
 
 .mobile-drawer {
-  background: #ffffff;
-  color: #2b1712;
+  background: var(--trg-surface);
+  color: var(--trg-text);
 }
 
 .drawer-header {
@@ -631,7 +770,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #f1e5dc;
+  border-bottom: 1px solid var(--trg-border);
 }
 
 .drawer-brand {
@@ -666,7 +805,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 }
 
 .drawer-header .q-btn {
-  color: #2b1712;
+  color: var(--trg-text);
 }
 
 .drawer-list {
@@ -677,19 +816,19 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   min-height: 52px;
   border-radius: 10px;
   margin-bottom: 4px;
-  color: #3b2720;
+  color: var(--trg-text);
   font-size: 15px;
   font-weight: 600;
 }
 
 .drawer-list .q-item:hover {
-  background: #fff4eb;
-  color: #e87524;
+  background: var(--trg-surface-hover);
+  color: var(--trg-accent);
 }
 
 .drawer-order {
   padding: 20px;
-  border-top: 1px solid #f1e5dc;
+  border-top: 1px solid var(--trg-border);
 }
 
 /* Tablet */
@@ -748,7 +887,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   width: min(520px, calc(100vw - 24px));
   max-width: 520px;
   background: #fffaf5;
-  color: #2b1712;
+  color: var(--trg-text);
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 24px 70px rgba(43, 23, 18, 0.22);
@@ -771,7 +910,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 .modern-cart-title {
   font-size: 1.35rem;
   font-weight: 800;
-  color: #2b1712;
+  color: var(--trg-text);
   line-height: 1.2;
 }
 
@@ -779,12 +918,12 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 .modern-cart-subtitle {
   margin-top: 4px;
   font-size: 0.82rem;
-  color: #8b7469;
+  color: var(--trg-text-secondary);
 }
 
 
 .modern-cart-close {
-  color: #6f574d;
+  color: var(--trg-text-secondary);
 }
 
 
@@ -859,7 +998,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   font-size: 0.98rem;
   line-height: 1.35;
   font-weight: 700;
-  color: #2b1712;
+  color: var(--trg-text);
   text-transform: capitalize;
 }
 
@@ -867,7 +1006,7 @@ const isExcluded = computed(() => excludePages.includes(route.name))
 .modern-cart-size {
   margin-top: 3px;
   font-size: 0.76rem;
-  color: #92796e;
+  color: var(--trg-text-secondary);
 }
 
 
@@ -954,19 +1093,19 @@ const isExcluded = computed(() => excludePages.includes(route.name))
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
-  color: #2b1712;
+  color: var(--trg-text);
 }
 
 
 .modern-cart-total-row span {
   font-size: 0.95rem;
-  color: #765f56;
+  color: var(--trg-text-secondary);
 }
 
 
 .modern-cart-total-row strong {
   font-size: 1.35rem;
-  color: #2b1712;
+  color: var(--trg-text);
 }
 
 

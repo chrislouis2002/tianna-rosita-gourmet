@@ -523,7 +523,8 @@ I will attach my transfer receipt below.`;
 <style scoped>
 .checkout-page {
   min-height: 100vh;
-  background: #fff;
+  background: var(--trg-bg);
+  color: var(--trg-text);
 }
 
 
@@ -535,25 +536,77 @@ I will attach my transfer receipt below.`;
 
 .checkout-title {
   font-family: "rubik", sans-serif;
-  color: #2b1712;
+  color: var(--trg-text);
 }
 
 
 .checkout-card {
-  background: #fff;
-  color: #2b1712;
-  border: 1px solid #eaded6;
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
   border-radius: 20px;
-  box-shadow: 0 8px 28px rgba(43, 23, 18, 0.06);
+  box-shadow: var(--trg-shadow);
+}
+
+
+.checkout-card :deep(.q-list) {
+  margin-top: 12px;
+  overflow: hidden;
+  border: 1px solid var(--trg-border) !important;
+  border-radius: 14px;
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+}
+
+
+.checkout-card :deep(.q-item) {
+  min-height: 72px;
+  padding: 14px 16px;
+  color: var(--trg-text);
+  background: transparent;
+}
+
+
+.checkout-card :deep(.q-item + .q-item) {
+  border-top: 1px solid var(--trg-divider);
+}
+
+
+.checkout-card :deep(.q-item__label) {
+  color: var(--trg-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+.checkout-card :deep(.q-item__label--caption) {
+  margin-top: 5px;
+  color: var(--trg-text-secondary) !important;
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 1;
+}
+
+
+.checkout-card :deep(.q-item__section--side) {
+  padding-left: 16px;
+  color: var(--trg-text);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 
 .checkout-total {
-  margin-top: 18px;
+  margin-top: 14px;
+  padding: 16px 4px 2px;
+  border-top: 1px solid var(--trg-divider);
   text-align: right;
-  font-size: 20px;
-  font-weight: 700;
-  color: #f4511e;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--trg-accent);
+  letter-spacing: -0.3px;
 }
 
 
@@ -591,7 +644,7 @@ I will attach my transfer receipt below.`;
 
 .payment-note {
   margin: 16px 0;
-  color: #806f68;
+  color: var(--trg-text-secondary);
   line-height: 1.6;
 }
 
@@ -615,20 +668,22 @@ I will attach my transfer receipt below.`;
 
 
 .timer {
-  color: #806f68;
+  color: var(--trg-text-secondary);
 }
 
 
 .timer strong {
   margin-left: 5px;
-  color: #f4511e;
+  color: var(--trg-accent);
 }
 
 
 .transfer-amount {
   padding: 18px;
   border-radius: 16px;
-  background: #fff7f1;
+  background: var(--trg-surface-hover);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-divider);
   text-align: center;
 }
 
@@ -636,7 +691,7 @@ I will attach my transfer receipt below.`;
 .transfer-amount span {
   display: block;
   font-size: 14px;
-  color: #806f68;
+  color: var(--trg-text-secondary);
 }
 
 
@@ -644,7 +699,7 @@ I will attach my transfer receipt below.`;
   display: block;
   margin-top: 6px;
   font-size: 28px;
-  color: #f4511e;
+  color: var(--trg-accent);
 }
 
 
@@ -658,12 +713,12 @@ I will attach my transfer receipt below.`;
   justify-content: space-between;
   gap: 20px;
   padding: 15px 0;
-  border-bottom: 1px solid #eaded6;
+  border-bottom: 1px solid var(--trg-divider);
 }
 
 
 .bank-detail span {
-  color: #806f68;
+  color: var(--trg-text-secondary);
 }
 
 
@@ -676,19 +731,73 @@ I will attach my transfer receipt below.`;
 .transfer-instructions {
   margin: 22px 0;
   line-height: 1.7;
-  color: #806f68;
+  color: var(--trg-text-secondary);
 }
 
 
 .expired-banner {
-  background: #fff0ee;
+  background: var(--trg-accent-soft);
   color: #b3261e;
+  border: 1px solid var(--trg-border);
   border-radius: 12px;
+}
+
+
+.checkout-page :deep(.q-field__control) {
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+  border-radius: 10px;
+}
+
+
+.checkout-page :deep(.q-field--outlined .q-field__control:before) {
+  border-color: var(--trg-border);
+}
+
+
+.checkout-page :deep(.q-field--outlined:hover .q-field__control:before) {
+  border-color: var(--trg-accent);
+}
+
+
+.checkout-page :deep(.q-field--focused .q-field__control:after) {
+  border-color: var(--trg-accent);
+}
+
+
+.checkout-page :deep(.q-field__native),
+.checkout-page :deep(.q-field__input),
+.checkout-page :deep(.q-field__label) {
+  color: var(--trg-text);
+}
+
+
+.checkout-page :deep(.q-field__native::placeholder),
+.checkout-page :deep(.q-field__input::placeholder) {
+  color: var(--trg-text-secondary);
+  opacity: 1;
+}
+
+
+.checkout-page :deep(.q-field__marginal),
+.checkout-page :deep(.q-field__bottom) {
+  color: var(--trg-text-secondary);
 }
 
 
 .full-width {
   width: 100%;
+}
+
+
+html[data-theme="dark"] .payment-unavailable,
+html[data-theme="dark"] .expired-banner {
+  color: #ffb4ab;
+}
+
+
+html[data-theme="dark"] .payment-available {
+  color: #8ce99a;
 }
 
 

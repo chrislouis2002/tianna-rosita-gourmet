@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
+
+// Global restaurant theme — dark by default
+
+
+html,
+body,
+#q-app {
+  background: var(--trg-bg);
+  color: var(--trg-text);
+  min-height: 100%;
+}
+
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.q-layout,
+.q-page-container,
+.q-page {
+  background: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+/* ==========================================
+   TIANNA ROSITA GOURMET — THEME FOUNDATION
+   Default theme: Dark
+   ========================================== */
+
+
+:root {
+  color-scheme: dark;
+
+
+  /* Brand */
+  --trg-accent: #ff641c;
+  --trg-accent-hover: #ff7b35;
+  --trg-accent-soft: #3a1d0e;
+
+
+  /* Backgrounds */
+  --trg-bg: #100c09;
+  --trg-bg-elevated: #17100c;
+  --trg-surface: #20150f;
+  --trg-surface-hover: #2b1c13;
+
+
+  /* Text */
+  --trg-text: #fff3e5;
+  --trg-text-secondary: #c4b5a7;
+  --trg-text-muted: #948477;
+
+
+  /* Borders and shadows */
+  --trg-border: #453024;
+  --trg-divider: #34251b;
+  --trg-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+
+
+  /* Rounded corners */
+  --trg-radius-sm: 8px;
+  --trg-radius-md: 14px;
+  --trg-radius-lg: 22px;
+
+
+  /* Transitions */
+  --trg-transition: 180ms ease;
+}
+
+
+/* Light palette for the future theme switch */
+html[data-theme="light"] {
+  color-scheme: light;
+
+
+  --trg-accent: #ed511b;
+  --trg-accent-hover: #d94312;
+  --trg-accent-soft: #fff0e5;
+
+
+  --trg-bg: #fff9f2;
+  --trg-bg-elevated: #ffffff;
+  --trg-surface: #ffffff;
+  --trg-surface-hover: #fff0e5;
+
+
+  --trg-text: #2b1912;
+  --trg-text-secondary: #68564b;
+  --trg-text-muted: #817267;
+
+
+  --trg-border: #eadfd5;
+  --trg-divider: #eee3d9;
+  --trg-shadow: 0 8px 24px rgb(68 38 16 / 8%);
+}
+
+
+/* Global page defaults */
+html,
+body,
+#q-app {
+  min-height: 100%;
+}
+
+
+html,
+body {
+  background-color: var(--trg-bg);
+  color: var(--trg-text);
+}
+
+
+body {
+  transition:
+    background-color var(--trg-transition),
+    color var(--trg-transition);
+}
+
+
+::selection {
+  color: #ffffff;
+  background: var(--trg-accent);
+}
+
+

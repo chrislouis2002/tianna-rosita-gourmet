@@ -322,11 +322,11 @@ export default defineComponent({
   border-radius: 100%;
 }
 .bgg {
-  background: #fff;
+  background: var(--trg-surface);
   margin-top: 1rem;
   border-radius: 25px;
-  border: 1px solid #eaded6;
-  box-shadow: 0 8px 28px rgba(43, 23, 18, 0.06);
+  border: 1px solid var(--trg-border);
+  box-shadow: var(--trg-shadow);
 }
 .title-cat {
   overflow: break-word;
@@ -421,6 +421,29 @@ export default defineComponent({
   margin-top: 10px;
   color: #f4511e;
 }
+
+/* CATEGORY IMAGE SIZE FIX */
+.img-tray-inner {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+
+.img-tray-inner > img.category-image {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
 </style>
 
 

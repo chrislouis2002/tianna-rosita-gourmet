@@ -99,6 +99,28 @@ export default defineComponent({
     const searchQuery = ref("");
     const cart_list = ref(false);
     const cat_name_list = ref([]);
+    const categoryOrder = [
+      "Main Dishes",
+      "Pizza",
+      "Burgers/Sandwiches/Wraps",
+      "Starters",
+      "Finger Foods & Sides",
+      "Salads",
+      "Extras",
+      "Desserts",
+      "Drinks",
+    ];
+    const sortCategories = (categories) => {
+      const rank = (category) => {
+        const index = categoryOrder.indexOf(category.category);
+        return index === -1 ? categoryOrder.length : index;
+      };
+
+
+      return [...categories].sort((a, b) => rank(a) - rank(b));
+    };
+
+
     const categoryImages = {
       Starters: "starters.jpeg",
       Pizza: "pizza.png",
@@ -163,7 +185,9 @@ export default defineComponent({
       });
 
       // Build category name list for top navigation
-      cat_name_list.value = store.menu.map((cat) => cat.category);
+      cat_name_list.value = sortCategories(store.menu).map(
+        (cat) => cat.category
+      );
 
       // Restore position after the menu has rendered
       restoreMenuScroll();
@@ -175,7 +199,7 @@ export default defineComponent({
     // ✅ Filter menu by search
     const filteredMenu = computed(() => {
       const query = searchQuery.value.toLowerCase().trim();
-      if (!query) return store.menu; // ✅ No search? Show everything normally.
+      if (!query) return sortCategories(store.menu); // Show categories in the preferred order.
 
       // ✅ Loop through categories and filter items inside them
       return store.menu
@@ -188,7 +212,14 @@ export default defineComponent({
             items: filteredItems,
           };
         })
-        .filter((category) => category.items.length > 0); // ✅ Only keep categories with results
+        .filter((category) => category.items.length > 0)
+        .sort((a, b) => {
+          const rank = (category) => {
+            const index = categoryOrder.indexOf(category.category);
+            return index === -1 ? categoryOrder.length : index;
+          };
+          return rank(a) - rank(b);
+        }); // Keep matching categories in the preferred order
     });
 
     // ✅ Select item to add to cart (fixed to pick exact item)
@@ -220,20 +251,20 @@ export default defineComponent({
   src: url("../Rubik_Spray_Paint/RubikSprayPaint-Regular.ttf");
 }
 .cartm {
-  background: #fffaf5;
-  color: #2b1712;
+  background: var(--trg-surface);
+  color: var(--trg-text);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(43, 23, 18, 0.2);
 }
 
 #body {
-  background: #fffaf5;
+  background: var(--trg-bg);
   min-width: 100%;
   min-height: 100vh;
   position: relative;
   overflow: visible;
-  color: #2b1712;
+  color: var(--trg-text);
 }
 .intro-pics {
   border: 5px solid;

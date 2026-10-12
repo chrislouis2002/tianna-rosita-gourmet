@@ -10,7 +10,7 @@
           unelevated
           rounded
           class="q-mt-md custom-visit-btn"
-          href="https://www.google.com/maps/place/Tianna+Rosita/@6.2136739,7.0476694,14z/data=!4m10!1m2!2m1!1stianna+rosita+awka!3m6!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!15sChJ0aWFubmEgcm9zaXRhIGF3a2FaFCISdGlhbm5hIHJvc2l0YSBhd2thkgEVaXRhbGlhbl9ncm9jZXJ5X3N0b3JlmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4T2ExTXhVbmxrUlRGd1lXNVNOV0Z0ZHpGWFJUbEpZakJzVGs5VlJSQULgAQD6AQQIABA3!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MDgzMS4wIKXMDSoASAFQAw%3D%3D"
+          href="https://www.google.com/maps/place/Tianna+Rosita/@6.2136739,7.062604,17z/data=!3m1!4b1!4m6!3m5!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
         />
       </div>
@@ -20,7 +20,7 @@
     <div class="q-pa-md map-container">
       <iframe
         class="map-frame"
-       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.000000000000!2d7.0617862!3d6.2175551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104383ffde16a36f%3A0x2e1fa0f31309a13e!2sSolution+Fun+City!5e0!3m2!1sen!2sng!4v0000000000000!5m2!1sen!2sng"
+       src="https://maps.google.com/maps?q=Tianna+Rosita%2C+Solution+Fun+City%2C+Onitsha+-+Enugu+Expy%2C+Awka+420103%2C+Anambra&output=embed"
   width="100%"
   height="450"
   style="border:0; border-radius:12px;"

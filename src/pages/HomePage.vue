@@ -28,9 +28,35 @@
                   TIANNA ROSITA GOURMET
                 </span>
 
-                <h1 class="hero-title">
-                  {{ s.title }}
-                </h1>
+               <h1 class="hero-title">
+  <template v-if="s.title === 'Freshly baked Meaty Pizza with extra cheese'">
+    Freshly baked Meaty Pizza with
+    <span class="hero-title-accent">extra cheese</span>
+  </template>
+
+
+  <template v-else-if="s.title === 'Free Popcorn & Ice-cream'">
+    Free Popcorn &
+    <span class="hero-title-accent">Ice-cream</span>
+  </template>
+
+
+  <template v-else-if="s.title.trim() === 'Come for our  Sunday Buffet'">
+    Come for our
+    <span class="hero-title-accent">Sunday Buffet</span>
+  </template>
+
+
+  <template v-else-if="s.title === 'Made for Every Occasion'">
+    Made for
+    <span class="hero-title-accent">Every Occasion</span>
+  </template>
+
+
+  <template v-else>
+    {{ s.title }}
+  </template>
+</h1>
 
                 <p
                   v-if="s.subtitle"
@@ -46,18 +72,18 @@
                     class="hero-primary-btn"
                      @click="$router.push('/menu')"                  />
 
-                  <q-btn
+                  <!-- <q-btn
                     label="VIEW MENU"
                     flat
                     class="hero-secondary-btn"
                     @click="$router.push('/menu')"
-                  />
+                  /> -->
                 </div>
               </div>
 
               <div class="hero-card-image">
                 <img
-                  :src="s.image"
+                  :src="isDarkTheme ? s.darkImage : s.image"
                   :alt="s.title"
                   draggable="false"
                 />
@@ -272,7 +298,7 @@
                     icon="add"
                     size="sm"
                     class="dish-add-btn"
-                    @click.stop="addPromoItemToCart('Soul Burger combo (burger, crispy chicken & chips)')"
+                    @click.stop="menuStore.addToCart(dish)"
                     aria-label="Add to cart"
                   />
                 </div>
@@ -539,7 +565,7 @@
          <div class="q-pa-md location-map-card">
       <iframe
         class="map-frame"
-       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.000000000000!2d7.0617862!3d6.2175551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104383ffde16a36f%3A0x2e1fa0f31309a13e!2sSolution+Fun+City!5e0!3m2!1sen!2sng!4v0000000000000!5m2!1sen!2sng"
+       src="https://maps.google.com/maps?q=Tianna+Rosita%2C+Solution+Fun+City%2C+Onitsha+-+Enugu+Expy%2C+Awka+420103%2C+Anambra&output=embed"
   width="100%"
   height="300"
   style="border:0; border-radius:12px;"
@@ -580,7 +606,7 @@
 
 
             <div>
-              
+
               <span class="location-info-label">OPENING HOURS</span>
               <strong>Mon–Sat · 10:00 AM–9:00 PM</strong>
               <p>Sun · 12:00 PM–10:00 PM</p>
@@ -597,7 +623,7 @@
             icon="directions"
             unelevated
             class="orange-btn"
-            :href="'https://www.google.com/maps/place/Tianna+Rosita/@6.2127385,7.0647874,12z/data=!4m10!1m2!2m1!1stianna+rosita+awka!3m6!1s0x1043836de51840e5:0x58e0bac892328e3a!8m2!3d6.2136739!4d7.0651789!15sChJ0aWFubmEgcm9zaXRhIGF3a2FaFCISdGlhbm5hIHJvc2l0YSBhd2thkgEVaXRhbGlhbl9ncm9jZXJ5X3N0b3JlmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDJ4T2ExTXhVbmxrUlRGd1lXNVNOV0Z0ZHpGWFJUbEpZakJzVGs5VlJSQULgAQD6AQQIABA3!16s%2Fg%2F11ymnd569f?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D'"
+            :href="'https://www.google.com/maps/dir/?api=1&destination=Tianna%20Rosita%2C%20Solution%20Fun%20City%2C%20Onitsha%20-%20Enugu%20Expy%2C%20Awka%20420103%2C%20Anambra&destination_place_id=ChIJ5UAY5W2DQxAROo4yksi64Fg'"
             target="_blank"
             rel="noopener noreferrer"
           />
@@ -666,6 +692,33 @@ export default {
     const router = useRouter();
     const slide = ref(0);
 
+
+    // Track the existing global theme toggle.
+    const isDarkTheme = ref(
+      typeof document !== "undefined" &&
+        document.documentElement.getAttribute("data-theme") === "dark"
+    );
+
+
+    // Keep hero images synchronized with the active theme.
+    const updateHeroTheme = () => {
+      if (typeof document !== "undefined") {
+        isDarkTheme.value =
+          document.documentElement.getAttribute("data-theme") === "dark";
+      }
+    };
+
+
+    if (typeof document !== "undefined") {
+      const themeObserver = new MutationObserver(updateHeroTheme);
+
+
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
+    }
+
     // Hero slides
     const slides = [
       {
@@ -673,24 +726,28 @@ export default {
         subtitle:
           "Can't get away from that cheese pull.",
         image: "/slider/pizza-hero.png",
+        darkImage: "public/dark-theme-images/pizza-hero-dark.png",
       },
       {
         title: "Free Popcorn & Ice-cream",
         subtitle:
           "Get free popcorn and ice-cream when you order online.",
         image: "/slider/cream-hero2.png",
+        darkImage: "/dark-theme-images/icecream&popcorn-darktheme.png",
       },
       {
         title: "Come for our  Sunday Buffet",
         subtitle:
           "Bring your appetite for our all you can eat Buffet with variety of exquisite mouth watering dishes every Sunday. ",
         image: "/slider/cream-hero3.png",
+        darkImage: "/dark-theme-images/buffet-dark.png",
       },
       {
         title: "Made for Every Occasion",
         subtitle:
           "Enjoy delicious food for everyday meals, celebrations, date nights and special events.",
         image: "/slider/cream-hero4.png",
+        darkImage: "/dark-theme-images/spaghetti-hero-darktheme.png",
       },
     ];
 
@@ -906,6 +963,7 @@ export default {
       addPromoItemToCart,
       slide,
       slides,
+      isDarkTheme,
       signatureDishes,
       homeCategories,
       menuStore,
@@ -946,7 +1004,8 @@ export default {
 
 .home-categories-section {
   width: 100%;
-  background: #fff;
+  background: var(--trg-bg);
+  color: var(--trg-text);
   padding: 18px 0 22px;
 }
 
@@ -987,8 +1046,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff7f1;
-  border: 4px solid #fff;
+  background: var(--trg-surface);
+  border: 4px solid var(--trg-bg);
   box-shadow: 0 5px 18px rgba(43, 23, 18, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -1015,7 +1074,7 @@ export default {
 
 .home-category-name {
   width: 108px;
-  color: #2b1712;
+  color: var(--trg-text);
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1.3;
@@ -1025,7 +1084,8 @@ export default {
 
 .home-search-section {
   width: 100%;
-  background: #fffaf5;
+  background: var(--trg-bg);
+  color: var(--trg-text);
   padding: 24px 0 30px;
 }
 
@@ -1042,7 +1102,7 @@ export default {
 
 
 .home-search-label span {
-  color: #806f68;
+  color: var(--trg-text-secondary);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1056,10 +1116,11 @@ export default {
   align-items: center;
   gap: 12px;
   padding: 0 18px;
-  background: #fff;
-  border: 1px solid #eaded6;
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
   border-radius: 16px;
-  box-shadow: 0 5px 18px rgba(43, 23, 18, 0.06);
+  box-shadow: var(--trg-shadow);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1083,14 +1144,14 @@ export default {
   border: 0;
   outline: 0;
   background: transparent;
-  color: #2b1712;
+  color: var(--trg-text);
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
 }
 
 
 .home-search-box input::placeholder {
-  color: #a49790;
+  color: var(--trg-text-muted);
   opacity: 1;
 }
 
@@ -1099,10 +1160,11 @@ export default {
   width: 100%;
   margin-top: 10px;
   padding: 6px;
-  background: #fff;
-  border: 1px solid #eaded6;
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
   border-radius: 16px;
-  box-shadow: 0 10px 28px rgba(43, 23, 18, 0.1);
+  box-shadow: var(--trg-shadow);
   overflow: hidden;
   position: relative;
   z-index: 10;
@@ -1117,8 +1179,8 @@ export default {
   gap: 12px;
   padding: 9px 10px;
   border: 0;
-  border-bottom: 1px solid #f1e8e2;
-  background: #fff;
+  border-bottom: 1px solid var(--trg-divider);
+  background: var(--trg-surface);
   text-align: left;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -1131,7 +1193,7 @@ export default {
 
 
 .home-search-result:hover {
-  background: #fff8f3;
+  background: var(--trg-surface-hover);
 }
 
 
@@ -1155,7 +1217,7 @@ export default {
 
 
 .home-search-result-info strong {
-  color: #2b1712;
+  color: var(--trg-text);
   font-size: 0.82rem;
   font-weight: 700;
   white-space: nowrap;
@@ -1165,7 +1227,7 @@ export default {
 
 
 .home-search-result-info small {
-  color: #8d7d75;
+  color: var(--trg-text-secondary);
   font-size: 0.68rem;
   white-space: nowrap;
   overflow: hidden;
@@ -1189,10 +1251,10 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #fff;
-  border: 1px solid #eaded6;
+  background: var(--trg-surface);
+  border: 1px solid var(--trg-border);
   border-radius: 14px;
-  color: #806f68;
+  color: var(--trg-text-secondary);
   font-size: 0.78rem;
   box-shadow: 0 8px 22px rgba(43, 23, 18, 0.07);
 }
@@ -1208,7 +1270,8 @@ export default {
 
 .benefits-section {
   width: 100%;
-  background: #fffaf5;
+  background: var(--trg-bg);
+  color: var(--trg-text);
   padding: 18px 0 20px;
 }
 
@@ -1241,9 +1304,9 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: #fff;
+  background: var(--trg-surface);
   color: #f4511e;
-  box-shadow: 0 3px 12px rgba(43, 23, 18, 0.07);
+  box-shadow: var(--trg-shadow);
 }
 
 
@@ -1260,7 +1323,7 @@ export default {
 
 
 .benefit-text strong {
-  color: #2b1712;
+  color: var(--trg-text);
   font-size: 0.88rem;
   font-weight: 700;
   line-height: 1.25;
@@ -1269,7 +1332,7 @@ export default {
 
 .benefit-text span {
   margin-top: 3px;
-  color: #806f68;
+  color: var(--trg-text-secondary);
   font-size: 0.72rem;
   line-height: 1.3;
 }
@@ -1285,8 +1348,8 @@ export default {
 
 
 .home-page {
-  background: #fffaf5;
-  color: #2b1712;
+  background: var(--trg-bg);
+  color: var(--trg-text);
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;
@@ -1313,7 +1376,7 @@ export default {
 
 .section-heading {
   margin: 0;
-  color: #2b1712;
+  color: var(--trg-text);
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.08;
   font-weight: 800;
@@ -1328,7 +1391,7 @@ export default {
 .section-intro {
   max-width: 700px;
   margin: 18px auto 25px;
-  color: #765f56;
+  color: var(--trg-text-secondary);
   font-size: 1rem;
   line-height: 1.8;
 }
@@ -1378,7 +1441,8 @@ export default {
 .hero-section {
   width: 100%;
   padding: 24px 0 28px;
-  background: #fffaf5;
+  background: var(--trg-bg);
+  color: var(--trg-text);
 }
 
 .hero-container {
@@ -1410,7 +1474,7 @@ export default {
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background: rgba(43, 23, 18, 0.28);
+  background: var(--trg-border);
   cursor: pointer;
   appearance: none;
   transition: all 0.25s ease;
@@ -1433,7 +1497,7 @@ export default {
     grid-template-columns: 0.88fr 1.12fr;
     min-height: 430px;
     overflow: hidden;
-    background: #f5f6ff;
+    background: var(--trg-surface);
     border: none;
     border-radius: 28px;
     box-shadow: none;
@@ -1446,7 +1510,8 @@ export default {
     justify-content: center;
     align-items: flex-start;
     padding: 48px clamp(28px, 4vw, 58px);
-    background: #fffaf5;
+    background: var(--trg-bg-elevated);
+    color: var(--trg-text);
     position: relative;
     z-index: 2;
   }
@@ -1465,7 +1530,7 @@ export default {
   .hero-title {
     max-width: 520px;
     margin: 0;
-    color: #2b1712;
+    color: var(--trg-text);
     font-family: "Playfair Display", Georgia, serif;
     font-size: clamp(2.35rem, 4vw, 4rem);
     line-height: 1.04;
@@ -1478,7 +1543,7 @@ export default {
   .hero-subtitle {
     max-width: 440px;
     margin: 16px 0 0;
-    color: #67534b;
+    color: var(--trg-text-secondary);
     font-size: 0.94rem;
     line-height: 1.65;
   }
@@ -1564,10 +1629,11 @@ export default {
    WELCOME
    --------------------------------------------------------- */
 
-.welcome-section {
+ .welcome-section {
   padding: 95px 20px;
   text-align: center;
-  background: #fffaf5;
+  background: var(--trg-bg);
+  color: var(--trg-text);
 }
 
 .welcome-section .section-intro {
@@ -1642,7 +1708,7 @@ export default {
 
 .dish-card-content h3 {
   margin: 0;
-  color: #2b1712;
+  color: var(--trg-text);
   font-size: 0.78rem;
   line-height: 1.25;
   font-weight: 700;
@@ -2689,7 +2755,7 @@ find
   }
 
 
-  .signature-swiper :deep(.swiper-slide) {
+  .signature-swiper :deep(.-slide) {
     width: auto;
     flex-shrink: 0;
   }
@@ -2712,7 +2778,7 @@ find
 
 
   .dish-card-content h3 {
-    font-size: 0.62rem;
+    font-size: 0.78rem;
     line-height: 1.2;
   }
 
@@ -2839,7 +2905,9 @@ find
 
   .hero-primary-btn,
   .hero-secondary-btn {
-    flex: 1;
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: 100%;
     min-height: 38px;
     padding: 0 9px;
     font-size: 0.56rem;
@@ -2876,6 +2944,7 @@ find
 .hero-carousel {
   width: 100%;
   height: auto !important;
+  touch-action: pan-y !important;
   aspect-ratio: 1180 / 500;
   min-height: 0 !important;
 
@@ -2922,6 +2991,7 @@ find
 
 
 .hero-card-image {
+  pointer-events: none !important;
   position: absolute !important;
   inset: 0 !important;
 
@@ -3279,12 +3349,20 @@ find
   }
 
 
-  .hero-primary-btn,
-  .hero-secondary-btn {
-    min-height: 29px;
-    padding: 0 8px;
-    font-size: 0.45rem;
-  }
+
+
+.hero-primary-btn,
+.hero-secondary-btn {
+  width: 130px;
+  min-height: 38px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 24px;
+  transform: translate(0px, 0px);
+  margin-left: 0px;
+}
+
 
 
   .hero-indicators {
@@ -3398,27 +3476,22 @@ find
 
 
 
-/* CTA spacing fix */
-.order-cta {
-  display: flex !important;
-  justify-content: center !important;
-  padding: 10px 0 25px !important;
-}
-
-
 /* =========================================================
-   HOW TO ORDER — MODERN ORDERING APP DESIGN
+   HOW TO ORDER
+   Edit this section to change the four ordering steps,
+   their cards, illustrations, arrows, and call-to-action.
    ========================================================= */
 
 
+/* 1. Section heading and overall layout */
 .order-section {
   background: #ffffff !important;
 }
 
 
 .order-section .centered-heading {
-  text-align: center !important;
   margin-bottom: 38px !important;
+  text-align: center !important;
 }
 
 
@@ -3434,7 +3507,7 @@ find
 
 .order-section .section-heading {
   margin: 0 !important;
-  color: #24140f !important;
+  color: var(--trg-text) !important;
   font-size: 32px !important;
   font-weight: 800 !important;
   line-height: 1.15 !important;
@@ -3442,15 +3515,16 @@ find
 
 
 .order-section .section-intro {
-  margin: 10px auto 0 !important;
   max-width: 520px !important;
+  margin: 10px auto 0 !important;
   color: #777777 !important;
   font-size: 14px !important;
   line-height: 1.6 !important;
 }
 
 
-.order-steps {
+/* 2. Four ordering cards */
+.order-section .order-steps {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: 20px !important;
@@ -3459,27 +3533,29 @@ find
 }
 
 
-.order-step {
+.order-section .order-step {
   position: relative !important;
-  min-height: 250px !important;
   box-sizing: border-box !important;
+  min-width: 0 !important;
+  min-height: 250px !important;
   padding: 28px 22px 25px !important;
-  background: #fffaf7 !important;
   border: 1px solid #f0e2da !important;
   border-radius: 22px !important;
+  background: #fffaf7 !important;
   text-align: center !important;
   box-shadow: 0 8px 24px rgba(43, 23, 18, 0.06) !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 
-.order-step:hover {
+.order-section .order-step:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 14px 32px rgba(43, 23, 18, 0.11) !important;
 }
 
 
-.step-number {
+/* 3. Step numbers and illustrations */
+.order-section .step-number {
   margin: 0 0 16px !important;
   color: #f4511e !important;
   font-size: 11px !important;
@@ -3488,162 +3564,27 @@ find
 }
 
 
-.step-visual {
-  width: 76px !important;
-  height: 76px !important;
-  margin: 0 auto 18px !important;
-  border-radius: 50% !important;
-  background: #fff0e8 !important;
-  color: #f4511e !important;
+.order-section .step-visual {
   display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-
-.step-visual .q-icon {
-  color: #f4511e !important;
-}
-
-
-.order-step h3 {
-  margin: 0 0 9px !important;
-  color: #2b1712 !important;
-  font-size: 18px !important;
-  font-weight: 800 !important;
-  line-height: 1.3 !important;
-}
-
-
-.order-step p {
-  margin: 0 auto !important;
-  max-width: 220px !important;
-  color: #786b66 !important;
-  font-size: 13px !important;
-  line-height: 1.6 !important;
-}
-
-
-.order-step-arrow {
-  position: absolute !important;
-  right: -26px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 34px !important;
-  height: 34px !important;
-  box-sizing: border-box !important;
-  border-radius: 50% !important;
-  background: #ffffff !important;
-  border: 1px solid #f0e2da !important;
-  color: #f4511e !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 10 !important;
-  box-shadow: 0 4px 12px rgba(43, 23, 18, 0.08) !important;
-}
-
-
-.order-cta {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  margin-top: 34px !important;
-  padding: 0 0 4px !important;
-}
-
-
-@media (max-width: 900px) {
-  .order-steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 14px !important;
-  }
-
-
-  .order-step-arrow {
-    display: none !important;
-  }
-}
-
-
-@media (max-width: 767px) {
-  .order-section .section-heading {
-    font-size: 26px !important;
-  }
-
-
-  .order-section .section-intro {
-    font-size: 13px !important;
-  }
-
-
-  .order-section .centered-heading {
-    margin-bottom: 24px !important;
-  }
-
-
-  .order-steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-  }
-
-
-  .order-step {
-    min-height: 215px !important;
-    padding: 20px 11px 18px !important;
-    border-radius: 17px !important;
-  }
-
-
-  .step-number {
-    margin-bottom: 10px !important;
-  }
-
-
-  .step-visual {
-    width: 60px !important;
-    height: 60px !important;
-    margin-bottom: 13px !important;
-  }
-
-
-  .order-step h3 {
-    font-size: 15px !important;
-    margin-bottom: 6px !important;
-  }
-
-
-  .order-step p {
-    font-size: 11.5px !important;
-    line-height: 1.5 !important;
-  }
-
-
-  .order-cta {
-    margin-top: 24px !important;
-  }
-}
-
-
-
-/* HOW TO ORDER — VISUAL ILLUSTRATIONS */
-
-
-.step-visual {
   width: 100% !important;
   height: 145px !important;
   margin: 0 auto 16px !important;
-  border-radius: 20px !important;
-  background: #fff1e8 !important;
-  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
   border: 0 !important;
+  border-radius: 20px !important;
+  background: #fff1e8 !important;
+  color: #f4511e !important;
 }
 
 
-.step-image {
+.order-section .step-visual .q-icon {
+  color: #f4511e !important;
+}
+
+
+.order-section .step-image {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
@@ -3652,160 +3593,82 @@ find
 }
 
 
-@media (max-width: 767px) {
-  .step-visual {
-    height: 92px !important;
-    margin-bottom: 11px !important;
-    border-radius: 15px !important;
+/* 4. Step titles and descriptions */
+.order-section .order-step h3 {
+  margin: 0 0 9px !important;
+  color: var(--trg-text) !important;
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+}
+
+
+.order-section .order-step p {
+  max-width: 220px !important;
+  margin: 0 auto !important;
+  color: #786b66 !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+
+/* 5. Connecting arrows between cards */
+.order-section .order-step-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  right: -26px !important;
+  z-index: 10 !important;
+  display: flex !important;
+  width: 34px !important;
+  height: 34px !important;
+  box-sizing: border-box !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: translateY(-50%) !important;
+  border: 1px solid #f0e2da !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #f4511e !important;
+  box-shadow: 0 4px 12px rgba(43, 23, 18, 0.08) !important;
+}
+
+
+/* 6. Call-to-action button */
+.order-section .order-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 34px !important;
+  padding: 0 0 4px !important;
+}
+
+
+/* 7. Tablet layout */
+@media (min-width: 768px) and (max-width: 900px) {
+  .order-section .order-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
   }
 
 
-  .step-image {
-    width: 100% !important;
-    height: 100% !important;
+  .order-section .order-step-arrow {
+    display: none !important;
   }
 }
 
 
-
-
-/* =========================================================
-   HOW TO ORDER — COMPACT MOBILE 4-STEP ROW
-   ========================================================= */
+/* 8. Mobile layout — four compact cards in one row */
 @media (max-width: 767px) {
-
-
   .order-section {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding: 10px 0 2px !important;
   }
 
 
   .order-section .section-container {
     width: 100% !important;
     max-width: 100% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-
-
-  .order-section .centered-heading {
-    margin-bottom: 18px !important;
-  }
-
-
-  .order-section .section-eyebrow {
-    font-size: 10px !important;
-    letter-spacing: 2px !important;
-  }
-
-
-  .order-section .section-heading {
-    font-size: 27px !important;
-    line-height: 1.05 !important;
-    margin: 6px 0 8px !important;
-  }
-
-
-  .order-section .section-intro {
-    font-size: 12px !important;
-    margin: 0 !important;
-  }
-
-
-  /* ALL FOUR STEPS STAY ON ONE ROW */
-  .order-section .order-steps {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 5px !important;
-    width: 100% !important;
-    overflow: visible !important;
-  }
-
-
-  /* SMALL COMPACT CARDS */
-  .order-section .order-step {
-    min-width: 0 !important;
-    width: 100% !important;
-    padding: 13px 4px 12px !important;
-    border-radius: 12px !important;
-    border: 1px solid #f1e7e1 !important;
-    box-shadow: 0 3px 12px rgba(43, 23, 18, 0.05) !important;
-    overflow: hidden !important;
-  }
-
-
-  .order-section .step-number {
-    font-size: 9px !important;
-    letter-spacing: 1px !important;
-    margin-bottom: 8px !important;
-  }
-
-
-  .order-section .step-visual {
-    width: 42px !important;
-    height: 42px !important;
-    margin: 0 auto 9px !important;
-  }
-
-
-  .order-section .step-visual .q-icon {
-    font-size: 27px !important;
-  }
-
-
-  .order-section .order-step h3 {
-    font-size: 11px !important;
-    line-height: 1.15 !important;
-    margin: 0 0 5px !important;
-    white-space: nowrap !important;
-  }
-
-
-  .order-section .order-step p {
-    font-size: 8.5px !important;
-    line-height: 1.35 !important;
-    margin: 0 !important;
-  }
-
-
-  /* NO ARROWS ON MOBILE — KEEP THE FOUR STEPS COMPACT */
-  .order-section .order-step-arrow {
-    display: none !important;
-  }
-
-
-  .order-section .order-cta {
-    padding: 18px 0 3px !important;
-  }
-
-
-  .order-section .large-orange-btn {
-    min-height: 38px !important;
-    padding: 0 22px !important;
-    font-size: 11px !important;
-    border-radius: 20px !important;
-  }
-}
-
-
-
-
-/* =========================================================
-   HOW TO ORDER — FINAL COMPACT MOBILE STRIP
-   ========================================================= */
-@media (max-width: 767px) {
-
-
-  .order-section {
-    padding-top: 10px !important;
-    padding-bottom: 2px !important;
-  }
-
-
-  .order-section .section-container {
-    padding-left: 8px !important;
     padding-right: 8px !important;
+    padding-left: 8px !important;
   }
 
 
@@ -3821,22 +3684,21 @@ find
 
 
   .order-section .section-heading {
+    margin: 5px 0 7px !important;
     font-size: 27px !important;
     line-height: 1 !important;
-    margin: 5px 0 7px !important;
   }
 
 
   .order-section .section-intro {
+    margin: 0 !important;
     font-size: 12px !important;
     line-height: 1.3 !important;
   }
 
 
-  /* FOUR STAGES — ONE ROW, NEVER SCROLL */
   .order-section .order-steps {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     gap: 6px !important;
     width: 100% !important;
     margin: 0 !important;
@@ -3845,53 +3707,46 @@ find
   }
 
 
-  /* COMPACT TILE */
   .order-section .order-step {
-    min-width: 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    padding: 10px 3px 9px !important;
-    margin: 0 !important;
-    border-radius: 12px !important;
-    background: #fffaf6 !important;
-    border: 1px solid #f3e5dc !important;
-    box-shadow: 0 2px 8px rgba(43, 23, 18, 0.05) !important;
     display: flex !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 10px 3px 9px !important;
+    overflow: hidden !important;
+    border: 1px solid #f3e5dc !important;
+    border-radius: 12px !important;
+    background: #fffaf6 !important;
+    box-shadow: 0 2px 8px rgba(43, 23, 18, 0.05) !important;
   }
 
 
-  /* NUMBER */
   .order-section .step-number {
+    display: flex !important;
     width: 30px !important;
     height: 30px !important;
+    align-items: center !important;
+    justify-content: center !important;
     margin: 0 auto 8px !important;
     border-radius: 50% !important;
     background: #fff0e5 !important;
     color: #f4511e !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     font-size: 10px !important;
-    font-weight: 800 !important;
     letter-spacing: 0 !important;
   }
 
 
-  /* BIGGER ICON */
   .order-section .step-visual {
     width: 52px !important;
-    height: 52px !important;
     min-width: 52px !important;
+    height: 52px !important;
     margin: 0 auto 8px !important;
     border-radius: 50% !important;
     background: #fff0e5 !important;
-    color: #f4511e !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
   }
 
 
@@ -3900,40 +3755,34 @@ find
   }
 
 
-  /* TITLE */
   .order-section .order-step h3 {
     width: 100% !important;
     margin: 0 !important;
-    color: #2b1712 !important;
+    color: var(--trg-text) !important;
     font-size: 10px !important;
-    line-height: 1.15 !important;
     font-weight: 700 !important;
+    line-height: 1.15 !important;
     text-align: center !important;
     white-space: normal !important;
   }
 
 
-  /* HIDE DESCRIPTIONS ON SMALL MOBILE */
-  .order-section .order-step p {
-    display: none !important;
-  }
-
-
-  /* NO CONNECTING ARROWS ON MOBILE */
+  /* Descriptions stay hidden on mobile, as in the existing design. */
+  .order-section .order-step p,
   .order-section .order-step-arrow {
     display: none !important;
   }
 
 
-  /* CTA */
   .order-section .order-cta {
+    margin-top: 0 !important;
     padding: 12px 0 0 !important;
   }
 
 
   .order-section .large-orange-btn {
-    min-height: 36px !important;
     height: 36px !important;
+    min-height: 36px !important;
     padding: 0 20px !important;
     border-radius: 20px !important;
     font-size: 10px !important;
@@ -5296,4 +5145,20 @@ find
   }
 }
 
+</style>
+
+
+<style>
+/* Dark theme: premium warm-ivory hero headline */
+html[data-theme="dark"] .hero-section .hero-title {
+  color: #FFF0DE !important;
+}
+</style>
+
+
+<style>
+/* Brand-orange emphasis in dark-theme hero titles */
+html[data-theme="dark"] .hero-section .hero-title-accent {
+  color: #FF641C !important;
+}
 </style>

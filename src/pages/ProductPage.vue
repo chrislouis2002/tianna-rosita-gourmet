@@ -11,7 +11,7 @@
 
       <q-btn
         label="Back to Menu"
-        color="red"
+        color="primary"
         to="/menu"
         class="q-mt-md"
       />
@@ -26,7 +26,7 @@
         flat
         icon="arrow_back"
         label="Back to Menu"
-        color="brown-10"
+        color="primary"
         @click="goBackToMenu"
         class="back-btn"
       />
@@ -92,7 +92,7 @@
                 flat
                 round
                 icon="remove"
-                color="white"
+                color="primary"
                 @click="decreaseQuantity"
               />
 
@@ -107,7 +107,7 @@
                 flat
                 round
                 icon="add"
-                color="white"
+                color="primary"
                 @click="increaseQuantity"
               />
             </div>
@@ -115,7 +115,7 @@
 
             <q-btn
               unelevated
-              color="red"
+              color="primary"
               icon="add_shopping_cart"
               label="Add to Cart"
               class="add-cart-btn"
@@ -144,7 +144,7 @@
           <q-btn
             flat
             label="View Menu"
-            color="red-3"
+            color="primary"
             to="/menu"
           />
         </div>
@@ -355,8 +355,8 @@ export default defineComponent({
 .product-page {
   min-height: 100vh;
   padding: 30px 16px 60px;
-  background: #fff;
-  color: #2b1712;
+  background: var(--trg-bg);
+  color: var(--trg-text);
 }
 
 
@@ -372,6 +372,7 @@ export default defineComponent({
   place-items: center;
   text-align: center;
   font-family: "martian", sans-serif;
+  color: var(--trg-text);
 }
 
 
@@ -387,9 +388,10 @@ export default defineComponent({
   align-items: center;
   padding: 22px;
   border-radius: 28px;
-  background: #ffffff;
-  border: 1px solid #eaded6;
-  box-shadow: 0 15px 45px rgba(43, 23, 18, 0.12);
+  background: var(--trg-bg-elevated);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  box-shadow: var(--trg-shadow);
 }
 
 
@@ -397,7 +399,7 @@ export default defineComponent({
   overflow: hidden;
   border-radius: 22px;
   aspect-ratio: 1 / 0.9;
-  background: #fff7f1;
+  background: var(--trg-surface-hover);
 }
 
 
@@ -414,7 +416,7 @@ export default defineComponent({
   height: 100%;
   display: grid;
   place-items: center;
-  color: rgba(229, 115, 115, 0.8);
+  color: var(--trg-accent);
 }
 
 
@@ -423,7 +425,7 @@ export default defineComponent({
   font-family: "rubik", sans-serif;
   letter-spacing: 2px;
   font-size: 13px;
-  color: #f4511e;
+  color: var(--trg-accent);
 }
 
 
@@ -431,7 +433,8 @@ export default defineComponent({
   margin: 10px 0;
   font-family: "rubik", sans-serif;
   font-size: clamp(32px, 5vw, 56px);
-  line-height: 1;
+  line-height: 1.1;
+  color: var(--trg-text);
 }
 
 
@@ -440,15 +443,15 @@ export default defineComponent({
   margin-bottom: 16px;
   padding: 5px 12px;
   border-radius: 20px;
-  background: rgba(229, 115, 115, 0.14);
-  color: #806f68;
+  background: var(--trg-accent-soft);
+  color: var(--trg-text-secondary);
 }
 
 
 .product-description {
   max-width: 520px;
   line-height: 1.7;
-  color: #806f68;
+  color: var(--trg-text-secondary);
   font-family: "martian", sans-serif;
   font-size: 14px;
 }
@@ -459,7 +462,7 @@ export default defineComponent({
   font-family: "martian", sans-serif;
   font-size: 27px;
   font-weight: 700;
-  color: #f4511e;
+  color: var(--trg-accent);
 }
 
 
@@ -489,7 +492,8 @@ export default defineComponent({
   gap: 8px;
   padding: 5px 8px;
   border-radius: 14px;
-  background: rgba(229, 115, 115, 0.12);
+  background: var(--trg-accent-soft);
+  color: var(--trg-text);
 }
 
 
@@ -497,6 +501,7 @@ export default defineComponent({
   min-width: 26px;
   text-align: center;
   font-weight: 700;
+  color: var(--trg-text);
 }
 
 
@@ -518,6 +523,7 @@ export default defineComponent({
   margin: 5px 0 0;
   font-family: "rubik", sans-serif;
   font-size: 32px;
+  color: var(--trg-text);
 }
 
 
@@ -532,16 +538,17 @@ export default defineComponent({
   overflow: hidden;
   border-radius: 18px;
   cursor: pointer;
-  background: #ffffff;
-  border: 1px solid #eaded6;
-  box-shadow: 0 8px 22px rgba(43, 23, 18, 0.08);
+  background: var(--trg-surface);
+  color: var(--trg-text);
+  border: 1px solid var(--trg-border);
+  box-shadow: var(--trg-shadow);
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 
 .related-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(229, 115, 115, 0.55);
+  border-color: var(--trg-accent);
 }
 
 
@@ -561,7 +568,8 @@ export default defineComponent({
 .related-placeholder {
   display: grid;
   place-items: center;
-  background: #fff7f1;
+  background: var(--trg-surface-hover);
+  color: var(--trg-accent);
 }
 
 
@@ -574,7 +582,7 @@ export default defineComponent({
   font-family: "martian", sans-serif;
   font-size: 13px;
   font-weight: 700;
-  color: #2b1712;
+  color: var(--trg-text);
 }
 
 
@@ -582,7 +590,7 @@ export default defineComponent({
   margin-top: 8px;
   font-family: "martian", sans-serif;
   font-size: 12px;
-  color: #f4511e;
+  color: var(--trg-accent);
 }
 
 
