@@ -36,8 +36,8 @@
 
 
   <template v-else-if="s.title === 'Free Popcorn & Ice-cream'">
-    Free Popcorn &
-    <span class="hero-title-accent">Ice-cream</span>
+    Free
+    <span class="hero-title-accent">Popcorn & Ice-cream</span>
   </template>
 
 
@@ -726,7 +726,7 @@ export default {
         subtitle:
           "Can't get away from that cheese pull.",
         image: "/slider/pizza-hero.png",
-        darkImage: "public/dark-theme-images/pizza-hero-dark.png",
+        darkImage: "/dark-theme-images/pizza-hero-dark.png",
       },
       {
         title: "Free Popcorn & Ice-cream",
