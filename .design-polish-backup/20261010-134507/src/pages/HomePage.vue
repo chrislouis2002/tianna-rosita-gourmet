@@ -210,7 +210,9 @@
 
         <div class="section-heading-wrap">
           <div>
-            <span class="section-eyebrow">OUR BEST SELLERS</span>
+            <!-- <span class="section-eyebrow">OUR BEST SELLERS</span> -->
+
+              <!-- <h1 class="section-eyebrow">OUR BEST SELLERS</h1> -->
 
 
             <!-- <h2 class="section-heading">

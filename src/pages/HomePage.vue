@@ -236,12 +236,12 @@
 
         <div class="section-heading-wrap">
           <div>
-            <span class="section-eyebrow">OUR BEST SELLERS</span>
+            <span class="section-eyebrow"> our best sellers</span>
 
 
-            <!-- <h2 class="section-heading">
-              POPULAR PICKS
-            </h2> -->
+            <h2 class="section-heading">
+              CUSTOMER FAVES
+            </h2>
           </div>
 
 
@@ -1087,13 +1087,15 @@ export default {
   width: 100%;
   background: var(--trg-bg);
   color: var(--trg-text);
-  padding: 24px 0 30px;
+  padding: 36px 0 44px;
 }
 
 
 .home-search-container {
   width: min(100% - 32px, 900px);
   margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 
@@ -2409,7 +2411,7 @@ find
     padding: 14px 0 16px;
   }
   .home-search-section {
-    padding: 18px 0 24px;
+    padding: 28px 0 34px;
   }
 
 
