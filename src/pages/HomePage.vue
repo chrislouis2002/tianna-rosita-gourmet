@@ -722,7 +722,7 @@ export default {
     // Hero slides
     const slides = [
       {
-        title: "Freshly baked Meaty Pizza with extra cheese",
+        title: "Freshly baked Pepperoni Pizza with extra cheese",
         subtitle:
           "Can't get away from that cheese pull.",
         image: "/slider/pizza-hero.png",
@@ -821,7 +821,8 @@ export default {
       "Desserts": "dessert.jpg",
       "Finger Foods & Sides": "fingerfoods&sides.jpeg",
       "Main Dishes": "rice.jpg",
-      "Burgers/Sandwiches/Wraps": "burgers.png"
+      "Burgers/Sandwiches/Wraps": "burgers.png",
+       "Grills & Fries": "bbq-chicken.jpg"
     };
 
 

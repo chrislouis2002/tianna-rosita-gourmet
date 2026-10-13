@@ -1,37 +1,44 @@
 <template>
   <div id="body">
-    <!-- ✅ Top navigation -->
-    <MenuNavigation
-      :categories="cat_name_list"
-      :category-images="
-        cat_name_list.map((category) => categoryImages[category])
-      "
-    />
+<!-- Sticky navigation and search -->
+    <div class="menu-sticky-stack">
+      <MenuNavigation
+        :categories="cat_name_list"
+        :category-images="
+          cat_name_list.map((category) => categoryImages[category])
+        "
+      />
+      <div class="search-sticky">
+        <div class="q-pa-md flex flex-center">
+          <q-input
+            v-model="searchQuery"
+            placeholder="Search food..."
+            filled
+            dense
+            rounded
+            standout="bg-red text-white"
+            input-class="text-white"
+            class="search-bar"
+          >
+            <template v-slot:append>
+              <q-icon name="search" color="white" />
+            </template>
+          </q-input>
+        </div>
+      </div>
+    </div>
+
+
+    
 
     <!-- <div id="header-section" class="q-pa-sm">
       <div class="logobx"><img src="logo.png" id="logo" /></div>
       <div id="menu">MENU</div>
     </div> -->
 
-    <!-- ✅ Global  Bar -->
-    <div class="q-pa-md flex flex-center">
-      <q-input
-        v-model="searchQuery"
-        placeholder=" a food item..."
-        filled
-        dense
-        rounded
-        standout="bg-red text-white"
-        input-class="text-white"
-        class="search-bar"
-      >
-        <template v-slot:append>
-          <q-icon name="search" color="white" />
-        </template>
-      </q-input>
-    </div>
 
-    <!-- ✅ Display each category and its items -->
+
+<!-- ✅ Display each category and its items -->
     <div class="q-ma-sm">
       <div class="q-ma-sm">
         <div v-for="(category, index) in filteredMenu" :key="index">
@@ -131,6 +138,7 @@ export default defineComponent({
       "Finger Foods & Sides": "fingerfoods&sides.jpeg",
       "Main Dishes": "rice.jpg",
       "Burgers/Sandwiches/Wraps": "burgers.png",
+      "Grills & Fries": "bbq-chicken.jpg",
 
       // Add all your real category names here!
     };
@@ -384,12 +392,33 @@ export default defineComponent({
   justify-content: center;
 }
 
+.menu-sticky-stack {
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  width: 100%;
+  
+
+  background: var(--trg-bg);
+}
+
+
+.search-sticky {
+  position: static;
+  width: 100%;
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  background: var(--trg-bg);
+}
+
 .search-bar {
   max-width: 500px; /* keeps it from stretching too wide */
   width: 100%; /* takes available space */
   border-radius: 25px; /* rounded pill look */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* soft shadow */
   background: rgba(229, 115, 115, 0.9); /* subtle red background */
+
 }
 
 .search-bar input::placeholder {

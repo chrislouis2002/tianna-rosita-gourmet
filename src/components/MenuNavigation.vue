@@ -156,9 +156,9 @@ export default defineComponent({
 
 <style scoped>
 .menu-nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  
+  
+  
 
 
   width: 100%;
@@ -170,6 +170,10 @@ export default defineComponent({
 
 
   box-shadow: 0 8px 20px rgba(43, 23, 18, 0.08);
+
+  position: relative;
+  top: auto;
+  z-index: auto;
 }
 
 
