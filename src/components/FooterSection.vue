@@ -90,7 +90,7 @@
           <q-btn flat no-caps label="Home" class="footer-link" to="/" />
           <q-btn flat no-caps label="Menu" class="footer-link" to="/menu" />
           <q-btn flat no-caps label="About Us" class="footer-link" to="/about" />
-          <q-btn flat no-caps label="Admin Login" class="footer-link" to="/admin" />
+          <q-btn flat no-caps label="Admin Login" class="footer-link" to="/login" />
           <q-btn flat no-caps label="Find Us" class="footer-link" to="/find-us" />
           <q-btn flat no-caps label="Events & Catering" class="footer-link" to="/events" />
 
@@ -121,11 +121,11 @@
 
 
         </section>
-        
+
         <section class="footer-hours">
 
 
-          
+
 
           <div class="hours-card">
 <h3>

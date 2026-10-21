@@ -1,5 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'src/firebase'
 import routes from './routes'
 
 /*
@@ -33,6 +35,48 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
+
+
+  const ADMIN_EMAIL = 'tiannarosita@gmail.com'
+
+
+  // Wait for Firebase to restore the existing login session.
+  function getCurrentUser() {
+    return new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe()
+        resolve(user)
+      })
+    })
+  }
+
+
+  // Protect routes marked with meta.requiresAuth.
+  Router.beforeEach(async (to) => {
+    if (!to.matched.some(record => record.meta.requiresAuth)) {
+      return true
+    }
+
+
+    const user = await getCurrentUser()
+
+
+    if (!user) {
+      return {
+        name: 'login',
+        query: { redirect: to.fullPath }
+      }
+    }
+
+
+    if (user.email?.toLowerCase() !== ADMIN_EMAIL) {
+      return { name: 'home' }
+    }
+
+
+    return true
+  })
+
 
   return Router
 })
