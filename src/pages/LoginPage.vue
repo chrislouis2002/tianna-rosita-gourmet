@@ -20,7 +20,7 @@
 <script setup>
 import { ref } from "vue";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "src/firebase";
+import { auth, authReady, db } from "src/firebase";
 import { useRouter } from "vue-router";
 
 
@@ -30,6 +30,7 @@ const router = useRouter();
 
 async function login() {
   try {
+    await authReady;
     await signInWithEmailAndPassword(auth, email.value, password.value);
     router.push("/admin"); // redirect to admin dashboard
   } catch (err) {

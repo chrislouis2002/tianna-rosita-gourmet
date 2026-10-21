@@ -1,7 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'src/firebase'
+import { auth, authReady } from 'src/firebase'
 import routes from './routes'
 
 /*
@@ -41,7 +41,10 @@ export default route(function (/* { store, ssrContext } */) {
 
 
   // Wait for Firebase to restore the existing login session.
-  function getCurrentUser() {
+  async function getCurrentUser() {
+    await authReady
+
+
     return new Promise((resolve) => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         unsubscribe()

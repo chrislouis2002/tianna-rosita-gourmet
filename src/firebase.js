@@ -1,6 +1,6 @@
 // src/firebase.js
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, inMemoryPersistence, setPersistence, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // 📝 your Firebase config (copy from Firebase Console)
@@ -20,4 +20,9 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-export { app, auth, db };
+
+// Require a fresh login after each full app load.
+const authReady = setPersistence(auth, inMemoryPersistence)
+  .then(() => signOut(auth));
+
+export { app, auth, authReady, db };
